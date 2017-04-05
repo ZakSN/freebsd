@@ -62,6 +62,7 @@ __DEFAULT_YES_OPTIONS = \
     BOOTPARAMD \
     BOOTPD \
     BSD_CPIO \
+    BSD_GREP \
     BSD_GREP_FASTMATCH \
     BSDINSTALL \
     BSNMP \
@@ -99,7 +100,6 @@ __DEFAULT_YES_OPTIONS = \
     GCOV \
     GDB \
     GNU_DIFF \
-    GNU_GREP \
     GPIO \
     GPL_DTC \
     GROFF \
@@ -178,9 +178,9 @@ __DEFAULT_YES_OPTIONS = \
     ZONEINFO
 
 __DEFAULT_NO_OPTIONS = \
-    BSD_GREP \
     CLANG_EXTRAS \
     DTRACE_TESTS \
+    GNU_GREP \
     GNU_GREP_COMPAT \
     HESIOD \
     LIBSOFT \
