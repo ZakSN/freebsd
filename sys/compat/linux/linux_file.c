@@ -1087,20 +1087,21 @@ int
 linux_mount(struct thread *td, struct linux_mount_args *args)
 {
 	char fstypename[MFSNAMELEN];
-	char mntonname[MNAMELEN], mntfromname[MNAMELEN];
-	int error;
-	int fsflags;
+	char *mntonname, *mntfromname;
+	int error, fsflags;
 
+	mntonname = malloc(MNAMELEN, M_TEMP, M_WAITOK);
+	mntfromname = malloc(MNAMELEN, M_TEMP, M_WAITOK);
 	error = copyinstr(args->filesystemtype, fstypename, MFSNAMELEN - 1,
 	    NULL);
-	if (error)
-		return (error);
+	if (error != 0)
+		goto out;
 	error = copyinstr(args->specialfile, mntfromname, MNAMELEN - 1, NULL);
-	if (error)
-		return (error);
+	if (error != 0)
+		goto out;
 	error = copyinstr(args->dir, mntonname, MNAMELEN - 1, NULL);
-	if (error)
-		return (error);
+	if (error != 0)
+		goto out;
 
 #ifdef DEBUG
 	if (ldebug(mount))
@@ -1138,6 +1139,9 @@ linux_mount(struct thread *td, struct linux_mount_args *args)
 	    "fspath", mntonname,
 	    "from", mntfromname,
 	    NULL);
+out:
+	free(mntonname, M_TEMP);
+	free(mntfromname, M_TEMP);
 	return (error);
 }
 

@@ -1,0 +1,4 @@
+Commit checklist: see /preapply.sh
+
+After commit checklist:
+1. Regen and commit sys/kern and sys/compat/freebsd32 sysents.
