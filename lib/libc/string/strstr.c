@@ -29,33 +29,33 @@ __FBSDID("$FreeBSD$");
 static char *
 twobyte_strstr(const unsigned char *h, const unsigned char *n)
 {
-	uint16_t nw = n[0]<<8 | n[1], hw = h[0]<<8 | h[1];
+	uint16_t nw = n[0] << 8 | n[1], hw = h[0] << 8 | h[1];
 
-	for (h++; *h && hw != nw; hw = hw<<8 | *++h)
+	for (h++; *h && hw != nw; hw = hw << 8 | *++h)
 		;
-	return *h ? (char *)h-1 : 0;
+	return *h ? (char *)h - 1 : 0;
 }
 
 static char *
 threebyte_strstr(const unsigned char *h, const unsigned char *n)
 {
-	uint32_t nw = n[0]<<24 | n[1]<<16 | n[2]<<8;
-	uint32_t hw = h[0]<<24 | h[1]<<16 | h[2]<<8;
+	uint32_t nw = n[0] <<24 | n[1] <<16 | n[2] <<8;
+	uint32_t hw = h[0] <<24 | h[1] <<16 | h[2] <<8;
 
-	for (h+=2; *h && hw != nw; hw = (hw|*++h)<<8)
+	for (h += 2; *h && hw != nw; hw = (hw | *++h) << 8)
 		;
-	return *h ? (char *)h-2 : 0;
+	return *h ? (char *)h - 2 : 0;
 }
 
 static char *
 fourbyte_strstr(const unsigned char *h, const unsigned char *n)
 {
-	uint32_t nw = n[0]<<24 | n[1]<<16 | n[2]<<8 | n[3];
-	uint32_t hw = h[0]<<24 | h[1]<<16 | h[2]<<8 | h[3];
+	uint32_t nw = n[0] << 24 | n[1] << 16 | n[2] << 8 | n[3];
+	uint32_t hw = h[0] << 24 | h[1] << 16 | h[2] << 8 | h[3];
 
-	for (h+=3; *h && hw != nw; hw = hw<<8 | *++h)
+	for (h += 3; *h && hw != nw; hw = hw << 8 | *++h)
 		;
-	return *h ? (char *)h-3 : 0;
+	return *h ? (char *)h - 3 : 0;
 }
 
 #define MAX(a,b) ((a)>(b)?(a):(b))
@@ -82,7 +82,7 @@ twoway_strstr(const unsigned char *h, const unsigned char *n)
 
 	/* Computing length of needle and fill shift table */
 	for (l=0; n[l] && h[l]; l++)
-		BITOP(byteset, n[l], |=), shift[n[l]] = l+1;
+		BITOP(byteset, n[l], |=), shift[n[l]] = l + 1;
 	if (n[l])
 		return 0; /* hit the end of h */
 
@@ -90,14 +90,14 @@ twoway_strstr(const unsigned char *h, const unsigned char *n)
 	ip = -1;
 	jp = 0;
 	k = p = 1;
-	while (jp+k<l) {
-		if (n[ip+k] == n[jp+k]) {
+	while (jp + k < l) {
+		if (n[ip + k] == n[jp + k]) {
 			if (k == p) {
 				jp += p;
 				k = 1;
 			} else
 				k++;
-		} else if (n[ip+k] > n[jp+k]) {
+		} else if (n[ip + k] > n[jp + k]) {
 			jp += k;
 			k = 1;
 			p = jp - ip;
@@ -113,14 +113,14 @@ twoway_strstr(const unsigned char *h, const unsigned char *n)
 	ip = -1;
 	jp = 0;
 	k = p = 1;
-	while (jp+k<l) {
-		if (n[ip+k] == n[jp+k]) {
+	while (jp + k < l) {
+		if (n[ip + k] == n[jp + k]) {
 			if (k == p) {
 				jp += p;
 				k = 1;
 			} else
 				k++;
-		} else if (n[ip+k] < n[jp+k]) {
+		} else if (n[ip + k] < n[jp + k]) {
 			jp += k;
 			k = 1;
 			p = jp - ip;
@@ -129,16 +129,16 @@ twoway_strstr(const unsigned char *h, const unsigned char *n)
 			k = p = 1;
 		}
 	}
-	if (ip+1 > ms+1)
+	if (ip + 1 > ms + 1)
 		ms = ip;
 	else p = p0;
 
 	/* Periodic needle? */
-	if (memcmp(n, n+p, ms+1)) {
+	if (memcmp(n, n + p, ms + 1)) {
 		mem0 = 0;
-		p = MAX(ms, l-ms-1) + 1;
+		p = MAX(ms, l - ms - 1) + 1;
 	} else
-		mem0 = l-p;
+		mem0 = l - p;
 	mem = 0;
 
 	/* Initialize incremental end-of-haystack pointer */
@@ -147,23 +147,23 @@ twoway_strstr(const unsigned char *h, const unsigned char *n)
 	/* Search loop */
 	for (;;) {
 		/* Update incremental end-of-haystack pointer */
-		if (z-h < l) {
+		if (z - h < l) {
 			/* Fast estimate for MIN(l,63) */
 			size_t grow = l | 63;
 			const unsigned char *z2 = memchr(z, 0, grow);
 			if (z2) {
 				z = z2;
-				if (z-h < l) return 0;
+				if (z - h < l) return 0;
 			} else
 				z += grow;
 		}
 
 		/* Check last byte first; advance by shift on mismatch */
-		if (BITOP(byteset, h[l-1], &)) {
-			k = l-shift[h[l-1]];
+		if (BITOP(byteset, h[l - 1], &)) {
+			k = l - shift[h[l - 1]];
 			//printf("adv by %zu (on %c) at [%s] (%zu;l=%zu)\n", k, h[l-1], h, shift[h[l-1]], l);
 			if (k) {
-				if (mem0 && mem && k < p) k = l-p;
+				if (mem0 && mem && k < p) k = l - p;
 				h += k;
 				mem = 0;
 				continue;
@@ -175,15 +175,15 @@ twoway_strstr(const unsigned char *h, const unsigned char *n)
 		}
 
 		/* Compare right half */
-		for (k=MAX(ms+1,mem); n[k] && n[k] == h[k]; k++)
+		for (k = MAX(ms + 1, mem); n[k] && n[k] == h[k]; k++)
 			;
 		if (n[k]) {
-			h += k-ms;
+			h += k - ms;
 			mem = 0;
 			continue;
 		}
 		/* Compare left half */
-		for (k=ms+1; k>mem && n[k-1] == h[k-1]; k--)
+		for (k = ms + 1; k > mem && n[k - 1] == h[k - 1]; k--)
 			;
 		if (k <= mem)
 			return (char *)h;
