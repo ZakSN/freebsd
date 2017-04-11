@@ -3587,6 +3587,17 @@ vmspace_fork(struct vmspace *vm1, vm_ooffset_t *fork_charge)
 	return (vm2);
 }
 
+static vm_size_t
+vm_map_stack_initsz(vm_map_t map, vm_size_t max_ssize, vm_size_t growsize)
+{
+	vm_size_t init_ssize;
+
+	init_ssize = max_ssize;
+	if ((map->flags & MAP_ASLR) == 0 && max_ssize > growsize)
+		init_ssize =  growsize;
+	return (init_ssize);
+}
+
 int
 vm_map_stack(vm_map_t map, vm_offset_t addrbos, vm_size_t max_ssize,
     vm_prot_t prot, vm_prot_t max, int cow)
@@ -3596,7 +3607,7 @@ vm_map_stack(vm_map_t map, vm_offset_t addrbos, vm_size_t max_ssize,
 	int rv;
 
 	growsize = sgrowsiz;
-	init_ssize = (max_ssize < growsize) ? max_ssize : growsize;
+	init_ssize = vm_map_stack_initsz(map, max_ssize, growsize);
 	vm_map_lock(map);
 	lmemlim = lim_cur(curthread, RLIMIT_MEMLOCK);
 	vmemlim = lim_cur(curthread, RLIMIT_VMEM);
@@ -3641,7 +3652,7 @@ vm_map_stack_locked(vm_map_t map, vm_offset_t addrbos, vm_size_t max_ssize,
 	    addrbos + max_ssize < addrbos)
 		return (KERN_NO_SPACE);
 
-	init_ssize = (max_ssize < growsize) ? max_ssize : growsize;
+	init_ssize = vm_map_stack_initsz(map, max_ssize, growsize);
 
 	/* If addr is already mapped, no go */
 	if (vm_map_lookup_entry(map, addrbos, &prev_entry))

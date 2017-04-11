@@ -972,10 +972,7 @@ __CONCAT(exec_, __elfN(imgact))(struct image_params *imgp)
 	 */
 	VOP_UNLOCK(imgp->vp, 0);
 
-	error = exec_new_vmspace(imgp, sv);
 	imgp->proc->p_sysent = sv;
-	vmspace = imgp->proc->p_vmspace;
-	map = &vmspace->vm_map;
 
 	/*
 	 * Decide to enable randomization of user mappings.  First,
@@ -996,8 +993,7 @@ __CONCAT(exec_, __elfN(imgact))(struct image_params *imgp)
 	} else if ((imgp->proc->p_flag2 & P2_ASLR_ENABLE) != 0 ||
 	    (__elfN(aslr_enabled) && hdr->e_type == ET_EXEC) ||
 	    et_dyn_addr == ET_DYN_ADDR_RAND) {
-		vm_map_lock(map);
-		map->flags |= MAP_ASLR;
+		imgp->map_flags |= MAP_ASLR;
 		/*
 		 * If user does not care about sbrk, utilize the bss
 		 * grow region for mappings as well.  We can select
@@ -1006,9 +1002,13 @@ __CONCAT(exec_, __elfN(imgact))(struct image_params *imgp)
 		 */
 		if (!__elfN(aslr_honor_sbrk) ||
 		    (imgp->proc->p_flag2 & P2_ASLR_IGNSTART) != 0)
-			map->flags |= MAP_ASLR_IGNSTART;
-		vm_map_unlock(map);
+			imgp->map_flags |= MAP_ASLR_IGNSTART;
 	}
+
+	error = exec_new_vmspace(imgp, sv);
+	vmspace = imgp->proc->p_vmspace;
+	map = &vmspace->vm_map;
+
 	maxv = vm_map_max(map) - lim_max(td, RLIMIT_STACK);
 	if (et_dyn_addr == ET_DYN_ADDR_RAND) {
 		KASSERT((map->flags & MAP_ASLR) != 0,
