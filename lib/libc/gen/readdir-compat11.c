@@ -57,8 +57,10 @@ static int
 freebsd11_cvtdirent(struct freebsd11_dirent *dstdp, struct dirent *srcdp)
 {
 
+#if 0
 	if (srcdp->d_namlen > sizeof(dstdp->d_name) - 1)
 		return (ENAMETOOLONG);
+#endif
 	dstdp->d_type = srcdp->d_type;
 	dstdp->d_namlen = srcdp->d_namlen;
 	dstdp->d_fileno = srcdp->d_fileno;		/* truncate */
