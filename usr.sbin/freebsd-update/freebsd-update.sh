@@ -2900,6 +2900,17 @@ Kernel updates have been installed.  Please reboot and run
 			cap_mkdb ${BASEDIR}/etc/login.conf
 		fi
 
+		# Rebuild man page databases, if necessary.
+		for D in /usr/share/man /usr/share/openssl/man; do
+			if [ ! -d $D ]; then
+				continue
+			fi
+			if [ -z "$(find $D -type f -newer $D/mandoc.db)" ]; then
+				continue;
+			fi
+			makewhatis $D
+		done
+
 		# We've finished installing the world and deleting old files
 		# which are not shared libraries.
 		touch $1/worlddone
