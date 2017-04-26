@@ -53,6 +53,10 @@ main(void)
 
 	if (getenv("DISTRIBUTIONS") == NULL)
 		errx(EXIT_FAILURE, "DISTRIBUTIONS variable is not set");
+	if (getenv("BSDINSTALL_DISTSITE") == NULL)
+		errx(EXIT_FAILURE, "BSDINSTALL_DISTSITE variable is not set");
+	if (getenv("BSDINSTALL_DISTDIR") == NULL)
+		errx(EXIT_FAILURE, "BSDINSTALL_DISTDIR variable is not set");
 
 	diststring = strdup(getenv("DISTRIBUTIONS"));
 	for (i = 0; diststring[i] != 0; i++)
