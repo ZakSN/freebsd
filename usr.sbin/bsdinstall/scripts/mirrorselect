@@ -38,8 +38,8 @@ MIRROR=`dialog --backtitle "FreeBSD Installer" \
     --title "Mirror Selection" --extra-button --extra-label "Other" \
     --menu "Please select the site closest to you or \"other\" if you'd like to specify a different choice.  Also note that not every site listed here carries more than the base distribution kits. Only Primary sites are guaranteed to carry the full range of possible distributions. Select a site that's close!" \
     0 0 0 \
-	https://ftp.freebsd.org	"Main Site (https)"\
 	ftp://ftp.freebsd.org	"Main Site (ftp)"\
+	https://download.freebsd.org	"Main Site (https)"\
 	ftp://ftp3.ie.freebsd.org 	"IPv6 Ireland"\
 	ftp://ftp2.jp.freebsd.org 	"IPv6 Japan"\
 	ftp://ftp4.se.freebsd.org	"IPv6 Sweden"\
@@ -169,7 +169,14 @@ case ${_UNAME_R} in
 		;;
 esac
 
-BSDINSTALL_DISTSITE="$MIRROR/pub/FreeBSD/${RELDIR}/`uname -m`/`uname -p`/${_UNAME_R}"
+case ${MIRROR} in
+	http://*|https://*)
+		BSDINSTALL_DISTSITE="$MIRROR/ftp/${RELDIR}/`uname -m`/`uname -p`/${_UNAME_R}"
+		;;
+	*)
+		BSDINSTALL_DISTSITE="$MIRROR/pub/FreeBSD/${RELDIR}/`uname -m`/`uname -p`/${_UNAME_R}"
+		;;
+esac
 
 case $MIRROR_BUTTON in
 $DIALOG_CANCEL)
