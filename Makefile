@@ -178,7 +178,7 @@ META_TGT_WHITELIST+= \
 .ORDER: buildkernel reinstallkernel.debug
 
 PATH=	/sbin:/bin:/usr/sbin:/usr/bin
-MAKEOBJDIRPREFIX?=	/usr/obj
+MAKEOBJDIRPREFIX?=	/home/zak/obj
 _MAKEOBJDIRPREFIX!= /usr/bin/env -i PATH=${PATH} MK_AUTO_OBJ=no ${MAKE} \
     ${.MAKEFLAGS:MMAKEOBJDIRPREFIX=*} __MAKE_CONF=${__MAKE_CONF} \
     -f /dev/null -V MAKEOBJDIRPREFIX dummy
