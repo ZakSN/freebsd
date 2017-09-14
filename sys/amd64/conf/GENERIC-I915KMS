@@ -1,0 +1,5 @@
+include GENERIC
+ident GENERIC-I915KMS
+
+device i915kms
+device drm2
