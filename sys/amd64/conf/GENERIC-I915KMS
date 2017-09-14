@@ -3,3 +3,5 @@ ident GENERIC-I915KMS
 
 device i915kms
 device drm2
+device iicbus
+device iicbb

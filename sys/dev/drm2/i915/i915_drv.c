@@ -1069,17 +1069,21 @@ static const struct file_operations i915_driver_fops = {
 	.poll = drm_poll,
 	.fasync = drm_fasync,
 	.read = drm_read,
+
 #ifdef CONFIG_COMPAT
 	.compat_ioctl = i915_compat_ioctl,
 #endif
+
 	.llseek = noop_llseek,
 };
 #endif /* __linux__ */
+
 
 #ifdef COMPAT_FREEBSD32
 extern struct drm_ioctl_desc i915_compat_ioctls[];
 extern int i915_compat_ioctls_nr;
 #endif
+
 
 static struct drm_driver driver = {
 	/* Don't use MTRRs here; the Xserver or userspace app should

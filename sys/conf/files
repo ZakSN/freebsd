@@ -1499,8 +1499,8 @@ dev/drm/drm_lock.c		optional drm
 dev/drm/drm_memory.c		optional drm
 dev/drm/drm_mm.c		optional drm
 dev/drm/drm_pci.c		optional drm
-dev/drm/drm_scatter.c		optional drm
 dev/drm/drm_sman.c		optional drm
+dev/drm/drm_scatter.c		optional drm
 dev/drm/drm_sysctl.c		optional drm
 dev/drm/drm_vm.c		optional drm
 dev/drm/mach64_dma.c		optional mach64drm
@@ -1558,7 +1558,7 @@ dev/drm2/drm_memory.c		optional drm2
 dev/drm2/drm_mm.c		optional drm2
 dev/drm2/drm_modes.c		optional drm2
 dev/drm2/drm_pci.c		optional drm2
-dev/drm2/drm_platform.c		optional drm2
+#dev/drm2/drm_platform.c		optional drm2
 dev/drm2/drm_scatter.c		optional drm2
 dev/drm2/drm_stub.c		optional drm2
 dev/drm2/drm_sysctl.c		optional drm2
@@ -1622,6 +1622,86 @@ dev/e1000/e1000_mbx.c		optional em \
 	compile-with "${NORMAL_C} -I$S/dev/e1000"
 dev/e1000/e1000_osdep.c		optional em \
 	compile-with "${NORMAL_C} -I$S/dev/e1000"
+dev/drm2/drm_drv.c		optional drm2
+dev/drm2/drm_crtc.c		optional drm2
+dev/drm2/drm_ioc32.c		optional drm2
+dev/drm2/drm_modes.c		optional drm2
+dev/drm2/drm_gem_names.c	optional drm2
+dev/drm2/drm_agpsupport.c	optional drm2
+dev/drm2/drm_stub.c		optional drm2
+dev/drm2/drm_context.c		optional drm2
+dev/drm2/drm_dma.c		optional drm2
+dev/drm2/drm_irq.c		optional drm2
+dev/drm2/drm_vm.c		optional drm2
+dev/drm2/drm_linux_list_sort.c	optional drm2
+dev/drm2/drm_fops.c		optional drm2
+dev/drm2/drm_gem.c		optional drm2
+dev/drm2/drm_bufs.c		optional drm2
+dev/drm2/drm_ioctl.c		optional drm2
+dev/drm2/drm_sysctl.c		optional drm2
+dev/drm2/drm_hashtab.c		optional drm2
+dev/drm2/drm_mm.c		optional drm2
+dev/drm2/drm_memory.c		optional drm2
+dev/drm2/drm_global.c		optional drm2
+dev/drm2/drm_scatter.c		optional drm2
+dev/drm2/drm_pci.c		optional drm2
+dev/drm2/drm_auth.c		optional drm2
+dev/drm2/drm_lock.c		optional drm2
+dev/drm2/drm_os_freebsd.c	optional drm2
+dev/drm2/ttm/ttm_tt.c		optional drm2
+dev/drm2/ttm/ttm_bo.c		optional drm2
+dev/drm2/ttm/ttm_bo_vm.c	optional drm2
+dev/drm2/ttm/ttm_bo_util.c	optional drm2
+dev/drm2/ttm/ttm_memory.c	optional drm2
+dev/drm2/ttm/ttm_page_alloc.c	optional drm2
+dev/drm2/drm_crtc_helper.c	optional drm2
+dev/drm2/drm_edid.c		optional drm2
+dev/drm2/drm_fb_helper.c	optional drm2
+dev/drm2/drm_dp_iic_helper.c	optional drm2
+dev/drm2/i915/i915_drv.c	optional i915kms drm2                           \
+        dependency      "fb_if.h"
+dev/drm2/i915/i915_dma.c	optional i915kms drm2
+dev/drm2/i915/i915_gem.c	optional i915kms drm2
+dev/drm2/i915/i915_gem_gtt.c	optional i915kms drm2
+dev/drm2/i915/i915_gem_evict.c	optional i915kms drm2
+dev/drm2/i915/i915_gem_tiling.c optional i915kms drm2
+dev/drm2/i915/i915_suspend.c	optional i915kms drm2
+dev/drm2/i915/i915_irq.c	optional i915kms drm2
+dev/drm2/i915/i915_gem_execbuffer.c optional i915kms drm2
+dev/drm2/i915/i915_debug.c	optional i915kms drm2
+
+dev/drm2/i915/dvo_ch7017.c	optional i915kms drm2
+dev/drm2/i915/dvo_ch7xxx.c	optional i915kms drm2
+dev/drm2/i915/dvo_ivch.c	optional i915kms drm2
+dev/drm2/i915/dvo_ns2501.c	optional i915kms drm2
+dev/drm2/i915/dvo_sil164.c	optional i915kms drm2
+dev/drm2/i915/dvo_tfp410.c	optional i915kms drm2
+dev/drm2/i915/i915_gem_context.c optional i915kms drm2
+dev/drm2/i915/i915_gem_stolen.c optional i915kms drm2
+dev/drm2/i915/i915_ioc32.c	optional i915kms drm2
+
+dev/drm2/i915/intel_acpi.c	optional i915kms drm2
+dev/drm2/i915/intel_ddi.c	optional i915kms drm2
+dev/drm2/i915/intel_dvo.c	optional i915kms drm2
+dev/drm2/i915/intel_pm.c	optional i915kms drm2
+
+dev/drm2/i915/intel_ringbuffer.c optional i915kms drm2
+dev/drm2/i915/intel_overlay.c	optional i915kms drm2
+dev/drm2/i915/intel_display.c	optional i915kms drm2
+dev/drm2/i915/intel_dp.c	optional i915kms drm2
+dev/drm2/i915/intel_sdvo.c	optional i915kms drm2
+dev/drm2/i915/intel_panel.c	optional i915kms drm2
+dev/drm2/i915/intel_opregion.c	optional i915kms drm2
+dev/drm2/i915/intel_modes.c	optional i915kms drm2
+dev/drm2/i915/intel_fb.c	optional i915kms drm2
+dev/drm2/i915/intel_hdmi.c	optional i915kms drm2
+dev/drm2/i915/intel_sdvo.c	optional i915kms drm2
+dev/drm2/i915/intel_sprite.c	optional i915kms drm2
+dev/drm2/i915/intel_iic.c	optional i915kms drm2
+dev/drm2/i915/intel_bios.c	optional i915kms drm2
+dev/drm2/i915/intel_crt.c	optional i915kms drm2
+dev/drm2/i915/intel_lvds.c	optional i915kms drm2
+dev/drm2/i915/intel_tv.c	optional i915kms drm2
 dev/et/if_et.c			optional et
 dev/ena/ena.c			optional ena \
 	compile-with "${NORMAL_C} -I$S/contrib"
