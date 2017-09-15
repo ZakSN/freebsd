@@ -66,6 +66,7 @@ static puc_config_f puc_config_siig;
 static puc_config_f puc_config_sunix;
 static puc_config_f puc_config_timedia;
 static puc_config_f puc_config_titan;
+static puc_config_f puc_config_wch382;
 
 const struct puc_cfg puc_pci_devices[] = {
 	{   0x0009, 0x7168, 0xffff, 0,
@@ -1068,6 +1069,14 @@ const struct puc_cfg puc_pci_devices[] = {
 	    .config_function = puc_config_syba
 	},
 
+	{   0x1c00, 0x3253, 0xffff, 0,
+	    "WCH382 2S 16850 compatible PCIe",
+	    DEFAULT_RCLK,
+	    PUC_PORT_2S, 0x10, 0, 0,
+	    .config_function = puc_config_wch382
+	},
+
+
 	{   0x1fd4, 0x1999, 0x1fd4, 0x0002,
 	    "Sunix SER5xxxx 2-port serial",
 	    DEFAULT_RCLK * 8,
@@ -1857,6 +1866,19 @@ puc_config_titan(struct puc_softc *sc __unused, enum puc_cfg_cmd cmd,
 		return (0);
 	default:
 		break;
+	}
+	return (ENXIO);
+}
+
+static int
+puc_config_wch382(struct puc_softc *sc __unused, enum puc_cfg_cmd cmd,
+    int port, intptr_t *res)
+{
+
+	if (cmd == PUC_CFG_GET_OFS) {
+		*res = (port * 8) + 0xC0;
+		printf("====================> port: %d has address %lX \n", port, *res);
+		return (0);
 	}
 	return (ENXIO);
 }
