@@ -1877,7 +1877,6 @@ puc_config_wch382(struct puc_softc *sc __unused, enum puc_cfg_cmd cmd,
 
 	if (cmd == PUC_CFG_GET_OFS) {
 		*res = (port * 8) + 0xC0;
-		printf("====================> port: %d has address %lX \n", port, *res);
 		return (0);
 	}
 	return (ENXIO);
