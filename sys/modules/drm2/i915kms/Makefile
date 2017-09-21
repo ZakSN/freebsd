@@ -20,7 +20,6 @@ SRCS	= \
 	i915_gem_stolen.c \
 	i915_gem_tiling.c \
 	i915_irq.c \
-	i915_ioc32.c \
 	i915_suspend.c \
 	intel_acpi.c \
 	intel_bios.c \

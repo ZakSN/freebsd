@@ -5,3 +5,5 @@ device i915kms
 device drm2
 device iicbus
 device iicbb
+
+options DRM_DEBUG

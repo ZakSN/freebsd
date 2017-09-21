@@ -1,0 +1,1212 @@
+ARRAY_SIZE	drm_os_freebsd.h	/^#define ARRAY_SIZE(x)		(sizeof(x)\/sizeof(x[0]))$/
+BITS_TO_LONGS	drm_atomic.h	/^#define	BITS_TO_LONGS(x)		howmany(x, NB_BITS_PER_L/
+BUG	drm_os_freebsd.h	/^#define	BUG()			panic("BUG")$/
+BUG_ON	drm_os_freebsd.h	/^#define	BUG_ON(cond)		KASSERT(!(cond), ("BUG ON: "/
+BUILD_BUG_ON	drm_os_freebsd.h	/^#define	BUILD_BUG_ON(x)		CTASSERT(!(x))$/
+BUILD_BUG_ON_NOT_POWER_OF_2	drm_os_freebsd.h	/^#define	BUILD_BUG_ON_NOT_POWER_OF_2(x)$/
+DIV_ROUND_CLOSEST	drm_os_freebsd.h	/^#define	DIV_ROUND_CLOSEST(n,d)	(((n) + (d) \/ 2) /
+DIV_ROUND_UP	drm_os_freebsd.h	/^#define DIV_ROUND_UP(n,d) 	(((n) + (d) - 1) \/ (d)/
+DMA_BIT_MASK	drmP.h	/^#define DMA_BIT_MASK(n) (((n) == 64) ? ~0ULL : (1U/
+DMI_MATCH	drmP.h	/^#define	DMI_MATCH(a, b) {(a), (b)}$/
+DP_GET_SINK_COUNT	drm_dp_helper.h	/^# define DP_GET_SINK_COUNT(x)		    ((((x) & 0x80) /
+DRM_ARRAY_SIZE	drmP.h	/^#define DRM_ARRAY_SIZE(x) ARRAY_SIZE(x)$/
+DRM_BUFCOUNT	drmP.h	/^#define DRM_BUFCOUNT(x) ((x)->count - DRM_LEFTCOUN/
+DRM_COPY_FROM_USER	drmP.h	/^#define DRM_COPY_FROM_USER(kern, user, size) \\$/
+DRM_COPY_FROM_USER_UNCHECKED	drmP.h	/^#define DRM_COPY_FROM_USER_UNCHECKED(arg1, arg2, a/
+DRM_COPY_TO_USER	drmP.h	/^#define DRM_COPY_TO_USER(user, kern, size) \\$/
+DRM_COPY_TO_USER_UNCHECKED	drmP.h	/^#define DRM_COPY_TO_USER_UNCHECKED(arg1, arg2, arg/
+DRM_DEBUG	drmP.h	/^#define DRM_DEBUG(fmt, ...) do {					\\$/
+DRM_DEBUG_DRIVER	drmP.h	/^#define DRM_DEBUG_DRIVER(fmt, ...) do {					\\$/
+DRM_DEBUG_KMS	drmP.h	/^#define DRM_DEBUG_KMS(fmt, ...) do {					\\$/
+DRM_ENUM_NAME_FN	drm_crtc.c	/^#define DRM_ENUM_NAME_FN(fnname, list)				\\$/
+DRM_ERROR	drmP.h	/^#define DRM_ERROR(fmt, ...) \\$/
+DRM_GEM_MAPPING_IDX	drmP.h	/^#define	DRM_GEM_MAPPING_IDX(o)	(((o) >> 40) & DRM_/
+DRM_GEM_MAPPING_MAPOFF	drmP.h	/^#define	DRM_GEM_MAPPING_MAPOFF(o) \\$/
+DRM_GEM_MAPPING_OFF	drmP.h	/^#define	DRM_GEM_MAPPING_OFF(i)	(((uint64_t)(i)) <</
+DRM_GET_PRIV_SAREA	drmP.h	/^#define DRM_GET_PRIV_SAREA(_dev, _ctx, _map) do {	/
+DRM_GET_USER_UNCHECKED	drmP.h	/^#define DRM_GET_USER_UNCHECKED(val, uaddr)		\\$/
+DRM_IF_VERSION	drmP.h	/^#define DRM_IF_VERSION(maj, min) (maj << 16 | min)/
+DRM_INFO	drmP.h	/^#define DRM_INFO(fmt, ...)  printf("info: [" DRM_N/
+DRM_INIT_WAITQUEUE	drmP.h	/^#define DRM_INIT_WAITQUEUE(queue) do {(void)(queue/
+DRM_IO	drm.h	/^#define DRM_IO(nr)			_IO(DRM_IOCTL_BASE,nr)$/
+DRM_IOC	drm_os_freebsd.h	/^#define DRM_IOC(dir, group, nr, size) _IOC(dir, gr/
+DRM_IOCTL_DEF	drmP.h	/^#define DRM_IOCTL_DEF(ioctl, _func, _flags) \\$/
+DRM_IOCTL_DEF_DRV	drmP.h	/^#define DRM_IOCTL_DEF_DRV(ioctl, _func, _flags)			/
+DRM_IOCTL_NR	drmP.h	/^#define DRM_IOCTL_NR(n)                ((n) & 0xff/
+DRM_IOR	drm.h	/^#define DRM_IOR(nr,type)		_IOR(DRM_IOCTL_BASE,nr,t/
+DRM_IOW	drm.h	/^#define DRM_IOW(nr,type)		_IOW(DRM_IOCTL_BASE,nr,t/
+DRM_IOWR	drm.h	/^#define DRM_IOWR(nr,type)		_IOWR(DRM_IOCTL_BASE,nr/
+DRM_LEFTCOUNT	drmP.h	/^#define DRM_LEFTCOUNT(x) (((x)->rp + (x)->count - /
+DRM_LIST_HEAD	drm_linux_list.h	/^#define DRM_LIST_HEAD(name) \\$/
+DRM_LOCK	drm_os_freebsd.h	/^#define DRM_LOCK(dev)		sx_xlock(&(dev)->dev_struct/
+DRM_LOCK_ASSERT	drmP.h	/^#define	DRM_LOCK_ASSERT(dev)	sx_assert(&(dev)->dev/
+DRM_LOCK_SLEEP	drmP.h	/^#define	DRM_LOCK_SLEEP(dev, chan, flags, msg, time/
+DRM_LOG	drmP.h	/^#define DRM_LOG(fmt, ...) do {						\\$/
+DRM_LOG_DRIVER	drmP.h	/^#define DRM_LOG_DRIVER(fmt, ...) do {					\\$/
+DRM_LOG_KMS	drmP.h	/^#define DRM_LOG_KMS(fmt, ...) do {					\\$/
+DRM_LOG_MODE	drmP.h	/^#define DRM_LOG_MODE(fmt, ...) do {					\\$/
+DRM_MEMORYBARRIER	drm_os_freebsd.h	/^#define	DRM_MEMORYBARRIER()		mb()$/
+DRM_MODE	drm_crtc.h	/^#define DRM_MODE(nm, t, c, hd, hss, hse, ht, hsk, /
+DRM_MSLEEP	drm_os_freebsd.h	/^#define	DRM_MSLEEP(msecs)	drm_msleep((msecs), "drm/
+DRM_READ16	drm_os_freebsd.h	/^#define	DRM_READ16(map, offset)						\\$/
+DRM_READ32	drm_os_freebsd.h	/^#define	DRM_READ32(map, offset)						\\$/
+DRM_READ64	drm_os_freebsd.h	/^#define	DRM_READ64(map, offset)						\\$/
+DRM_READ8	drm_os_freebsd.h	/^#define	DRM_READ8(map, offset)						\\$/
+DRM_READMEMORYBARRIER	drm_os_freebsd.h	/^#define	DRM_READMEMORYBARRIER()		rmb()$/
+DRM_SPININIT	drmP.h	/^#define DRM_SPININIT(l,name)	mtx_init(l, name, NUL/
+DRM_SPINLOCK	drmP.h	/^#define DRM_SPINLOCK(l)		mtx_lock(l)$/
+DRM_SPINLOCK_ASSERT	drmP.h	/^#define DRM_SPINLOCK_ASSERT(l)	mtx_assert(l, MA_OW/
+DRM_SPINLOCK_IRQSAVE	drmP.h	/^#define DRM_SPINLOCK_IRQSAVE(l, irqflags) do {		\\/
+DRM_SPINUNINIT	drmP.h	/^#define DRM_SPINUNINIT(l)	mtx_destroy(l)$/
+DRM_SPINUNLOCK	drmP.h	/^#define DRM_SPINUNLOCK(u)	mtx_unlock(u)$/
+DRM_SPINUNLOCK_IRQRESTORE	drmP.h	/^#define DRM_SPINUNLOCK_IRQRESTORE(u, irqflags) mtx/
+DRM_SUSER	drm_os_freebsd.h	/^#define	DRM_SUSER(p)		(priv_check(p, PRIV_DRIVER) /
+DRM_SYSCTL_PRINT	drm_sysctl.c	/^#define DRM_SYSCTL_PRINT(fmt, arg...)				\\$/
+DRM_UDELAY	drm_os_freebsd.h	/^#define	DRM_UDELAY(udelay)	DELAY(udelay)$/
+DRM_UNLOCK	drm_os_freebsd.h	/^#define DRM_UNLOCK(dev) 	sx_xunlock(&(dev)->dev_st/
+DRM_UNLOCK_ASSERT	drmP.h	/^#define	DRM_UNLOCK_ASSERT(dev)	sx_assert(&(dev)->d/
+DRM_VERIFYAREA_READ	drmP.h	/^#define DRM_VERIFYAREA_READ( uaddr, size )		\\$/
+DRM_WAIT_ON	drmP.h	/^#define DRM_WAIT_ON( ret, queue, timeout, conditio/
+DRM_WAKEUP	drmP.h	/^#define DRM_WAKEUP(w)		wakeup((void *)w)$/
+DRM_WAKEUP_INT	drmP.h	/^#define DRM_WAKEUP_INT(w)	wakeup(w)$/
+DRM_WARNING	drmP.h	/^#define DRM_WARNING(fmt, ...)  printf("warning: ["/
+DRM_WRITE16	drm_os_freebsd.h	/^#define	DRM_WRITE16(map, offset, val)					\\$/
+DRM_WRITE32	drm_os_freebsd.h	/^#define	DRM_WRITE32(map, offset, val)					\\$/
+DRM_WRITE64	drm_os_freebsd.h	/^#define	DRM_WRITE64(map, offset, val)					\\$/
+DRM_WRITE8	drm_os_freebsd.h	/^#define	DRM_WRITE8(map, offset, val)					\\$/
+DRM_WRITEMEMORYBARRIER	drm_os_freebsd.h	/^#define	DRM_WRITEMEMORYBARRIER()	wmb()$/
+EDID_PRODUCT_ID	drm_edid.h	/^#define EDID_PRODUCT_ID(e) ((e)->prod_code[0] | ((/
+EXPORT_SYMBOL	drm_os_freebsd.h	/^#define	EXPORT_SYMBOL(x)$/
+EXPORT_SYMBOL_GPL	drm_os_freebsd.h	/^#define	EXPORT_SYMBOL_GPL(x)$/
+HLIST_HEAD	drm_linux_list.h	/^#define	HLIST_HEAD(name) struct hlist_head name = /
+INIT_COMPLETION	drm_os_freebsd.h	/^#define	INIT_COMPLETION(c) ((c).done = 0);$/
+INIT_HLIST_HEAD	drm_linux_list.h	/^#define	INIT_HLIST_HEAD(head) (head)->first = NULL/
+INIT_HLIST_NODE	drm_linux_list.h	/^#define	INIT_HLIST_NODE(node)						\\$/
+INIT_LIST_HEAD	drm_linux_list.h	/^INIT_LIST_HEAD(struct list_head *head) {$/
+IS_ALIGNED	drm_os_freebsd.h	/^#define	IS_ALIGNED(x, y)	(((x) & ((y) - 1)) == 0)$/
+KHZ2PICOS	drm_os_freebsd.h	/^#define	KHZ2PICOS(a)	(1000000000UL\/(a))$/
+KIB_NOTYET	drm_os_freebsd.h	/^#define KIB_NOTYET()							\\$/
+LIST_HEAD_INIT	drm_linux_list.h	/^#define LIST_HEAD_INIT(name) { &(name), &(name) }$/
+LOCK_TEST_WITH_RETURN	drmP.h	/^#define LOCK_TEST_WITH_RETURN( dev, _file_priv )		/
+MODE_REFRESH_DIFF	drm_edid.c	/^#define MODE_REFRESH_DIFF(m,r) (abs((m)->vrefresh /
+MODE_SIZE	drm_edid.c	/^#define MODE_SIZE(m) ((m)->hdisplay * (m)->vdispla/
+MODULE_AUTHOR	drm_os_freebsd.h	/^#define	MODULE_AUTHOR(author)$/
+MODULE_DESCRIPTION	drm_os_freebsd.h	/^#define	MODULE_DESCRIPTION(desc)$/
+MODULE_DEVICE_TABLE	drm_os_freebsd.h	/^#define	MODULE_DEVICE_TABLE(name, list)$/
+MODULE_LICENSE	drm_os_freebsd.h	/^#define	MODULE_LICENSE(license)$/
+MODULE_PARM_DESC	drm_os_freebsd.h	/^#define	MODULE_PARM_DESC(name, desc)$/
+PAGE_ALIGN	drm_os_freebsd.h	/^#define	PAGE_ALIGN(addr) round_page(addr)$/
+WARN	drm_os_freebsd.h	/^#define WARN(condition, format, ...) ({				\\$/
+WARN_ON	drm_os_freebsd.h	/^#define	WARN_ON(cond)		WARN(cond, "WARN ON: " #con/
+WARN_ONCE	drm_os_freebsd.h	/^#define	WARN_ONCE(condition, format, ...)			\\$/
+WARN_ON_SMP	drm_os_freebsd.h	/^#define	WARN_ON_SMP(cond)	WARN_ON(cond)$/
+_DRM_LOCKING_CONTEXT	drm.h	/^#define _DRM_LOCKING_CONTEXT(lock) ((lock) & ~(_DR/
+_DRM_LOCK_IS_CONT	drm.h	/^#define _DRM_LOCK_IS_CONT(lock)	   ((lock) & _DRM_/
+_DRM_LOCK_IS_HELD	drm.h	/^#define _DRM_LOCK_IS_HELD(lock)	   ((lock) & _DRM_/
+__attribute__	drm_ioc32.c	/^} __attribute__((packed)) drm_update_draw32_t;$/
+__be16	drm_os_freebsd.h	/^typedef uint16_t __be16;$/
+__be32	drm_os_freebsd.h	/^typedef uint32_t __be32;$/
+__be64	drm_os_freebsd.h	/^typedef uint64_t __be64;$/
+__bit_addr	drm_atomic.h	/^#define	__bit_addr(p, b)		((volatile u_long *)(p) /
+__bit_mask	drm_atomic.h	/^#define	__bit_mask(b)			(1UL << (b) % NB_BITS_PER_/
+__bit_word	drm_atomic.h	/^#define	__bit_word(b)			((b) \/ NB_BITS_PER_LONG)$/
+__clear_bit	drm_os_freebsd.h	/^#define	__clear_bit(n, s)	clear_bit((n), (s))$/
+__copy_from_user	drm_os_freebsd.h	/^__copy_from_user(void *to, const void __user *from/
+__copy_from_user_inatomic	drm_os_freebsd.h	/^__copy_from_user_inatomic(void *to, const void __u/
+__copy_from_user_inatomic_nocache	drm_os_freebsd.h	/^#define	__copy_from_user_inatomic_nocache(to, from/
+__copy_to_user	drm_os_freebsd.h	/^__copy_to_user(void __user *to, const void *from, /
+__copy_to_user_inatomic	drm_os_freebsd.h	/^__copy_to_user_inatomic(void __user *to, const voi/
+__copy_to_user_inatomic_nocache	drm_os_freebsd.h	/^#define	__copy_to_user_inatomic_nocache(to, from, /
+__drm_capabilities	drm_os_freebsd.h	/^enum __drm_capabilities {$/
+__drm_pci_free	drm_pci.c	/^void __drm_pci_free(struct drm_device * dev, drm_d/
+__get_unaligned_cpu32	drm_os_freebsd.h	/^__get_unaligned_cpu32(const void *p)$/
+__get_unaligned_le32	drm_os_freebsd.h	/^__get_unaligned_le32(const u8 *p)$/
+__get_user	drm_os_freebsd.h	/^__get_user(size_t size, const void *ptr, void *x)$/
+__le16	drm_os_freebsd.h	/^typedef uint16_t __le16;$/
+__le32	drm_os_freebsd.h	/^typedef uint32_t __le32;$/
+__le64	drm_os_freebsd.h	/^typedef uint64_t __le64;$/
+__list_splice	drm_linux_list.h	/^__list_splice(const struct list_head *list, struct/
+__put_user	drm_os_freebsd.h	/^__put_user(size_t size, void *ptr, void *x)$/
+__s16	drm.h	/^typedef int16_t  __s16;$/
+__s32	drm.h	/^typedef int32_t  __s32;$/
+__s64	drm.h	/^typedef int64_t  __s64;$/
+__s8	drm.h	/^typedef int8_t   __s8;$/
+__set_bit	drm_os_freebsd.h	/^#define	__set_bit(n, s)		set_bit((n), (s))$/
+__u16	drm.h	/^typedef uint16_t __u16;$/
+__u32	drm.h	/^typedef uint32_t __u32;$/
+__u64	drm.h	/^typedef uint64_t __u64;$/
+__u8	drm.h	/^typedef uint8_t  __u8;$/
+__una_u32	drm_os_freebsd.h	/^struct __una_u32 { u32 x; } __packed;$/
+abs64	drm_os_freebsd.h	/^abs64(int64_t x)$/
+access_ok	drm_os_freebsd.h	/^#define	access_ok(prot, p, l)	useracc((p), (l), (p/
+add_cea_modes	drm_edid.c	/^add_cea_modes(struct drm_connector *connector, str/
+add_cvt_modes	drm_edid.c	/^add_cvt_modes(struct drm_connector *connector, str/
+add_detailed_modes	drm_edid.c	/^add_detailed_modes(struct drm_connector *connector/
+add_established_modes	drm_edid.c	/^add_established_modes(struct drm_connector *connec/
+add_inferred_modes	drm_edid.c	/^add_inferred_modes(struct drm_connector *connector/
+add_standard_modes	drm_edid.c	/^add_standard_modes(struct drm_connector *connector/
+agp_remap	drm_memory.c	/^static void *agp_remap(unsigned long offset, unsig/
+atomic64_read	drm_atomic.h	/^#define	atomic64_read(p)		atomic_load_acq_64(p)$/
+atomic64_set	drm_atomic.h	/^#define	atomic64_set(p, v)		atomic_store_rel_64(p,/
+atomic64_t	drm_atomic.h	/^typedef uint64_t	atomic64_t;$/
+atomic64_xchg	drm_atomic.h	/^#define	atomic64_xchg(p, v)		atomic_swap_64(p, v)$/
+atomic_add	drm_atomic.h	/^#define	atomic_add(v, p)		atomic_add_int(p, v)$/
+atomic_add_and_test	drm_atomic.h	/^#define	atomic_add_and_test(v, p)	(atomic_add_retu/
+atomic_add_return	drm_atomic.h	/^#define	atomic_add_return(v, p)		(atomic_fetchadd_/
+atomic_clear_mask	drm_atomic.h	/^#define	atomic_clear_mask(b, p)		atomic_clear_int(/
+atomic_dec	drm_atomic.h	/^#define	atomic_dec(p)			atomic_sub(1, p)$/
+atomic_dec_and_test	drm_atomic.h	/^#define	atomic_dec_and_test(p)		(atomic_dec_return/
+atomic_dec_return	drm_atomic.h	/^#define	atomic_dec_return(p)		atomic_sub_return(1,/
+atomic_inc	drm_atomic.h	/^#define	atomic_inc(p)			atomic_add(1, p)$/
+atomic_inc_and_test	drm_atomic.h	/^#define	atomic_inc_and_test(p)		(atomic_inc_return/
+atomic_inc_not_zero	drm_atomic.h	/^#define	atomic_inc_not_zero(p)		atomic_inc(p)$/
+atomic_inc_return	drm_atomic.h	/^#define	atomic_inc_return(p)		atomic_add_return(1,/
+atomic_read	drm_atomic.h	/^#define	atomic_read(p)			atomic_load_acq_int(p)$/
+atomic_set	drm_atomic.h	/^#define	atomic_set(p, v)		atomic_store_rel_int(p, /
+atomic_sub	drm_atomic.h	/^#define	atomic_sub(v, p)		atomic_subtract_int(p, v/
+atomic_sub_and_test	drm_atomic.h	/^#define	atomic_sub_and_test(v, p)	(atomic_sub_retu/
+atomic_sub_return	drm_atomic.h	/^#define	atomic_sub_return(v, p)		(atomic_fetchadd_/
+atomic_t	drm_atomic.h	/^typedef u_int		atomic_t;$/
+atomic_xchg	drm_atomic.h	/^#define	atomic_xchg(p, v)		atomic_swap_int(p, v)$/
+bad_std_timing	drm_edid.c	/^bad_std_timing(u8 a, u8 b)$/
+barrier	drm_os_freebsd.h	/^#define	barrier()			__compiler_membar()$/
+be16_to_cpu	drm_os_freebsd.h	/^#define	be16_to_cpu(x)	be16toh(x)$/
+be32_to_cpu	drm_os_freebsd.h	/^#define	be32_to_cpu(x)	be32toh(x)$/
+be32_to_cpup	drm_os_freebsd.h	/^#define	be32_to_cpup(x)	be32toh(*x)$/
+capable	drm_os_freebsd.h	/^capable(enum __drm_capabilities cap)$/
+cea_db_is_hdmi_vsdb	drm_edid.c	/^static bool cea_db_is_hdmi_vsdb(const u8 *db)$/
+cea_db_offsets	drm_edid.c	/^cea_db_offsets(const u8 *cea, int *start, int *end/
+cea_db_payload_len	drm_edid.c	/^cea_db_payload_len(const u8 *db)$/
+cea_db_tag	drm_edid.c	/^cea_db_tag(const u8 *db)$/
+cea_for_each_detailed_block	drm_edid.c	/^cea_for_each_detailed_block(u8 *ext, detailed_cb */
+cea_revision	drm_edid.c	/^cea_revision(const u8 *cea)$/
+check_free_hole	drm_mm.c	/^static int check_free_hole(unsigned long start, un/
+clear_bit	drm_atomic.h	/^#define	clear_bit(b, p) \\$/
+clear_vblank_timestamps	drm_irq.c	/^static void clear_vblank_timestamps(struct drm_dev/
+cmpxchg	drm_atomic.h	/^#define	cmpxchg(ptr, old, new) \\$/
+compat_drm_addbufs	drm_ioc32.c	/^static int compat_drm_addbufs(struct drm_device *d/
+compat_drm_addmap	drm_ioc32.c	/^static int compat_drm_addmap(struct drm_device *de/
+compat_drm_agp_alloc	drm_ioc32.c	/^static int compat_drm_agp_alloc(struct drm_device /
+compat_drm_agp_bind	drm_ioc32.c	/^static int compat_drm_agp_bind(struct drm_device */
+compat_drm_agp_enable	drm_ioc32.c	/^static int compat_drm_agp_enable(struct drm_device/
+compat_drm_agp_free	drm_ioc32.c	/^static int compat_drm_agp_free(struct drm_device */
+compat_drm_agp_info	drm_ioc32.c	/^static int compat_drm_agp_info(struct drm_device */
+compat_drm_agp_unbind	drm_ioc32.c	/^static int compat_drm_agp_unbind(struct drm_device/
+compat_drm_dma	drm_ioc32.c	/^static int compat_drm_dma(struct drm_device *dev, /
+compat_drm_freebufs	drm_ioc32.c	/^static int compat_drm_freebufs(struct drm_device */
+compat_drm_getclient	drm_ioc32.c	/^static int compat_drm_getclient(struct drm_device /
+compat_drm_getmap	drm_ioc32.c	/^static int compat_drm_getmap(struct drm_device *de/
+compat_drm_getsareactx	drm_ioc32.c	/^static int compat_drm_getsareactx(struct drm_devic/
+compat_drm_getstats	drm_ioc32.c	/^static int compat_drm_getstats(struct drm_device */
+compat_drm_getunique	drm_ioc32.c	/^static int compat_drm_getunique(struct drm_device /
+compat_drm_infobufs	drm_ioc32.c	/^static int compat_drm_infobufs(struct drm_device */
+compat_drm_mapbufs	drm_ioc32.c	/^static int compat_drm_mapbufs(struct drm_device *d/
+compat_drm_markbufs	drm_ioc32.c	/^static int compat_drm_markbufs(struct drm_device */
+compat_drm_resctx	drm_ioc32.c	/^static int compat_drm_resctx(struct drm_device *de/
+compat_drm_rmmap	drm_ioc32.c	/^static int compat_drm_rmmap(struct drm_device *dev/
+compat_drm_setsareactx	drm_ioc32.c	/^static int compat_drm_setsareactx(struct drm_devic/
+compat_drm_setunique	drm_ioc32.c	/^static int compat_drm_setunique(struct drm_device /
+compat_drm_sg_alloc	drm_ioc32.c	/^static int compat_drm_sg_alloc(struct drm_device */
+compat_drm_sg_free	drm_ioc32.c	/^static int compat_drm_sg_free(struct drm_device *d/
+compat_drm_version	drm_ioc32.c	/^static int compat_drm_version(struct drm_device *d/
+compat_drm_wait_vblank	drm_ioc32.c	/^static int compat_drm_wait_vblank(struct drm_devic/
+complete_all	drm_os_freebsd.h	/^complete_all(struct completion *c)$/
+completion	drm_os_freebsd.h	/^struct completion {$/
+console_lock	drm_os_freebsd.h	/^#define	console_lock()$/
+console_trylock	drm_os_freebsd.h	/^#define	console_trylock()	true$/
+console_unlock	drm_os_freebsd.h	/^#define	console_unlock()$/
+container_of	drm_os_freebsd.h	/^#define	container_of(ptr, type, member) ({			\\$/
+copy_from_user	drm_os_freebsd.h	/^#define	copy_from_user(to, from, n) __copy_from_us/
+copy_to_user	drm_os_freebsd.h	/^#define	copy_to_user(to, from, n) __copy_to_user((/
+cpu_to_be16	drm_os_freebsd.h	/^#define	cpu_to_be16(x)	htobe16(x)$/
+cpu_to_be32	drm_os_freebsd.h	/^#define	cpu_to_be32(x)	htobe32(x)$/
+cpu_to_le16	drm_os_freebsd.h	/^#define	cpu_to_le16(x)	htole16(x)$/
+cpu_to_le32	drm_os_freebsd.h	/^#define	cpu_to_le32(x)	htole32(x)$/
+cvt_timing	drm_edid.h	/^struct cvt_timing {$/
+detailed_cb	drm_edid.c	/^typedef void detailed_cb(struct detailed_timing *t/
+detailed_data_color_point	drm_edid.h	/^struct detailed_data_color_point {$/
+detailed_data_monitor_range	drm_edid.h	/^struct detailed_data_monitor_range {$/
+detailed_data_string	drm_edid.h	/^struct detailed_data_string {$/
+detailed_data_wpindex	drm_edid.h	/^struct detailed_data_wpindex {$/
+detailed_mode_closure	drm_edid.c	/^struct detailed_mode_closure {$/
+detailed_non_pixel	drm_edid.h	/^struct detailed_non_pixel {$/
+detailed_pixel_timing	drm_edid.h	/^struct detailed_pixel_timing {$/
+detailed_timing	drm_edid.h	/^struct detailed_timing {$/
+dev_dbg	drmP.h	/^#define	dev_dbg(dev, fmt, ...) do {					\\$/
+dev_err	drmP.h	/^#define	dev_err(dev, fmt, ...)						\\$/
+dev_info	drmP.h	/^#define	dev_info(dev, fmt, ...)						\\$/
+dev_warn	drmP.h	/^#define	dev_warn(dev, fmt, ...)						\\$/
+dfixed_ceil	drm_fixed.h	/^static inline u32 dfixed_ceil(fixed20_12 A)$/
+dfixed_const	drm_fixed.h	/^#define dfixed_const(A) (u32)(((A) << 12))\/*  + (/
+dfixed_const_666	drm_fixed.h	/^#define dfixed_const_666(A) (u32)(((A) << 12) + 27/
+dfixed_const_8	drm_fixed.h	/^#define dfixed_const_8(A) (u32)(((A) << 12) + 3277/
+dfixed_const_half	drm_fixed.h	/^#define dfixed_const_half(A) (u32)(((A) << 12) + 2/
+dfixed_div	drm_fixed.h	/^static inline u32 dfixed_div(fixed20_12 A, fixed20/
+dfixed_floor	drm_fixed.h	/^static inline u32 dfixed_floor(fixed20_12 A)$/
+dfixed_frac	drm_fixed.h	/^#define dfixed_frac(A) ((A).full & ((1 << 12) - 1)/
+dfixed_init	drm_fixed.h	/^#define dfixed_init(A) { .full = dfixed_const((A))/
+dfixed_init_half	drm_fixed.h	/^#define dfixed_init_half(A) { .full = dfixed_const/
+dfixed_mul	drm_fixed.h	/^#define dfixed_mul(A, B) ((u64)((u64)(A).full * (B/
+dfixed_trunc	drm_fixed.h	/^#define dfixed_trunc(A) ((A).full >> 12)$/
+div64_u64	drm_os_freebsd.h	/^#define	div64_u64(a, b)		((a) \/ (b))$/
+div_u64	drm_os_freebsd.h	/^#define	div_u64(n, d)		((n) \/ (d))$/
+dma_addr_t	drm_os_freebsd.h	/^typedef vm_paddr_t dma_addr_t;$/
+dmi_check_system	drm_os_freebsd.c	/^dmi_check_system(const struct dmi_system_id *sysid/
+dmi_field	drmP.h	/^enum dmi_field {$/
+dmi_found	drm_os_freebsd.c	/^dmi_found(const struct dmi_system_id *dsi)$/
+dmi_strmatch	drmP.h	/^struct dmi_strmatch {$/
+dmi_system_id	drmP.h	/^struct dmi_system_id {$/
+do_cea_modes	drm_edid.c	/^do_cea_modes (struct drm_connector *connector, u8 /
+do_cvt_mode	drm_edid.c	/^do_cvt_mode(struct detailed_timing *timing, void */
+do_detailed_mode	drm_edid.c	/^do_detailed_mode(struct detailed_timing *timing, v/
+do_div	drm_os_freebsd.h	/^#define	do_div(a, b)		((a) \/= (b))$/
+do_established_modes	drm_edid.c	/^do_established_modes(struct detailed_timing *timin/
+do_inferred_modes	drm_edid.c	/^do_inferred_modes(struct detailed_timing *timing, /
+do_standard_modes	drm_edid.c	/^do_standard_modes(struct detailed_timing *timing, /
+dp_get_lane_status	drm_dp_helper.c	/^static u8 dp_get_lane_status(u8 link_status[DP_LIN/
+dp_link_status	drm_dp_helper.c	/^static u8 dp_link_status(u8 link_status[DP_LINK_ST/
+drm_add_busid_modesetting	drm_os_freebsd.c	/^drm_add_busid_modesetting(struct drm_device *dev, /
+drm_add_display_info	drm_edid.c	/^static void drm_add_display_info(struct edid *edid/
+drm_add_edid_modes	drm_edid.c	/^int drm_add_edid_modes(struct drm_connector *conne/
+drm_add_magic	drm_auth.c	/^static int drm_add_magic(struct drm_master *master/
+drm_add_modes_noedid	drm_edid.c	/^int drm_add_modes_noedid(struct drm_connector *con/
+drm_addbufs	drm_bufs.c	/^int drm_addbufs(struct drm_device *dev, void *data/
+drm_addbufs_agp	drm_bufs.c	/^int drm_addbufs_agp(struct drm_device * dev, struc/
+drm_addbufs_fb	drm_bufs.c	/^static int drm_addbufs_fb(struct drm_device * dev,/
+drm_addbufs_pci	drm_bufs.c	/^int drm_addbufs_pci(struct drm_device * dev, struc/
+drm_addbufs_sg	drm_bufs.c	/^static int drm_addbufs_sg(struct drm_device * dev,/
+drm_addctx	drm_context.c	/^int drm_addctx(struct drm_device *dev, void *data,/
+drm_addmap	drm_bufs.c	/^int drm_addmap(struct drm_device * dev, resource_s/
+drm_addmap_core	drm_bufs.c	/^static int drm_addmap_core(struct drm_device * dev/
+drm_addmap_ioctl	drm_bufs.c	/^int drm_addmap_ioctl(struct drm_device *dev, void /
+drm_agp_acquire	drmP.h	/^static inline int drm_agp_acquire(struct drm_devic/
+drm_agp_acquire_ioctl	drmP.h	/^static inline int drm_agp_acquire_ioctl(struct drm/
+drm_agp_alloc	drmP.h	/^static inline int drm_agp_alloc(struct drm_device /
+drm_agp_alloc_ioctl	drmP.h	/^static inline int drm_agp_alloc_ioctl(struct drm_d/
+drm_agp_bind	drmP.h	/^static inline int drm_agp_bind(struct drm_device */
+drm_agp_bind_ioctl	drmP.h	/^static inline int drm_agp_bind_ioctl(struct drm_de/
+drm_agp_bind_pages	drmP.h	/^static inline struct agp_memory *drm_agp_bind_page/
+drm_agp_binding	drm.h	/^struct drm_agp_binding {$/
+drm_agp_binding32_t	drm_ioc32.c	/^} drm_agp_binding32_t;$/
+drm_agp_binding_t	drm.h	/^typedef struct drm_agp_binding drm_agp_binding_t;$/
+drm_agp_buffer	drm.h	/^struct drm_agp_buffer {$/
+drm_agp_buffer32_t	drm_ioc32.c	/^} drm_agp_buffer32_t;$/
+drm_agp_buffer_t	drm.h	/^typedef struct drm_agp_buffer drm_agp_buffer_t;$/
+drm_agp_clear	drmP.h	/^static inline void drm_agp_clear(struct drm_device/
+drm_agp_enable	drmP.h	/^static inline int drm_agp_enable(struct drm_device/
+drm_agp_enable_ioctl	drmP.h	/^static inline int drm_agp_enable_ioctl(struct drm_/
+drm_agp_free	drmP.h	/^static inline int drm_agp_free(struct drm_device */
+drm_agp_free_ioctl	drmP.h	/^static inline int drm_agp_free_ioctl(struct drm_de/
+drm_agp_head	drmP.h	/^struct drm_agp_head {$/
+drm_agp_info	drm.h	/^struct drm_agp_info {$/
+drm_agp_info32_t	drm_ioc32.c	/^} drm_agp_info32_t;$/
+drm_agp_info_ioctl	drmP.h	/^static inline int drm_agp_info_ioctl(struct drm_de/
+drm_agp_info_t	drm.h	/^typedef struct drm_agp_info drm_agp_info_t;$/
+drm_agp_init	drmP.h	/^static inline struct drm_agp_head *drm_agp_init(st/
+drm_agp_lookup_entry	drm_agpsupport.c	/^static struct drm_agp_mem *drm_agp_lookup_entry(st/
+drm_agp_mem	drmP.h	/^struct drm_agp_mem {$/
+drm_agp_mode	drm.h	/^struct drm_agp_mode {$/
+drm_agp_mode32_t	drm_ioc32.c	/^} drm_agp_mode32_t;$/
+drm_agp_mode_t	drm.h	/^typedef struct drm_agp_mode drm_agp_mode_t;$/
+drm_agp_release	drmP.h	/^static inline int drm_agp_release(struct drm_devic/
+drm_agp_release_ioctl	drmP.h	/^static inline int drm_agp_release_ioctl(struct drm/
+drm_agp_unbind	drmP.h	/^static inline int drm_agp_unbind(struct drm_device/
+drm_agp_unbind_ioctl	drmP.h	/^static inline int drm_agp_unbind_ioctl(struct drm_/
+drm_alloc_resource	drm_bufs.c	/^static int drm_alloc_resource(struct drm_device *d/
+drm_ati_alloc_pcigart_table	ati_pcigart.c	/^static int drm_ati_alloc_pcigart_table(struct drm_/
+drm_ati_free_pcigart_table	ati_pcigart.c	/^static void drm_ati_free_pcigart_table(struct drm_/
+drm_ati_pcigart_cleanup	ati_pcigart.c	/^int drm_ati_pcigart_cleanup(struct drm_device *dev/
+drm_ati_pcigart_info	drmP.h	/^struct drm_ati_pcigart_info {$/
+drm_ati_pcigart_init	ati_pcigart.c	/^int drm_ati_pcigart_init(struct drm_device *dev, s/
+drm_attach_helper	drm_os_freebsd.c	/^drm_attach_helper(device_t kdev, const drm_pci_id_/
+drm_auth	drm.h	/^struct drm_auth {$/
+drm_auth_t	drm.h	/^typedef struct drm_auth drm_auth_t;$/
+drm_authmagic	drm_auth.c	/^int drm_authmagic(struct drm_device *dev, void *da/
+drm_av_sync_delay	drm_edid.c	/^int drm_av_sync_delay(struct drm_connector *connec/
+drm_bind_agp	drmP.h	/^static inline int drm_bind_agp(DRM_AGP_MEM * handl/
+drm_block	drm.h	/^struct drm_block {$/
+drm_block_t	drm.h	/^typedef struct drm_block drm_block_t;$/
+drm_buf	drmP.h	/^struct drm_buf {$/
+drm_buf_desc	drm.h	/^struct drm_buf_desc {$/
+drm_buf_desc32_t	drm_ioc32.c	/^} drm_buf_desc32_t;$/
+drm_buf_desc_t	drm.h	/^typedef struct drm_buf_desc drm_buf_desc_t;$/
+drm_buf_entry	drmP.h	/^struct drm_buf_entry {$/
+drm_buf_free	drm.h	/^struct drm_buf_free {$/
+drm_buf_free32_t	drm_ioc32.c	/^} drm_buf_free32_t;$/
+drm_buf_free_t	drm.h	/^typedef struct drm_buf_free drm_buf_free_t;$/
+drm_buf_info	drm.h	/^struct drm_buf_info {$/
+drm_buf_info32_t	drm_ioc32.c	/^} drm_buf_info32_t;$/
+drm_buf_info_t	drm.h	/^typedef struct drm_buf_info drm_buf_info_t;$/
+drm_buf_map	drm.h	/^struct drm_buf_map {$/
+drm_buf_map32_t	drm_ioc32.c	/^} drm_buf_map32_t;$/
+drm_buf_map_t	drm.h	/^typedef struct drm_buf_map drm_buf_map_t;$/
+drm_buf_pub	drm.h	/^struct drm_buf_pub {$/
+drm_buf_pub32_t	drm_ioc32.c	/^} drm_buf_pub32_t;$/
+drm_buf_pub_t	drm.h	/^typedef struct drm_buf_pub drm_buf_pub_t;$/
+drm_buffer	drm_buffer.h	/^struct drm_buffer {$/
+drm_buffer_advance	drm_buffer.h	/^static inline void drm_buffer_advance(struct drm_b/
+drm_buffer_alloc	drm_buffer.c	/^int drm_buffer_alloc(struct drm_buffer **buf, int /
+drm_buffer_copy_from_user	drm_buffer.c	/^int drm_buffer_copy_from_user(struct drm_buffer *b/
+drm_buffer_free	drm_buffer.c	/^void drm_buffer_free(struct drm_buffer *buf)$/
+drm_buffer_index	drm_buffer.h	/^static inline int drm_buffer_index(struct drm_buff/
+drm_buffer_page	drm_buffer.h	/^static inline int drm_buffer_page(struct drm_buffe/
+drm_buffer_pointer_to_byte	drm_buffer.h	/^static inline void *drm_buffer_pointer_to_byte(str/
+drm_buffer_pointer_to_dword	drm_buffer.h	/^static inline void *drm_buffer_pointer_to_dword(st/
+drm_buffer_read_object	drm_buffer.c	/^void *drm_buffer_read_object(struct drm_buffer *bu/
+drm_buffer_unprocessed	drm_buffer.h	/^static inline int drm_buffer_unprocessed(struct dr/
+drm_bus	drmP.h	/^struct drm_bus {$/
+drm_calc_timestamping_constants	drm_irq.c	/^void drm_calc_timestamping_constants(struct drm_cr/
+drm_calc_vbltimestamp_from_scanoutpos	drm_irq.c	/^int drm_calc_vbltimestamp_from_scanoutpos(struct d/
+drm_calloc_large	drm_mem_util.h	/^static __inline__ void *drm_calloc_large(size_t nm/
+drm_can_sleep	drmP.h	/^#define	drm_can_sleep()	(DRM_HZ & 1)$/
+drm_cancel_fill_in_dev	drm_stub.c	/^void drm_cancel_fill_in_dev(struct drm_device *dev/
+drm_cleanup_buf_error	drm_bufs.c	/^static void drm_cleanup_buf_error(struct drm_devic/
+drm_clflush_pages	drm_os_freebsd.c	/^drm_clflush_pages(vm_page_t *pages, unsigned long /
+drm_clflush_virt_range	drm_os_freebsd.c	/^drm_clflush_virt_range(char *addr, unsigned long l/
+drm_client	drm.h	/^struct drm_client {$/
+drm_client32_t	drm_ioc32.c	/^} drm_client32_t;$/
+drm_client_t	drm.h	/^typedef struct drm_client drm_client_t;$/
+drm_clip_rect	drm.h	/^struct drm_clip_rect {$/
+drm_clip_rect_t	drm.h	/^typedef struct drm_clip_rect drm_clip_rect_t;$/
+drm_cmdline_mode	drmP.h	/^struct drm_cmdline_mode {$/
+drm_connector	drm_crtc.h	/^struct drm_connector {$/
+drm_connector_cleanup	drm_crtc.c	/^void drm_connector_cleanup(struct drm_connector *c/
+drm_connector_enabled	drm_fb_helper.c	/^static bool drm_connector_enabled(struct drm_conne/
+drm_connector_force	drm_crtc.h	/^enum drm_connector_force {$/
+drm_connector_funcs	drm_crtc.h	/^struct drm_connector_funcs {$/
+drm_connector_helper_add	drm_crtc_helper.h	/^static inline void drm_connector_helper_add(struct/
+drm_connector_helper_funcs	drm_crtc_helper.h	/^struct drm_connector_helper_funcs {$/
+drm_connector_init	drm_crtc.c	/^int drm_connector_init(struct drm_device *dev,$/
+drm_connector_status	drm_crtc.h	/^enum drm_connector_status {$/
+drm_connector_unplug_all	drm_crtc.c	/^void drm_connector_unplug_all(struct drm_device *d/
+drm_context_switch	drm_context.c	/^static int drm_context_switch(struct drm_device * /
+drm_context_switch_complete	drm_context.c	/^static int drm_context_switch_complete(struct drm_/
+drm_context_t	drm.h	/^typedef unsigned int drm_context_t;$/
+drm_control	drm.h	/^struct drm_control {$/
+drm_control_t	drm.h	/^typedef struct drm_control drm_control_t;$/
+drm_copy_field	drm_drv.c	/^static int drm_copy_field(char *buf, size_t *buf_l/
+drm_core_check_feature	drmP.h	/^static __inline__ int drm_core_check_feature(struc/
+drm_core_dropmap	drmP.h	/^static __inline__ void drm_core_dropmap(struct drm/
+drm_core_exit	drm_drv.c	/^static void __exit drm_core_exit(void)$/
+drm_core_findmap	drmP.h	/^static __inline__ struct drm_local_map *drm_core_f/
+drm_core_has_AGP	drmP.h	/^static inline int drm_core_has_AGP(struct drm_devi/
+drm_core_has_MTRR	drmP.h	/^static inline int drm_core_has_MTRR(struct drm_dev/
+drm_core_init	drm_drv.c	/^static int __init drm_core_init(void)$/
+drm_core_ioremap	drm_memory.c	/^void drm_core_ioremap(struct drm_local_map *map, s/
+drm_core_ioremap_wc	drm_memory.c	/^void drm_core_ioremap_wc(struct drm_local_map *map/
+drm_core_ioremapfree	drm_memory.c	/^void drm_core_ioremapfree(struct drm_local_map *ma/
+drm_core_reclaim_buffers	drm_dma.c	/^void drm_core_reclaim_buffers(struct drm_device *d/
+drm_crtc	drm_crtc.h	/^struct drm_crtc {$/
+drm_crtc_cleanup	drm_crtc.c	/^void drm_crtc_cleanup(struct drm_crtc *crtc)$/
+drm_crtc_convert_to_umode	drm_crtc.c	/^static void drm_crtc_convert_to_umode(struct drm_m/
+drm_crtc_convert_umode	drm_crtc.c	/^static int drm_crtc_convert_umode(struct drm_displ/
+drm_crtc_funcs	drm_crtc.h	/^struct drm_crtc_funcs {$/
+drm_crtc_helper_add	drm_crtc_helper.h	/^static inline void drm_crtc_helper_add(struct drm_/
+drm_crtc_helper_disable	drm_crtc_helper.c	/^drm_crtc_helper_disable(struct drm_crtc *crtc)$/
+drm_crtc_helper_funcs	drm_crtc_helper.h	/^struct drm_crtc_helper_funcs {$/
+drm_crtc_helper_set_config	drm_crtc_helper.c	/^int drm_crtc_helper_set_config(struct drm_mode_set/
+drm_crtc_helper_set_mode	drm_crtc_helper.c	/^bool drm_crtc_helper_set_mode(struct drm_crtc *crt/
+drm_crtc_init	drm_crtc.c	/^int drm_crtc_init(struct drm_device *dev, struct d/
+drm_crtc_prepare_encoders	drm_crtc_helper.c	/^drm_crtc_prepare_encoders(struct drm_device *dev)$/
+drm_ctx	drm.h	/^struct drm_ctx {$/
+drm_ctx_flags	drm.h	/^enum drm_ctx_flags {$/
+drm_ctx_flags_t	drm.h	/^typedef enum drm_ctx_flags drm_ctx_flags_t;$/
+drm_ctx_list	drmP.h	/^struct drm_ctx_list {$/
+drm_ctx_priv_map	drm.h	/^struct drm_ctx_priv_map {$/
+drm_ctx_priv_map32_t	drm_ioc32.c	/^} drm_ctx_priv_map32_t;$/
+drm_ctx_priv_map_t	drm.h	/^typedef struct drm_ctx_priv_map drm_ctx_priv_map_t/
+drm_ctx_res	drm.h	/^struct drm_ctx_res {$/
+drm_ctx_res32_t	drm_ioc32.c	/^} drm_ctx_res32_t;$/
+drm_ctx_res_t	drm.h	/^typedef struct drm_ctx_res drm_ctx_res_t;$/
+drm_ctx_t	drm.h	/^typedef struct drm_ctx drm_ctx_t;$/
+drm_ctxbitmap_cleanup	drm_context.c	/^void drm_ctxbitmap_cleanup(struct drm_device * dev/
+drm_ctxbitmap_free	drm_context.c	/^void drm_ctxbitmap_free(struct drm_device * dev, i/
+drm_ctxbitmap_init	drm_context.c	/^int drm_ctxbitmap_init(struct drm_device * dev)$/
+drm_ctxbitmap_next	drm_context.c	/^static int drm_ctxbitmap_next(struct drm_device * /
+drm_cvt_mode	drm_modes.c	/^struct drm_display_mode *drm_cvt_mode(struct drm_d/
+drm_cvt_modes	drm_edid.c	/^static int drm_cvt_modes(struct drm_connector *con/
+drm_cvt_modes_for_range	drm_edid.c	/^drm_cvt_modes_for_range(struct drm_connector *conn/
+drm_dequeue_event	drm_fops.c	/^drm_dequeue_event(struct drm_file *file_priv, stru/
+drm_detect_hdmi_monitor	drm_edid.c	/^bool drm_detect_hdmi_monitor(struct edid *edid)$/
+drm_detect_monitor_audio	drm_edid.c	/^bool drm_detect_monitor_audio(struct edid *edid)$/
+drm_dev_to_irq	drmP.h	/^static inline int drm_dev_to_irq(struct drm_device/
+drm_device	drmP.h	/^struct drm_device {$/
+drm_device_dma	drmP.h	/^struct drm_device_dma {$/
+drm_device_find_capability	drm_os_freebsd.c	/^drm_device_find_capability(struct drm_device *dev,/
+drm_display_info	drm_crtc.h	/^struct drm_display_info {$/
+drm_display_mode	drm_crtc.h	/^struct drm_display_mode {$/
+drm_dma	drm.h	/^struct drm_dma {$/
+drm_dma32_t	drm_ioc32.c	/^} drm_dma32_t;$/
+drm_dma_flags	drm.h	/^enum drm_dma_flags {$/
+drm_dma_flags_t	drm.h	/^typedef enum drm_dma_flags drm_dma_flags_t;$/
+drm_dma_handle_t	drmP.h	/^} drm_dma_handle_t;$/
+drm_dma_setup	drm_dma.c	/^int drm_dma_setup(struct drm_device *dev)$/
+drm_dma_t	drm.h	/^typedef struct drm_dma drm_dma_t;$/
+drm_dma_takedown	drm_dma.c	/^void drm_dma_takedown(struct drm_device *dev)$/
+drm_dmt_modes_for_range	drm_edid.c	/^drm_dmt_modes_for_range(struct drm_connector *conn/
+drm_do_get_edid	drm_edid.c	/^drm_do_get_edid(struct drm_connector *connector, d/
+drm_do_probe_ddc_edid	drm_edid.c	/^drm_do_probe_ddc_edid(device_t adapter, unsigned c/
+drm_dp_bw_code_to_link_rate	drm_dp_helper.c	/^int drm_dp_bw_code_to_link_rate(u8 link_bw)$/
+drm_dp_channel_eq_ok	drm_dp_helper.c	/^bool drm_dp_channel_eq_ok(u8 link_status[DP_LINK_S/
+drm_dp_clock_recovery_ok	drm_dp_helper.c	/^bool drm_dp_clock_recovery_ok(u8 link_status[DP_LI/
+drm_dp_get_adjust_request_pre_emphasis	drm_dp_helper.c	/^u8 drm_dp_get_adjust_request_pre_emphasis(u8 link_/
+drm_dp_get_adjust_request_voltage	drm_dp_helper.c	/^u8 drm_dp_get_adjust_request_voltage(u8 link_statu/
+drm_dp_link_rate_to_bw_code	drm_dp_helper.c	/^u8 drm_dp_link_rate_to_bw_code(int link_rate)$/
+drm_dp_link_train_channel_eq_delay	drm_dp_helper.c	/^void drm_dp_link_train_channel_eq_delay(u8 dpcd[DP/
+drm_dp_link_train_clock_recovery_delay	drm_dp_helper.c	/^void drm_dp_link_train_clock_recovery_delay(u8 dpc/
+drm_dp_max_lane_count	drm_dp_helper.h	/^drm_dp_max_lane_count(u8 dpcd[DP_RECEIVER_CAP_SIZE/
+drm_dp_max_link_rate	drm_dp_helper.h	/^drm_dp_max_link_rate(u8 dpcd[DP_RECEIVER_CAP_SIZE]/
+drm_draw	drm.h	/^struct drm_draw {$/
+drm_draw_t	drm.h	/^typedef struct drm_draw drm_draw_t;$/
+drm_drawable_info	drm.h	/^struct drm_drawable_info {$/
+drm_drawable_info_t	drm.h	/^typedef struct drm_drawable_info drm_drawable_info/
+drm_drawable_info_type_t	drm.h	/^} drm_drawable_info_type_t;$/
+drm_drawable_t	drm.h	/^typedef unsigned int drm_drawable_t;$/
+drm_driver	drmP.h	/^struct drm_driver {$/
+drm_dropmaster_ioctl	drm_stub.c	/^int drm_dropmaster_ioctl(struct drm_device *dev, v/
+drm_edid_block_valid	drm_edid.c	/^bool drm_edid_block_valid(u8 *raw_edid, int block,/
+drm_edid_header_is_valid	drm_edid.c	/^int drm_edid_header_is_valid(const u8 *raw_edid)$/
+drm_edid_is_valid	drm_edid.c	/^bool drm_edid_is_valid(struct edid *edid)$/
+drm_edid_is_zero	drm_edid.c	/^static bool drm_edid_is_zero(u8 *in_edid, int leng/
+drm_edid_to_eld	drm_edid.c	/^void drm_edid_to_eld(struct drm_connector *connect/
+drm_enable_connectors	drm_fb_helper.c	/^static void drm_enable_connectors(struct drm_fb_he/
+drm_encoder	drm_crtc.h	/^struct drm_encoder {$/
+drm_encoder_cleanup	drm_crtc.c	/^void drm_encoder_cleanup(struct drm_encoder *encod/
+drm_encoder_crtc_ok	drm_crtc_helper.c	/^static bool drm_encoder_crtc_ok(struct drm_encoder/
+drm_encoder_disable	drm_crtc_helper.c	/^drm_encoder_disable(struct drm_encoder *encoder)$/
+drm_encoder_funcs	drm_crtc.h	/^struct drm_encoder_funcs {$/
+drm_encoder_helper_add	drm_crtc_helper.h	/^static inline void drm_encoder_helper_add(struct d/
+drm_encoder_helper_funcs	drm_crtc_helper.h	/^struct drm_encoder_helper_funcs {$/
+drm_encoder_init	drm_crtc.c	/^int drm_encoder_init(struct drm_device *dev,$/
+drm_est3_modes	drm_edid.c	/^drm_est3_modes(struct drm_connector *connector, st/
+drm_event	drm.h	/^struct drm_event {$/
+drm_event_vblank	drm.h	/^struct drm_event_vblank {$/
+drm_event_wakeup	drm_fops.c	/^drm_event_wakeup(struct drm_pending_event *e)$/
+drm_events_release	drm_fops.c	/^static void drm_events_release(struct drm_file *fi/
+drm_fb_get_bpp_depth	drm_crtc.c	/^void drm_fb_get_bpp_depth(uint32_t format, unsigne/
+drm_fb_helper	drm_fb_helper.h	/^struct drm_fb_helper {$/
+drm_fb_helper_blank	drm_fb_helper.c	/^int drm_fb_helper_blank(int blank, struct fb_info /
+drm_fb_helper_check_var	drm_fb_helper.c	/^int drm_fb_helper_check_var(struct fb_var_screenin/
+drm_fb_helper_connector	drm_fb_helper.h	/^struct drm_fb_helper_connector {$/
+drm_fb_helper_crtc	drm_fb_helper.h	/^struct drm_fb_helper;$/
+drm_fb_helper_crtc_free	drm_fb_helper.c	/^static void drm_fb_helper_crtc_free(struct drm_fb_/
+drm_fb_helper_debug_enter	drm_fb_helper.c	/^int drm_fb_helper_debug_enter(struct fb_info *info/
+drm_fb_helper_debug_leave	drm_fb_helper.c	/^int drm_fb_helper_debug_leave(struct fb_info *info/
+drm_fb_helper_dpms	drm_fb_helper.c	/^static void drm_fb_helper_dpms(struct fb_info *inf/
+drm_fb_helper_fill_fix	drm_fb_helper.c	/^void drm_fb_helper_fill_fix(struct fb_info *info, /
+drm_fb_helper_fill_var	drm_fb_helper.c	/^void drm_fb_helper_fill_var(struct fb_info *info, /
+drm_fb_helper_fini	drm_fb_helper.c	/^void drm_fb_helper_fini(struct drm_fb_helper *fb_h/
+drm_fb_helper_force_kernel_mode	drm_fb_helper.c	/^static bool drm_fb_helper_force_kernel_mode(void)$/
+drm_fb_helper_funcs	drm_fb_helper.h	/^struct drm_fb_helper_funcs {$/
+drm_fb_helper_hotplug_event	drm_fb_helper.c	/^int drm_fb_helper_hotplug_event(struct drm_fb_help/
+drm_fb_helper_init	drm_fb_helper.c	/^int drm_fb_helper_init(struct drm_device *dev,$/
+drm_fb_helper_initial_config	drm_fb_helper.c	/^bool drm_fb_helper_initial_config(struct drm_fb_he/
+drm_fb_helper_pan_display	drm_fb_helper.c	/^int drm_fb_helper_pan_display(struct fb_var_screen/
+drm_fb_helper_panic	drm_fb_helper.c	/^int drm_fb_helper_panic(struct notifier_block *n, /
+drm_fb_helper_parse_command_line	drm_fb_helper.c	/^static int drm_fb_helper_parse_command_line(struct/
+drm_fb_helper_probe_connector_modes	drm_fb_helper.c	/^static int drm_fb_helper_probe_connector_modes(str/
+drm_fb_helper_restore	drm_fb_helper.c	/^void drm_fb_helper_restore(void)$/
+drm_fb_helper_restore_fbdev_mode	drm_fb_helper.c	/^bool drm_fb_helper_restore_fbdev_mode(struct drm_f/
+drm_fb_helper_restore_lut_atomic	drm_fb_helper.c	/^static void drm_fb_helper_restore_lut_atomic(struc/
+drm_fb_helper_restore_work_fn	drm_fb_helper.c	/^static void drm_fb_helper_restore_work_fn(struct w/
+drm_fb_helper_save_lut_atomic	drm_fb_helper.c	/^static void drm_fb_helper_save_lut_atomic(struct d/
+drm_fb_helper_set_par	drm_fb_helper.c	/^int drm_fb_helper_set_par(struct fb_info *info)$/
+drm_fb_helper_setcmap	drm_fb_helper.c	/^int drm_fb_helper_setcmap(struct fb_cmap *cmap, st/
+drm_fb_helper_single_add_all_connectors	drm_fb_helper.c	/^int drm_fb_helper_single_add_all_connectors(struct/
+drm_fb_helper_single_fb_probe	drm_fb_helper.c	/^int drm_fb_helper_single_fb_probe(struct drm_fb_he/
+drm_fb_helper_surface_size	drm_fb_helper.h	/^struct drm_fb_helper_surface_size {$/
+drm_fb_helper_sysrq	drm_fb_helper.c	/^static void drm_fb_helper_sysrq(int dummy1)$/
+drm_fb_release	drm_crtc.c	/^void drm_fb_release(struct drm_file *priv)$/
+drm_file	drmP.h	/^struct drm_file {$/
+drm_fill_in_dev	drm_stub.c	/^int drm_fill_in_dev(struct drm_device *dev,$/
+drm_find_cea_extension	drm_edid.c	/^u8 *drm_find_cea_extension(struct edid *edid)$/
+drm_find_description	drm_os_freebsd.c	/^drm_find_description(int vendor, int device, const/
+drm_find_file	drm_auth.c	/^static struct drm_file *drm_find_file(struct drm_m/
+drm_find_matching_map	drm_bufs.c	/^static struct drm_map_list *drm_find_matching_map(/
+drm_for_each_detailed_block	drm_edid.c	/^drm_for_each_detailed_block(u8 *raw_edid, detailed/
+drm_format_horz_chroma_subsampling	drm_crtc.c	/^int drm_format_horz_chroma_subsampling(uint32_t fo/
+drm_format_num_planes	drm_crtc.c	/^int drm_format_num_planes(uint32_t format)$/
+drm_format_plane_cpp	drm_crtc.c	/^int drm_format_plane_cpp(uint32_t format, int plan/
+drm_format_vert_chroma_subsampling	drm_crtc.c	/^int drm_format_vert_chroma_subsampling(uint32_t fo/
+drm_framebuffer	drm_crtc.h	/^struct drm_framebuffer {$/
+drm_framebuffer_cleanup	drm_crtc.c	/^void drm_framebuffer_cleanup(struct drm_framebuffe/
+drm_framebuffer_free	drm_crtc.c	/^static void drm_framebuffer_free(struct drm_frameb/
+drm_framebuffer_funcs	drm_crtc.h	/^struct drm_framebuffer_funcs {$/
+drm_framebuffer_init	drm_crtc.c	/^int drm_framebuffer_init(struct drm_device *dev, s/
+drm_framebuffer_reference	drm_crtc.c	/^void drm_framebuffer_reference(struct drm_framebuf/
+drm_framebuffer_remove	drm_crtc.c	/^void drm_framebuffer_remove(struct drm_framebuffer/
+drm_framebuffer_unreference	drm_crtc.c	/^void drm_framebuffer_unreference(struct drm_frameb/
+drm_free_agp	drmP.h	/^static inline void drm_free_agp(DRM_AGP_MEM * hand/
+drm_free_buffer	drm_dma.c	/^void drm_free_buffer(struct drm_device *dev, struc/
+drm_free_large	drm_mem_util.h	/^static __inline void drm_free_large(void *ptr)$/
+drm_freebufs	drm_bufs.c	/^int drm_freebufs(struct drm_device *dev, void *dat/
+drm_freelist	drmP.h	/^struct drm_freelist {$/
+drm_gem_close	drm.h	/^struct drm_gem_close {$/
+drm_gem_close_ioctl	drm_gem.c	/^drm_gem_close_ioctl(struct drm_device *dev, void */
+drm_gem_create_mmap_offset	drm_gem.c	/^drm_gem_create_mmap_offset(struct drm_gem_object */
+drm_gem_destroy	drm_gem.c	/^drm_gem_destroy(struct drm_device *dev)$/
+drm_gem_find_name	drm_gem_names.c	/^drm_gem_find_name(struct drm_gem_names *names, voi/
+drm_gem_find_ptr	drm_gem_names.c	/^drm_gem_find_ptr(struct drm_gem_names *names, uint/
+drm_gem_flink	drm.h	/^struct drm_gem_flink {$/
+drm_gem_flink_ioctl	drm_gem.c	/^drm_gem_flink_ioctl(struct drm_device *dev, void */
+drm_gem_free_mmap_offset	drm_gem.c	/^drm_gem_free_mmap_offset(struct drm_gem_object *ob/
+drm_gem_handle_create	drm_gem.c	/^drm_gem_handle_create(struct drm_file *file_priv,$/
+drm_gem_handle_delete	drm_gem.c	/^drm_gem_handle_delete(struct drm_file *filp, u32 h/
+drm_gem_init	drm_gem.c	/^drm_gem_init(struct drm_device *dev)$/
+drm_gem_mm	drmP.h	/^struct drm_gem_mm {$/
+drm_gem_mmap_single	drm_gem.c	/^drm_gem_mmap_single(struct drm_device *dev, vm_oof/
+drm_gem_name	drm_gem_names.h	/^struct drm_gem_name {$/
+drm_gem_name_create	drm_gem_names.c	/^drm_gem_name_create(struct drm_gem_names *names, v/
+drm_gem_name_ref	drm_gem_names.c	/^drm_gem_name_ref(struct drm_gem_names *names, uint/
+drm_gem_names	drm_gem_names.h	/^struct drm_gem_names {$/
+drm_gem_names_delete_name	drm_gem_names.c	/^drm_gem_names_delete_name(struct drm_gem_names *na/
+drm_gem_names_fini	drm_gem_names.c	/^drm_gem_names_fini(struct drm_gem_names *names)$/
+drm_gem_names_foreach	drm_gem_names.c	/^drm_gem_names_foreach(struct drm_gem_names *names,/
+drm_gem_names_init	drm_gem_names.c	/^drm_gem_names_init(struct drm_gem_names *names)$/
+drm_gem_names_remove	drm_gem_names.c	/^drm_gem_names_remove(struct drm_gem_names *names, /
+drm_gem_object	drmP.h	/^struct drm_gem_object {$/
+drm_gem_object_alloc	drm_gem.c	/^drm_gem_object_alloc(struct drm_device *dev, size_/
+drm_gem_object_free	drm_gem.c	/^drm_gem_object_free(struct drm_gem_object *obj)$/
+drm_gem_object_from_offset	drm_gem.c	/^drm_gem_object_from_offset(struct drm_device *dev,/
+drm_gem_object_handle_free	drm_gem.c	/^void drm_gem_object_handle_free(struct drm_gem_obj/
+drm_gem_object_handle_reference	drmP.h	/^drm_gem_object_handle_reference(struct drm_gem_obj/
+drm_gem_object_handle_unreference	drmP.h	/^drm_gem_object_handle_unreference(struct drm_gem_o/
+drm_gem_object_handle_unreference_unlocked	drmP.h	/^drm_gem_object_handle_unreference_unlocked(struct /
+drm_gem_object_init	drm_gem.c	/^int drm_gem_object_init(struct drm_device *dev,$/
+drm_gem_object_lookup	drm_gem.c	/^drm_gem_object_lookup(struct drm_device *dev, stru/
+drm_gem_object_reference	drmP.h	/^drm_gem_object_reference(struct drm_gem_object *ob/
+drm_gem_object_release	drm_gem.c	/^drm_gem_object_release(struct drm_gem_object *obj)/
+drm_gem_object_release_handle	drm_gem.c	/^drm_gem_object_release_handle(uint32_t name, void /
+drm_gem_object_unreference	drmP.h	/^drm_gem_object_unreference(struct drm_gem_object */
+drm_gem_object_unreference_unlocked	drmP.h	/^drm_gem_object_unreference_unlocked(struct drm_gem/
+drm_gem_open	drm.h	/^struct drm_gem_open {$/
+drm_gem_open_ioctl	drm_gem.c	/^drm_gem_open_ioctl(struct drm_device *dev, void *d/
+drm_gem_pager_dtr	drm_gem.c	/^drm_gem_pager_dtr(void *handle)$/
+drm_gem_private_object_init	drm_gem.c	/^int drm_gem_private_object_init(struct drm_device /
+drm_gem_ptr_match	drm_gem_names.c	/^drm_gem_ptr_match(uint32_t name, void *ptr, void */
+drm_gem_ptr_match_arg	drm_gem_names.c	/^struct drm_gem_ptr_match_arg {$/
+drm_gem_release	drm_gem.c	/^drm_gem_release(struct drm_device *dev, struct drm/
+drm_gem_remove_prime_handles	drm_gem.c	/^drm_gem_remove_prime_handles(struct drm_gem_object/
+drm_generic_detach	drm_os_freebsd.c	/^drm_generic_detach(device_t kdev)$/
+drm_generic_resume	drm_os_freebsd.c	/^drm_generic_resume(device_t kdev)$/
+drm_generic_suspend	drm_os_freebsd.c	/^drm_generic_suspend(device_t kdev)$/
+drm_get_cap	drm.h	/^struct drm_get_cap {$/
+drm_get_connector_name	drm_crtc.c	/^char *drm_get_connector_name(struct drm_connector /
+drm_get_connector_status_name	drm_crtc.c	/^char *drm_get_connector_status_name(enum drm_conne/
+drm_get_device_from_kdev	drm_os_freebsd.h	/^#define	drm_get_device_from_kdev(_kdev)	(((struct /
+drm_get_edid	drm_edid.c	/^struct edid *drm_get_edid(struct drm_connector *co/
+drm_get_encoder_name	drm_crtc.c	/^char *drm_get_encoder_name(struct drm_encoder *enc/
+drm_get_last_vbltimestamp	drm_irq.c	/^u32 drm_get_last_vbltimestamp(struct drm_device *d/
+drm_get_minor	drm_stub.c	/^int drm_get_minor(struct drm_device *dev, struct d/
+drm_get_mm	drm_mm.h	/^static inline struct drm_mm *drm_get_mm(struct drm/
+drm_get_pci_dev	drm_pci.c	/^int drm_get_pci_dev(device_t kdev, struct drm_devi/
+drm_get_pci_domain	drm_pci.c	/^static int drm_get_pci_domain(struct drm_device *d/
+drm_get_platform_dev	drm_platform.c	/^int drm_get_platform_dev(device_t kdev, struct drm/
+drm_get_resource_len	drm_bufs.c	/^unsigned long drm_get_resource_len(struct drm_devi/
+drm_get_resource_start	drm_bufs.c	/^unsigned long drm_get_resource_start(struct drm_de/
+drm_getcap	drm_ioctl.c	/^int drm_getcap(struct drm_device *dev, void *data,/
+drm_getclient	drm_ioctl.c	/^int drm_getclient(struct drm_device *dev, void *da/
+drm_getctx	drm_context.c	/^int drm_getctx(struct drm_device *dev, void *data,/
+drm_getmagic	drm_auth.c	/^int drm_getmagic(struct drm_device *dev, void *dat/
+drm_getmap	drm_ioctl.c	/^int drm_getmap(struct drm_device *dev, void *data,/
+drm_getsarea	drm_drv.c	/^struct drm_local_map *drm_getsarea(struct drm_devi/
+drm_getsareactx	drm_context.c	/^int drm_getsareactx(struct drm_device *dev, void */
+drm_getstats	drm_ioctl.c	/^int drm_getstats(struct drm_device *dev, void *dat/
+drm_getunique	drm_ioctl.c	/^int drm_getunique(struct drm_device *dev, void *da/
+drm_global_init	drm_global.c	/^void drm_global_init(void)$/
+drm_global_item	drm_global.c	/^struct drm_global_item {$/
+drm_global_item_ref	drm_global.c	/^int drm_global_item_ref(struct drm_global_referenc/
+drm_global_item_unref	drm_global.c	/^void drm_global_item_unref(struct drm_global_refer/
+drm_global_reference	drm_global.h	/^struct drm_global_reference {$/
+drm_global_release	drm_global.c	/^void drm_global_release(void)$/
+drm_global_types	drm_global.h	/^enum drm_global_types {$/
+drm_gtf2_2c	drm_edid.c	/^drm_gtf2_2c(struct edid *edid)$/
+drm_gtf2_2j	drm_edid.c	/^drm_gtf2_2j(struct edid *edid)$/
+drm_gtf2_hbreak	drm_edid.c	/^drm_gtf2_hbreak(struct edid *edid)$/
+drm_gtf2_k	drm_edid.c	/^drm_gtf2_k(struct edid *edid)$/
+drm_gtf2_m	drm_edid.c	/^drm_gtf2_m(struct edid *edid)$/
+drm_gtf_mode	drm_modes.c	/^drm_gtf_mode(struct drm_device *dev, int hdisplay,/
+drm_gtf_mode_complex	drm_modes.c	/^drm_gtf_mode_complex(struct drm_device *dev, int h/
+drm_gtf_modes_for_range	drm_edid.c	/^drm_gtf_modes_for_range(struct drm_connector *conn/
+drm_handle_t	drm.h	/^typedef unsigned int drm_handle_t;$/
+drm_handle_vblank	drm_irq.c	/^bool drm_handle_vblank(struct drm_device *dev, int/
+drm_handle_vblank_events	drm_irq.c	/^static void drm_handle_vblank_events(struct drm_de/
+drm_has_cmdline_mode	drm_fb_helper.c	/^static bool drm_has_cmdline_mode(struct drm_fb_hel/
+drm_has_preferred_mode	drm_fb_helper.c	/^static struct drm_display_mode *drm_has_preferred_/
+drm_hash_entry	drm_hashtab.h	/^#define drm_hash_entry(_ptr, _type, _member) conta/
+drm_hash_item	drm_hashtab.h	/^struct drm_hash_item {$/
+drm_helper_choose_crtc_dpms	drm_crtc_helper.c	/^static int drm_helper_choose_crtc_dpms(struct drm_/
+drm_helper_choose_encoder_dpms	drm_crtc_helper.c	/^static int drm_helper_choose_encoder_dpms(struct d/
+drm_helper_connector_dpms	drm_crtc_helper.c	/^void drm_helper_connector_dpms(struct drm_connecto/
+drm_helper_crtc_in_use	drm_crtc_helper.c	/^bool drm_helper_crtc_in_use(struct drm_crtc *crtc)/
+drm_helper_disable_unused_functions	drm_crtc_helper.c	/^void drm_helper_disable_unused_functions(struct dr/
+drm_helper_encoder_in_use	drm_crtc_helper.c	/^bool drm_helper_encoder_in_use(struct drm_encoder /
+drm_helper_hpd_irq_event	drm_crtc_helper.c	/^void drm_helper_hpd_irq_event(struct drm_device *d/
+drm_helper_mode_fill_fb_struct	drm_crtc_helper.c	/^int drm_helper_mode_fill_fb_struct(struct drm_fram/
+drm_helper_move_panel_connectors_to_head	drm_crtc_helper.c	/^void drm_helper_move_panel_connectors_to_head(stru/
+drm_helper_probe_single_connector_modes	drm_crtc_helper.c	/^int drm_helper_probe_single_connector_modes(struct/
+drm_helper_resume_force_mode	drm_crtc_helper.c	/^int drm_helper_resume_force_mode(struct drm_device/
+drm_ht_create	drm_hashtab.c	/^int drm_ht_create(struct drm_open_hash *ht, unsign/
+drm_ht_find_item	drm_hashtab.c	/^int drm_ht_find_item(struct drm_open_hash *ht, uns/
+drm_ht_find_key	drm_hashtab.c	/^static struct drm_hash_item *drm_ht_find_key(struc/
+drm_ht_insert_item	drm_hashtab.c	/^int drm_ht_insert_item(struct drm_open_hash *ht, s/
+drm_ht_just_insert_please	drm_hashtab.c	/^int drm_ht_just_insert_please(struct drm_open_hash/
+drm_ht_remove	drm_hashtab.c	/^void drm_ht_remove(struct drm_open_hash *ht)$/
+drm_ht_remove_item	drm_hashtab.c	/^int drm_ht_remove_item(struct drm_open_hash *ht, s/
+drm_ht_remove_key	drm_hashtab.c	/^int drm_ht_remove_key(struct drm_open_hash *ht, un/
+drm_ht_verbose_list	drm_hashtab.c	/^void drm_ht_verbose_list(struct drm_open_hash *ht,/
+drm_hw_lock	drm.h	/^struct drm_hw_lock {$/
+drm_hw_lock_t	drm.h	/^typedef struct drm_hw_lock drm_hw_lock_t;$/
+drm_i_have_hw_lock	drm_lock.c	/^int drm_i_have_hw_lock(struct drm_device *dev, str/
+drm_idlelock_release	drm_lock.c	/^void drm_idlelock_release(struct drm_lock_data *lo/
+drm_idlelock_take	drm_lock.c	/^void drm_idlelock_take(struct drm_lock_data *lock_/
+drm_infobufs	drm_bufs.c	/^int drm_infobufs(struct drm_device *dev, void *dat/
+drm_ioctl	drm_drv.c	/^int drm_ioctl(struct cdev *kdev, u_long cmd, caddr/
+drm_ioctl_desc	drmP.h	/^struct drm_ioctl_desc {$/
+drm_ioctl_t	drmP.h	/^			struct drm_file *file_priv);$/
+drm_irq_busid	drm.h	/^struct drm_irq_busid {$/
+drm_irq_busid_t	drm.h	/^typedef struct drm_irq_busid drm_irq_busid_t;$/
+drm_irq_by_busid	drm_irq.c	/^int drm_irq_by_busid(struct drm_device *dev, void /
+drm_irq_install	drm_irq.c	/^int drm_irq_install(struct drm_device *dev)$/
+drm_irq_uninstall	drm_irq.c	/^int drm_irq_uninstall(struct drm_device *dev)$/
+drm_kms_helper_hotplug_event	drm_crtc_helper.c	/^void drm_kms_helper_hotplug_event(struct drm_devic/
+drm_kms_helper_poll_disable	drm_crtc_helper.c	/^void drm_kms_helper_poll_disable(struct drm_device/
+drm_kms_helper_poll_enable	drm_crtc_helper.c	/^void drm_kms_helper_poll_enable(struct drm_device /
+drm_kms_helper_poll_fini	drm_crtc_helper.c	/^void drm_kms_helper_poll_fini(struct drm_device *d/
+drm_kms_helper_poll_init	drm_crtc_helper.c	/^void drm_kms_helper_poll_init(struct drm_device *d/
+drm_lastclose	drm_drv.c	/^int drm_lastclose(struct drm_device * dev)$/
+drm_le_cmp	drm_linux_list_sort.c	/^drm_le_cmp(void *priv, const void *d1, const void /
+drm_linux_ioctl	drm_os_freebsd.c	/^drm_linux_ioctl(DRM_STRUCTPROC *p, struct linux_io/
+drm_linux_timer_init	drm_os_freebsd.c	/^drm_linux_timer_init(void *arg)$/
+drm_list	drm.h	/^struct drm_list {$/
+drm_list_sort	drm_linux_list_sort.c	/^drm_list_sort(void *priv, struct list_head *head, /
+drm_list_sort_thunk	drm_linux_list_sort.c	/^struct drm_list_sort_thunk {$/
+drm_list_t	drm.h	/^typedef struct drm_list drm_list_t;$/
+drm_local_map	drmP.h	/^struct drm_local_map {$/
+drm_local_map_t	drmP.h	/^typedef struct drm_local_map drm_local_map_t;$/
+drm_lock	drm.h	/^struct drm_lock {$/
+drm_lock_data	drmP.h	/^struct drm_lock_data {$/
+drm_lock_flags	drm.h	/^enum drm_lock_flags {$/
+drm_lock_flags_t	drm.h	/^typedef enum drm_lock_flags drm_lock_flags_t;$/
+drm_lock_free	drm_lock.c	/^int drm_lock_free(struct drm_lock_data *lock_data,/
+drm_lock_t	drm.h	/^typedef struct drm_lock drm_lock_t;$/
+drm_lock_take	drm_lock.c	/^int drm_lock_take(struct drm_lock_data *lock_data,/
+drm_lock_transfer	drm_lock.c	/^static int drm_lock_transfer(struct drm_lock_data /
+drm_magic_entry	drmP.h	/^struct drm_magic_entry {$/
+drm_magic_fini	drm_auth.c	/^drm_magic_fini(void *arg)$/
+drm_magic_init	drm_auth.c	/^drm_magic_init(void *arg)$/
+drm_magic_t	drm.h	/^typedef unsigned int drm_magic_t;$/
+drm_malloc_ab	drm_mem_util.h	/^static __inline__ void *drm_malloc_ab(size_t nmemb/
+drm_map	drm.h	/^struct drm_map {$/
+drm_map32_t	drm_ioc32.c	/^} drm_map32_t;$/
+drm_map_flags	drm.h	/^enum drm_map_flags {$/
+drm_map_flags_t	drm.h	/^typedef enum drm_map_flags drm_map_flags_t;$/
+drm_map_handle	drm_bufs.c	/^static int drm_map_handle(struct drm_device *dev, /
+drm_map_list	drmP.h	/^struct drm_map_list {$/
+drm_map_t	drm.h	/^typedef struct drm_map drm_map_t;$/
+drm_map_type	drm.h	/^enum drm_map_type {$/
+drm_map_type_t	drm.h	/^typedef enum drm_map_type drm_map_type_t;$/
+drm_mapbufs	drm_bufs.c	/^int drm_mapbufs(struct drm_device *dev, void *data/
+drm_markbufs	drm_bufs.c	/^int drm_markbufs(struct drm_device *dev, void *dat/
+drm_master	drmP.h	/^struct drm_master {$/
+drm_master_create	drm_stub.c	/^struct drm_master *drm_master_create(struct drm_mi/
+drm_master_destroy	drm_stub.c	/^static void drm_master_destroy(struct drm_master */
+drm_master_get	drm_stub.c	/^struct drm_master *drm_master_get(struct drm_maste/
+drm_master_put	drm_stub.c	/^void drm_master_put(struct drm_master **master)$/
+drm_master_release	drm_fops.c	/^static void drm_master_release(struct drm_device */
+drm_match_cea_mode	drm_edid.c	/^u8 drm_match_cea_mode(struct drm_display_mode *to_/
+drm_minor	drmP.h	/^struct drm_minor {$/
+drm_minor_get_id	drm_stub.c	/^static int drm_minor_get_id(struct drm_device *dev/
+drm_mm	drm_mm.h	/^struct drm_mm {$/
+drm_mm_clean	drm_mm.c	/^int drm_mm_clean(struct drm_mm * mm)$/
+drm_mm_debug_table	drm_mm.c	/^void drm_mm_debug_table(struct drm_mm *mm, const c/
+drm_mm_for_each_node	drm_mm.h	/^#define drm_mm_for_each_node(entry, mm) list_for_e/
+drm_mm_for_each_scanned_node_reverse	drm_mm.h	/^#define drm_mm_for_each_scanned_node_reverse(entry/
+drm_mm_get_block	drm_mm.h	/^static inline struct drm_mm_node *drm_mm_get_block/
+drm_mm_get_block_atomic	drm_mm.h	/^static inline struct drm_mm_node *drm_mm_get_block/
+drm_mm_get_block_atomic_range	drm_mm.h	/^static inline struct drm_mm_node *drm_mm_get_block/
+drm_mm_get_block_generic	drm_mm.c	/^struct drm_mm_node *drm_mm_get_block_generic(struc/
+drm_mm_get_block_range	drm_mm.h	/^static inline struct drm_mm_node *drm_mm_get_block/
+drm_mm_get_block_range_generic	drm_mm.c	/^struct drm_mm_node *drm_mm_get_block_range_generic/
+drm_mm_get_color_block_range	drm_mm.h	/^static inline struct drm_mm_node *drm_mm_get_color/
+drm_mm_hole_node_end	drm_mm.c	/^static inline unsigned long drm_mm_hole_node_end(s/
+drm_mm_hole_node_start	drm_mm.c	/^static inline unsigned long drm_mm_hole_node_start/
+drm_mm_init	drm_mm.c	/^int drm_mm_init(struct drm_mm * mm, unsigned long /
+drm_mm_init_scan	drm_mm.c	/^void drm_mm_init_scan(struct drm_mm *mm,$/
+drm_mm_init_scan_with_range	drm_mm.c	/^void drm_mm_init_scan_with_range(struct drm_mm *mm/
+drm_mm_initialized	drm_mm.h	/^static inline bool drm_mm_initialized(struct drm_m/
+drm_mm_insert_helper	drm_mm.c	/^static void drm_mm_insert_helper(struct drm_mm_nod/
+drm_mm_insert_helper_range	drm_mm.c	/^static void drm_mm_insert_helper_range(struct drm_/
+drm_mm_insert_node	drm_mm.c	/^int drm_mm_insert_node(struct drm_mm *mm, struct d/
+drm_mm_insert_node_generic	drm_mm.c	/^int drm_mm_insert_node_generic(struct drm_mm *mm, /
+drm_mm_insert_node_in_range	drm_mm.c	/^int drm_mm_insert_node_in_range(struct drm_mm *mm,/
+drm_mm_insert_node_in_range_generic	drm_mm.c	/^int drm_mm_insert_node_in_range_generic(struct drm/
+drm_mm_kmalloc	drm_mm.c	/^static struct drm_mm_node *drm_mm_kmalloc(struct d/
+drm_mm_node	drm_mm.h	/^struct drm_mm_node {$/
+drm_mm_node_allocated	drm_mm.h	/^static inline bool drm_mm_node_allocated(struct dr/
+drm_mm_pre_get	drm_mm.c	/^int drm_mm_pre_get(struct drm_mm *mm)$/
+drm_mm_put_block	drm_mm.c	/^void drm_mm_put_block(struct drm_mm_node *node)$/
+drm_mm_remove_node	drm_mm.c	/^void drm_mm_remove_node(struct drm_mm_node *node)$/
+drm_mm_replace_node	drm_mm.c	/^void drm_mm_replace_node(struct drm_mm_node *old, /
+drm_mm_scan_add_block	drm_mm.c	/^int drm_mm_scan_add_block(struct drm_mm_node *node/
+drm_mm_scan_remove_block	drm_mm.c	/^int drm_mm_scan_remove_block(struct drm_mm_node *n/
+drm_mm_search_free	drm_mm.h	/^static inline struct drm_mm_node *drm_mm_search_fr/
+drm_mm_search_free_color	drm_mm.h	/^static inline struct drm_mm_node *drm_mm_search_fr/
+drm_mm_search_free_generic	drm_mm.c	/^struct drm_mm_node *drm_mm_search_free_generic(con/
+drm_mm_search_free_in_range	drm_mm.h	/^static inline  struct drm_mm_node *drm_mm_search_f/
+drm_mm_search_free_in_range_color	drm_mm.h	/^static inline  struct drm_mm_node *drm_mm_search_f/
+drm_mm_search_free_in_range_generic	drm_mm.c	/^struct drm_mm_node *drm_mm_search_free_in_range_ge/
+drm_mm_takedown	drm_mm.c	/^void drm_mm_takedown(struct drm_mm * mm)$/
+drm_mmap	drm_vm.c	/^drm_mmap(struct cdev *kdev, vm_ooffset_t offset, v/
+drm_mmap_single	drm_fops.c	/^drm_mmap_single(struct cdev *kdev, vm_ooffset_t *o/
+drm_modctx	drm_context.c	/^int drm_modctx(struct drm_device *dev, void *data,/
+drm_mode_addfb	drm_crtc.c	/^int drm_mode_addfb(struct drm_device *dev,$/
+drm_mode_addfb2	drm_crtc.c	/^int drm_mode_addfb2(struct drm_device *dev,$/
+drm_mode_attachmode	drm_crtc.c	/^static void drm_mode_attachmode(struct drm_device /
+drm_mode_attachmode_crtc	drm_crtc.c	/^int drm_mode_attachmode_crtc(struct drm_device *de/
+drm_mode_attachmode_ioctl	drm_crtc.c	/^int drm_mode_attachmode_ioctl(struct drm_device *d/
+drm_mode_card_res	drm_mode.h	/^struct drm_mode_card_res {$/
+drm_mode_cea_vic	drm_edid.c	/^uint8_t drm_mode_cea_vic(const struct drm_display_/
+drm_mode_compare	drm_modes.c	/^static int drm_mode_compare(void *priv, struct lis/
+drm_mode_config	drm_crtc.h	/^struct drm_mode_config {$/
+drm_mode_config_cleanup	drm_crtc.c	/^void drm_mode_config_cleanup(struct drm_device *de/
+drm_mode_config_fb	drm_fb_helper.c	/^static struct drm_framebuffer *drm_mode_config_fb(/
+drm_mode_config_funcs	drm_crtc.h	/^struct drm_mode_config_funcs {$/
+drm_mode_config_init	drm_crtc.c	/^void drm_mode_config_init(struct drm_device *dev)$/
+drm_mode_config_reset	drm_crtc.c	/^void drm_mode_config_reset(struct drm_device *dev)/
+drm_mode_connector_attach_encoder	drm_crtc.c	/^int drm_mode_connector_attach_encoder(struct drm_c/
+drm_mode_connector_detach_encoder	drm_crtc.c	/^void drm_mode_connector_detach_encoder(struct drm_/
+drm_mode_connector_list_update	drm_modes.c	/^void drm_mode_connector_list_update(struct drm_con/
+drm_mode_connector_property_set_ioctl	drm_crtc.c	/^int drm_mode_connector_property_set_ioctl(struct d/
+drm_mode_connector_set_obj_prop	drm_crtc.c	/^static int drm_mode_connector_set_obj_prop(struct /
+drm_mode_connector_set_property	drm_mode.h	/^struct drm_mode_connector_set_property {$/
+drm_mode_connector_update_edid_property	drm_crtc.c	/^int drm_mode_connector_update_edid_property(struct/
+drm_mode_copy	drm_modes.c	/^void drm_mode_copy(struct drm_display_mode *dst, c/
+drm_mode_create	drm_crtc.c	/^struct drm_display_mode *drm_mode_create(struct dr/
+drm_mode_create_dirty_info_property	drm_crtc.c	/^int drm_mode_create_dirty_info_property(struct drm/
+drm_mode_create_dithering_property	drm_crtc.c	/^int drm_mode_create_dithering_property(struct drm_/
+drm_mode_create_dumb	drm_mode.h	/^struct drm_mode_create_dumb {$/
+drm_mode_create_dumb_ioctl	drm_crtc.c	/^int drm_mode_create_dumb_ioctl(struct drm_device */
+drm_mode_create_dvi_i_properties	drm_crtc.c	/^int drm_mode_create_dvi_i_properties(struct drm_de/
+drm_mode_create_from_cmdline_mode	drm_modes.c	/^drm_mode_create_from_cmdline_mode(struct drm_devic/
+drm_mode_create_scaling_mode_property	drm_crtc.c	/^int drm_mode_create_scaling_mode_property(struct d/
+drm_mode_create_standard_connector_properties	drm_crtc.c	/^static int drm_mode_create_standard_connector_prop/
+drm_mode_create_tv_properties	drm_crtc.c	/^int drm_mode_create_tv_properties(struct drm_devic/
+drm_mode_crtc	drm_mode.h	/^struct drm_mode_crtc {$/
+drm_mode_crtc_lut	drm_mode.h	/^struct drm_mode_crtc_lut {$/
+drm_mode_crtc_page_flip	drm_mode.h	/^struct drm_mode_crtc_page_flip {$/
+drm_mode_crtc_set_gamma_size	drm_crtc.c	/^int drm_mode_crtc_set_gamma_size(struct drm_crtc */
+drm_mode_crtc_set_obj_prop	drm_crtc.c	/^static int drm_mode_crtc_set_obj_prop(struct drm_m/
+drm_mode_cursor	drm_mode.h	/^struct drm_mode_cursor {$/
+drm_mode_cursor_ioctl	drm_crtc.c	/^int drm_mode_cursor_ioctl(struct drm_device *dev,$/
+drm_mode_debug_printmodeline	drm_modes.c	/^void drm_mode_debug_printmodeline(const struct drm/
+drm_mode_destroy	drm_crtc.c	/^void drm_mode_destroy(struct drm_device *dev, stru/
+drm_mode_destroy_dumb	drm_mode.h	/^struct drm_mode_destroy_dumb {$/
+drm_mode_destroy_dumb_ioctl	drm_crtc.c	/^int drm_mode_destroy_dumb_ioctl(struct drm_device /
+drm_mode_detachmode	drm_crtc.c	/^static int drm_mode_detachmode(struct drm_device */
+drm_mode_detachmode_crtc	drm_crtc.c	/^int drm_mode_detachmode_crtc(struct drm_device *de/
+drm_mode_detachmode_ioctl	drm_crtc.c	/^int drm_mode_detachmode_ioctl(struct drm_device *d/
+drm_mode_detailed	drm_edid.c	/^static struct drm_display_mode *drm_mode_detailed(/
+drm_mode_dirtyfb_ioctl	drm_crtc.c	/^int drm_mode_dirtyfb_ioctl(struct drm_device *dev,/
+drm_mode_do_interlace_quirk	drm_edid.c	/^drm_mode_do_interlace_quirk(struct drm_display_mod/
+drm_mode_duplicate	drm_modes.c	/^struct drm_display_mode *drm_mode_duplicate(struct/
+drm_mode_equal	drm_modes.c	/^bool drm_mode_equal(const struct drm_display_mode /
+drm_mode_fb_cmd	drm_mode.h	/^struct drm_mode_fb_cmd {$/
+drm_mode_fb_cmd2	drm_mode.h	/^struct drm_mode_fb_cmd2 {$/
+drm_mode_fb_dirty_cmd	drm_mode.h	/^struct drm_mode_fb_dirty_cmd {$/
+drm_mode_find_dmt	drm_edid.c	/^struct drm_display_mode *drm_mode_find_dmt(struct /
+drm_mode_gamma_get_ioctl	drm_crtc.c	/^int drm_mode_gamma_get_ioctl(struct drm_device *de/
+drm_mode_gamma_set_ioctl	drm_crtc.c	/^int drm_mode_gamma_set_ioctl(struct drm_device *de/
+drm_mode_get_blob	drm_mode.h	/^struct drm_mode_get_blob {$/
+drm_mode_get_connector	drm_mode.h	/^struct drm_mode_get_connector {$/
+drm_mode_get_encoder	drm_mode.h	/^struct drm_mode_get_encoder {$/
+drm_mode_get_plane	drm_mode.h	/^struct drm_mode_get_plane {$/
+drm_mode_get_plane_res	drm_mode.h	/^struct drm_mode_get_plane_res {$/
+drm_mode_get_property	drm_mode.h	/^struct drm_mode_get_property {$/
+drm_mode_getblob_ioctl	drm_crtc.c	/^int drm_mode_getblob_ioctl(struct drm_device *dev,/
+drm_mode_getconnector	drm_crtc.c	/^int drm_mode_getconnector(struct drm_device *dev, /
+drm_mode_getcrtc	drm_crtc.c	/^int drm_mode_getcrtc(struct drm_device *dev,$/
+drm_mode_getencoder	drm_crtc.c	/^int drm_mode_getencoder(struct drm_device *dev, vo/
+drm_mode_getfb	drm_crtc.c	/^int drm_mode_getfb(struct drm_device *dev,$/
+drm_mode_getplane	drm_crtc.c	/^int drm_mode_getplane(struct drm_device *dev, void/
+drm_mode_getplane_res	drm_crtc.c	/^int drm_mode_getplane_res(struct drm_device *dev, /
+drm_mode_getproperty_ioctl	drm_crtc.c	/^int drm_mode_getproperty_ioctl(struct drm_device */
+drm_mode_getresources	drm_crtc.c	/^int drm_mode_getresources(struct drm_device *dev, /
+drm_mode_group	drm_crtc.h	/^struct drm_mode_group {$/
+drm_mode_group_free	drm_crtc.c	/^void drm_mode_group_free(struct drm_mode_group *gr/
+drm_mode_group_init	drm_crtc.c	/^int drm_mode_group_init(struct drm_device *dev, st/
+drm_mode_group_init_legacy_group	drm_crtc.c	/^int drm_mode_group_init_legacy_group(struct drm_de/
+drm_mode_height	drm_modes.c	/^int drm_mode_height(const struct drm_display_mode /
+drm_mode_hsync	drm_modes.c	/^int drm_mode_hsync(const struct drm_display_mode */
+drm_mode_legacy_fb_format	drm_crtc.c	/^uint32_t drm_mode_legacy_fb_format(uint32_t bpp, u/
+drm_mode_list_concat	drm_modes.c	/^void drm_mode_list_concat(struct list_head *head, /
+drm_mode_map_dumb	drm_mode.h	/^struct drm_mode_map_dumb {$/
+drm_mode_mmap_dumb_ioctl	drm_crtc.c	/^int drm_mode_mmap_dumb_ioctl(struct drm_device *de/
+drm_mode_mode_cmd	drm_mode.h	/^struct drm_mode_mode_cmd {$/
+drm_mode_modeinfo	drm_mode.h	/^struct drm_mode_modeinfo {$/
+drm_mode_obj_get_properties	drm_mode.h	/^struct drm_mode_obj_get_properties {$/
+drm_mode_obj_get_properties_ioctl	drm_crtc.c	/^int drm_mode_obj_get_properties_ioctl(struct drm_d/
+drm_mode_obj_set_property	drm_mode.h	/^struct drm_mode_obj_set_property {$/
+drm_mode_obj_set_property_ioctl	drm_crtc.c	/^int drm_mode_obj_set_property_ioctl(struct drm_dev/
+drm_mode_object	drm_crtc.h	/^struct drm_mode_object {$/
+drm_mode_object_find	drm_crtc.c	/^struct drm_mode_object *drm_mode_object_find(struc/
+drm_mode_object_get	drm_crtc.c	/^static int drm_mode_object_get(struct drm_device */
+drm_mode_object_put	drm_crtc.c	/^static void drm_mode_object_put(struct drm_device /
+drm_mode_page_flip_ioctl	drm_crtc.c	/^int drm_mode_page_flip_ioctl(struct drm_device *de/
+drm_mode_parse_command_line_for_connector	drm_modes.c	/^bool drm_mode_parse_command_line_for_connector(con/
+drm_mode_plane_set_obj_prop	drm_crtc.c	/^static int drm_mode_plane_set_obj_prop(struct drm_/
+drm_mode_probed_add	drm_crtc.c	/^void drm_mode_probed_add(struct drm_connector *con/
+drm_mode_property_enum	drm_mode.h	/^struct drm_mode_property_enum {$/
+drm_mode_prune_invalid	drm_modes.c	/^void drm_mode_prune_invalid(struct drm_device *dev/
+drm_mode_remove	drm_crtc.c	/^void drm_mode_remove(struct drm_connector *connect/
+drm_mode_rmfb	drm_crtc.c	/^int drm_mode_rmfb(struct drm_device *dev,$/
+drm_mode_set	drm_crtc.h	/^struct drm_mode_set {$/
+drm_mode_set_crtcinfo	drm_modes.c	/^void drm_mode_set_crtcinfo(struct drm_display_mode/
+drm_mode_set_name	drm_modes.c	/^void drm_mode_set_name(struct drm_display_mode *mo/
+drm_mode_set_plane	drm_mode.h	/^struct drm_mode_set_plane {$/
+drm_mode_setcrtc	drm_crtc.c	/^int drm_mode_setcrtc(struct drm_device *dev, void /
+drm_mode_setplane	drm_crtc.c	/^int drm_mode_setplane(struct drm_device *dev, void/
+drm_mode_sort	drm_modes.c	/^void drm_mode_sort(struct list_head *mode_list)$/
+drm_mode_status	drm_crtc.h	/^enum drm_mode_status {$/
+drm_mode_std	drm_edid.c	/^drm_mode_std(struct drm_connector *connector, stru/
+drm_mode_validate_clocks	drm_modes.c	/^void drm_mode_validate_clocks(struct drm_device *d/
+drm_mode_validate_flag	drm_crtc_helper.c	/^static void drm_mode_validate_flag(struct drm_conn/
+drm_mode_validate_size	drm_modes.c	/^void drm_mode_validate_size(struct drm_device *dev/
+drm_mode_vrefresh	drm_modes.c	/^int drm_mode_vrefresh(const struct drm_display_mod/
+drm_mode_width	drm_modes.c	/^int drm_mode_width(const struct drm_display_mode */
+drm_modeset_ctl	drm.h	/^struct drm_modeset_ctl {$/
+drm_modevent	drm_os_freebsd.c	/^drm_modevent(module_t mod, int type, void *data)$/
+drm_monitor_supports_rb	drm_edid.c	/^drm_monitor_supports_rb(struct edid *edid)$/
+drm_msi_blacklist_entry	drmP.h	/^struct drm_msi_blacklist_entry$/
+drm_msleep	drm_os_freebsd.h	/^#define	drm_msleep(x, msg)	pause((msg), ((int64_t)/
+drm_mtrr_add	drmP.h	/^static inline int drm_mtrr_add(unsigned long offse/
+drm_mtrr_del	drmP.h	/^static inline int drm_mtrr_del(int handle, unsigne/
+drm_newctx	drm_context.c	/^int drm_newctx(struct drm_device *dev, void *data,/
+drm_noop	drm_ioctl.c	/^int drm_noop(struct drm_device *dev, void *data,$/
+drm_notifier	drm_lock.c	/^static int drm_notifier(void *priv)$/
+drm_object_attach_property	drm_crtc.c	/^void drm_object_attach_property(struct drm_mode_ob/
+drm_object_properties	drm_crtc.h	/^struct drm_object_properties {$/
+drm_object_property_get_value	drm_crtc.c	/^int drm_object_property_get_value(struct drm_mode_/
+drm_object_property_set_value	drm_crtc.c	/^int drm_object_property_set_value(struct drm_mode_/
+drm_open	drm_fops.c	/^int drm_open(struct cdev *kdev, int flags, int fmt/
+drm_open_hash	drm_hashtab.h	/^struct drm_open_hash {$/
+drm_open_helper	drm_fops.c	/^static int drm_open_helper(struct cdev *kdev, int /
+drm_order	drm_bufs.c	/^int drm_order(unsigned long size)$/
+drm_pci_agp_init	drm_pci.c	/^int drm_pci_agp_init(struct drm_device *dev)$/
+drm_pci_alloc	drm_pci.c	/^drm_dma_handle_t *drm_pci_alloc(struct drm_device /
+drm_pci_busdma_callback	drm_pci.c	/^drm_pci_busdma_callback(void *arg, bus_dma_segment/
+drm_pci_device_is_agp	drm_os_freebsd.c	/^drm_pci_device_is_agp(struct drm_device *dev)$/
+drm_pci_device_is_pcie	drm_os_freebsd.c	/^drm_pci_device_is_pcie(struct drm_device *dev)$/
+drm_pci_disable_msi	drm_pci.c	/^drm_pci_disable_msi(struct drm_device *dev)$/
+drm_pci_enable_msi	drm_pci.c	/^drm_pci_enable_msi(struct drm_device *dev)$/
+drm_pci_free	drm_pci.c	/^void drm_pci_free(struct drm_device * dev, drm_dma/
+drm_pci_free_irq	drm_pci.c	/^static void drm_pci_free_irq(struct drm_device *de/
+drm_pci_get_irq	drm_pci.c	/^static int drm_pci_get_irq(struct drm_device *dev)/
+drm_pci_get_name	drm_pci.c	/^static const char *drm_pci_get_name(struct drm_dev/
+drm_pci_id_list_t	drm_os_freebsd.h	/^} drm_pci_id_list_t;$/
+drm_pci_irq_by_busid	drm_pci.c	/^static int drm_pci_irq_by_busid(struct drm_device /
+drm_pci_set_busid	drm_pci.c	/^int drm_pci_set_busid(struct drm_device *dev, stru/
+drm_pci_set_unique	drm_pci.c	/^int drm_pci_set_unique(struct drm_device *dev,$/
+drm_pcie_get_speed_cap_mask	drm_pci.c	/^int drm_pcie_get_speed_cap_mask(struct drm_device /
+drm_pending_event	drmP.h	/^struct drm_pending_event {$/
+drm_pending_vblank_event	drmP.h	/^struct drm_pending_vblank_event {$/
+drm_pick_cmdline_mode	drm_fb_helper.c	/^static struct drm_display_mode *drm_pick_cmdline_m/
+drm_pick_crtcs	drm_fb_helper.c	/^static int drm_pick_crtcs(struct drm_fb_helper *fb/
+drm_plane	drm_crtc.h	/^struct drm_plane {$/
+drm_plane_cleanup	drm_crtc.c	/^void drm_plane_cleanup(struct drm_plane *plane)$/
+drm_plane_funcs	drm_crtc.h	/^struct drm_plane_funcs {$/
+drm_plane_init	drm_crtc.c	/^int drm_plane_init(struct drm_device *dev, struct /
+drm_platform_free_irq	drm_platform.c	/^static void drm_platform_free_irq(struct drm_devic/
+drm_platform_get_irq	drm_platform.c	/^static int drm_platform_get_irq(struct drm_device /
+drm_platform_get_name	drm_platform.c	/^static const char *drm_platform_get_name(struct dr/
+drm_platform_set_busid	drm_platform.c	/^static int drm_platform_set_busid(struct drm_devic/
+drm_poll	drm_fops.c	/^drm_poll(struct cdev *kdev, int events, struct thr/
+drm_prime_file_private	drmP.h	/^struct drm_prime_file_private {$/
+drm_prime_handle	drm.h	/^struct drm_prime_handle {$/
+drm_probe_ddc	drm_edid.c	/^drm_probe_ddc(device_t adapter)$/
+drm_probe_helper	drm_os_freebsd.c	/^drm_probe_helper(device_t kdev, const drm_pci_id_l/
+drm_prop_enum_list	drm_crtc.h	/^struct drm_prop_enum_list {$/
+drm_property	drm_crtc.h	/^struct drm_property {$/
+drm_property_add_enum	drm_crtc.c	/^int drm_property_add_enum(struct drm_property *pro/
+drm_property_blob	drm_crtc.h	/^struct drm_property_blob {$/
+drm_property_change_is_valid	drm_crtc.c	/^static bool drm_property_change_is_valid(struct dr/
+drm_property_create	drm_crtc.c	/^struct drm_property *drm_property_create(struct dr/
+drm_property_create_bitmask	drm_crtc.c	/^struct drm_property *drm_property_create_bitmask(s/
+drm_property_create_blob	drm_crtc.c	/^static struct drm_property_blob *drm_property_crea/
+drm_property_create_enum	drm_crtc.c	/^struct drm_property *drm_property_create_enum(stru/
+drm_property_create_range	drm_crtc.c	/^struct drm_property *drm_property_create_range(str/
+drm_property_destroy	drm_crtc.c	/^void drm_property_destroy(struct drm_device *dev, /
+drm_property_destroy_blob	drm_crtc.c	/^static void drm_property_destroy_blob(struct drm_d/
+drm_property_enum	drm_crtc.h	/^struct drm_property_enum {$/
+drm_put_dev	drm_stub.c	/^void drm_put_dev(struct drm_device *dev)$/
+drm_put_minor	drm_stub.c	/^int drm_put_minor(struct drm_minor **minor_p)$/
+drm_queue_vblank_event	drm_irq.c	/^static int drm_queue_vblank_event(struct drm_devic/
+drm_read	drm_fops.c	/^drm_read(struct cdev *kdev, struct uio *uio, int i/
+drm_release	drm_fops.c	/^void drm_release(void *data)$/
+drm_remove_magic	drm_auth.c	/^int drm_remove_magic(struct drm_master *master, dr/
+drm_resctx	drm_context.c	/^int drm_resctx(struct drm_device *dev, void *data,/
+drm_rmctx	drm_context.c	/^int drm_rmctx(struct drm_device *dev, void *data,$/
+drm_rmmap	drm_bufs.c	/^int drm_rmmap(struct drm_device *dev, struct drm_l/
+drm_rmmap_ioctl	drm_bufs.c	/^int drm_rmmap_ioctl(struct drm_device *dev, void */
+drm_rmmap_locked	drm_bufs.c	/^int drm_rmmap_locked(struct drm_device *dev, struc/
+drm_sarea	drm_sarea.h	/^struct drm_sarea {$/
+drm_sarea_drawable	drm_sarea.h	/^struct drm_sarea_drawable {$/
+drm_sarea_drawable_t	drm_sarea.h	/^typedef struct drm_sarea_drawable drm_sarea_drawab/
+drm_sarea_frame	drm_sarea.h	/^struct drm_sarea_frame {$/
+drm_sarea_frame_t	drm_sarea.h	/^typedef struct drm_sarea_frame drm_sarea_frame_t;$/
+drm_sarea_t	drm_sarea.h	/^typedef struct drm_sarea drm_sarea_t;$/
+drm_scatter_gather	drm.h	/^struct drm_scatter_gather {$/
+drm_scatter_gather32_t	drm_ioc32.c	/^} drm_scatter_gather32_t;$/
+drm_scatter_gather_t	drm.h	/^typedef struct drm_scatter_gather drm_scatter_gath/
+drm_select_eld	drm_edid.c	/^struct drm_connector *drm_select_eld(struct drm_en/
+drm_send_vblank_event	drm_irq.c	/^void drm_send_vblank_event(struct drm_device *dev,/
+drm_set_busid	drm_ioctl.c	/^static int drm_set_busid(struct drm_device *dev, s/
+drm_set_version	drm.h	/^struct drm_set_version {$/
+drm_set_version_t	drm.h	/^typedef struct drm_set_version drm_set_version_t;$/
+drm_setmaster_ioctl	drm_stub.c	/^int drm_setmaster_ioctl(struct drm_device *dev, vo/
+drm_setsareactx	drm_context.c	/^int drm_setsareactx(struct drm_device *dev, void */
+drm_setunique	drm_ioctl.c	/^int drm_setunique(struct drm_device *dev, void *da/
+drm_setup	drm_fops.c	/^static int drm_setup(struct drm_device * dev)$/
+drm_setup_crtcs	drm_fb_helper.c	/^static void drm_setup_crtcs(struct drm_fb_helper */
+drm_setversion	drm_ioctl.c	/^int drm_setversion(struct drm_device *dev, void *d/
+drm_sg_alloc	drm_scatter.c	/^int drm_sg_alloc(struct drm_device *dev, struct dr/
+drm_sg_alloc_ioctl	drm_scatter.c	/^int drm_sg_alloc_ioctl(struct drm_device *dev, voi/
+drm_sg_cleanup	drm_scatter.c	/^void drm_sg_cleanup(struct drm_sg_mem * entry)$/
+drm_sg_free	drm_scatter.c	/^int drm_sg_free(struct drm_device *dev, void *data/
+drm_sg_mem	drmP.h	/^struct drm_sg_mem {$/
+drm_sigdata	drmP.h	/^struct drm_sigdata {$/
+drm_stat_type	drm.h	/^enum drm_stat_type {$/
+drm_stat_type_t	drm.h	/^typedef enum drm_stat_type drm_stat_type_t;$/
+drm_stats	drm.h	/^struct drm_stats {$/
+drm_stats32_t	drm_ioc32.c	/^} drm_stats32_t;$/
+drm_stats_t	drm.h	/^typedef struct drm_stats drm_stats_t;$/
+drm_switchctx	drm_context.c	/^int drm_switchctx(struct drm_device *dev, void *da/
+drm_sysctl_cleanup	drm_sysctl.c	/^int drm_sysctl_cleanup(struct drm_device *dev)$/
+drm_sysctl_info	drm_sysctl.c	/^struct drm_sysctl_info {$/
+drm_sysctl_init	drm_sysctl.c	/^int drm_sysctl_init(struct drm_device *dev)$/
+drm_sysctl_list	drm_sysctl.c	/^struct drm_sysctl_list {$/
+drm_target_cloned	drm_fb_helper.c	/^static bool drm_target_cloned(struct drm_fb_helper/
+drm_target_preferred	drm_fb_helper.c	/^static bool drm_target_preferred(struct drm_fb_hel/
+drm_tex_region	drm.h	/^struct drm_tex_region {$/
+drm_tex_region_t	drm.h	/^typedef struct drm_tex_region drm_tex_region_t;$/
+drm_unbind_agp	drmP.h	/^static inline int drm_unbind_agp(DRM_AGP_MEM * han/
+drm_unique	drm.h	/^struct drm_unique {$/
+drm_unique32_t	drm_ioc32.c	/^} drm_unique32_t;$/
+drm_unique_t	drm.h	/^typedef struct drm_unique drm_unique_t;$/
+drm_unlock	drm_lock.c	/^int drm_unlock(struct drm_device *dev, void *data,/
+drm_unset_busid	drm_ioctl.c	/^drm_unset_busid(struct drm_device *dev,$/
+drm_update_draw	drm.h	/^struct drm_update_draw {$/
+drm_update_draw_t	drm.h	/^typedef struct drm_update_draw drm_update_draw_t;$/
+drm_update_vblank_count	drm_irq.c	/^static void drm_update_vblank_count(struct drm_dev/
+drm_vblank_cleanup	drm_irq.c	/^void drm_vblank_cleanup(struct drm_device *dev)$/
+drm_vblank_count	drm_irq.c	/^u32 drm_vblank_count(struct drm_device *dev, int c/
+drm_vblank_count_and_time	drm_irq.c	/^u32 drm_vblank_count_and_time(struct drm_device *d/
+drm_vblank_event_destroy	drm_irq.c	/^drm_vblank_event_destroy(struct drm_pending_event /
+drm_vblank_get	drm_irq.c	/^int drm_vblank_get(struct drm_device *dev, int crt/
+drm_vblank_info	drmP.h	/^struct drm_vblank_info {$/
+drm_vblank_init	drm_irq.c	/^int drm_vblank_init(struct drm_device *dev, int nu/
+drm_vblank_off	drm_irq.c	/^void drm_vblank_off(struct drm_device *dev, int cr/
+drm_vblank_post_modeset	drm_irq.c	/^void drm_vblank_post_modeset(struct drm_device *de/
+drm_vblank_pre_modeset	drm_irq.c	/^void drm_vblank_pre_modeset(struct drm_device *dev/
+drm_vblank_put	drm_irq.c	/^void drm_vblank_put(struct drm_device *dev, int cr/
+drm_vblank_seq_type	drm.h	/^enum drm_vblank_seq_type {$/
+drm_vblank_seq_type_t	drm.h	/^typedef enum drm_vblank_seq_type drm_vblank_seq_ty/
+drm_version	drm.h	/^struct drm_version {$/
+drm_version32_t	drm_ioc32.c	/^} drm_version32_t;$/
+drm_version_t	drm.h	/^typedef struct drm_version drm_version_t;$/
+drm_vmalloc_dma	drm_scatter.c	/^static inline vm_offset_t drm_vmalloc_dma(vm_size_/
+drm_wait_vblank	drm.h	/^union drm_wait_vblank {$/
+drm_wait_vblank32_t	drm_ioc32.c	/^} drm_wait_vblank32_t;$/
+drm_wait_vblank_reply	drm.h	/^struct drm_wait_vblank_reply {$/
+drm_wait_vblank_reply32	drm_ioc32.c	/^struct drm_wait_vblank_reply32 {$/
+drm_wait_vblank_request	drm.h	/^struct drm_wait_vblank_request {$/
+drm_wait_vblank_t	drm.h	/^typedef union drm_wait_vblank drm_wait_vblank_t;$/
+edid	drm_edid.h	/^struct edid {$/
+edid_fixup_preferred	drm_edid.c	/^static void edid_fixup_preferred(struct drm_connec/
+edid_get_quirks	drm_edid.c	/^static u32 edid_get_quirks(struct edid *edid)$/
+edid_quirk	drm_edid.c	/^static struct edid_quirk {$/
+edid_vendor	drm_edid.c	/^static bool edid_vendor(struct edid *edid, char *v/
+est_timings	drm_edid.h	/^struct est_timings {$/
+fault_in_multipages_readable	drm_os_freebsd.h	/^fault_in_multipages_readable(const char __user *ua/
+fault_in_multipages_writeable	drm_os_freebsd.h	/^fault_in_multipages_writeable(char __user *uaddr, /
+fb_get_options	drm_fb_helper.c	/^fb_get_options(const char *connector_name, char **/
+find_first_zero_bit	drm_atomic.h	/^find_first_zero_bit(const u_long *p, u_long max)$/
+find_gtf2	drm_edid.c	/^find_gtf2(struct detailed_timing *t, void *data)$/
+fixed20_12	drm_fixed.h	/^} fixed20_12;$/
+fixup_mode_1366x768	drm_edid.c	/^static void fixup_mode_1366x768(struct drm_display/
+for_each_cea_db	drm_edid.c	/^#define for_each_cea_db(cea, i, start, end) \\$/
+format_check	drm_crtc.c	/^static int format_check(const struct drm_mode_fb_c/
+fourcc_code	drm_fourcc.h	/^#define fourcc_code(a, b, c, d) ((__u32)(a) | ((__/
+framebuffer_alloc	drm_fb_helper.c	/^framebuffer_alloc()$/
+framebuffer_check	drm_crtc.c	/^static int framebuffer_check(const struct drm_mode/
+framebuffer_release	drm_fb_helper.c	/^framebuffer_release(struct fb_info *info)$/
+free_completion	drm_os_freebsd.h	/^free_completion(struct completion *c)$/
+free_vblank_event	drm_crtc.c	/^free_vblank_event(void *arg)$/
+gem_name_hash_index	drm_gem_names.c	/^gem_name_hash_index(struct drm_gem_names *names, i/
+get_drm_timestamp	drm_irq.c	/^static struct timeval get_drm_timestamp(void)$/
+get_seconds	drm_os_freebsd.h	/^#define	get_seconds()		time_second$/
+get_unaligned	drm_os_freebsd.h	/^#define	get_unaligned(ptr)                        /
+get_unaligned_le32	drm_os_freebsd.h	/^get_unaligned_le32(const void *p)$/
+get_user	drm_os_freebsd.h	/^#define	get_user(x, ptr) __get_user(sizeof(*ptr), /
+getrawmonotonic	drm_os_freebsd.h	/^#define	getrawmonotonic(ts)	getnanouptime(ts)$/
+hex_dump_to_buffer	drm_os_freebsd.c	/^hex_dump_to_buffer(const void *buf, size_t len, in/
+hlist_add_after	drm_linux_list.h	/^hlist_add_after(struct hlist_node *n, struct hlist/
+hlist_add_before	drm_linux_list.h	/^hlist_add_before(struct hlist_node *n, struct hlis/
+hlist_add_head	drm_linux_list.h	/^hlist_add_head(struct hlist_node *n, struct hlist_/
+hlist_del	drm_linux_list.h	/^hlist_del(struct hlist_node *n)$/
+hlist_del_init	drm_linux_list.h	/^hlist_del_init(struct hlist_node *n)$/
+hlist_empty	drm_linux_list.h	/^hlist_empty(const struct hlist_head *h)$/
+hlist_entry	drm_linux_list.h	/^#define	hlist_entry(ptr, type, field)	container_of/
+hlist_for_each	drm_linux_list.h	/^#define	hlist_for_each(p, head)						\\$/
+hlist_for_each_entry	drm_linux_list.h	/^#define	hlist_for_each_entry(tp, p, head, field)		/
+hlist_for_each_entry_continue	drm_linux_list.h	/^#define hlist_for_each_entry_continue(tp, p, field/
+hlist_for_each_entry_from	drm_linux_list.h	/^#define	hlist_for_each_entry_from(tp, p, field)			/
+hlist_for_each_entry_safe	drm_linux_list.h	/^#define hlist_for_each_entry_safe(tpos, pos, n, he/
+hlist_for_each_safe	drm_linux_list.h	/^#define	hlist_for_each_safe(p, n, head)					\\$/
+hlist_head	drm_linux_list.h	/^struct hlist_head {$/
+hlist_move_list	drm_linux_list.h	/^hlist_move_list(struct hlist_head *old, struct hli/
+hlist_node	drm_linux_list.h	/^struct hlist_node {$/
+hlist_unhashed	drm_linux_list.h	/^hlist_unhashed(const struct hlist_node *h)$/
+hweight32	drm_os_freebsd.h	/^#define	hweight32(i)		bitcount32(i)$/
+iic_dp_aux_add_bus	drm_dp_iic_helper.c	/^iic_dp_aux_add_bus(device_t dev, const char *name,/
+iic_dp_aux_address	drm_dp_iic_helper.c	/^iic_dp_aux_address(device_t idev, u16 address, boo/
+iic_dp_aux_attach	drm_dp_iic_helper.c	/^iic_dp_aux_attach(device_t idev)$/
+iic_dp_aux_data	drm_dp_helper.h	/^struct iic_dp_aux_data {$/
+iic_dp_aux_get_byte	drm_dp_iic_helper.c	/^iic_dp_aux_get_byte(device_t idev, u8 *byte_ret)$/
+iic_dp_aux_prepare_bus	drm_dp_iic_helper.c	/^iic_dp_aux_prepare_bus(device_t idev)$/
+iic_dp_aux_probe	drm_dp_iic_helper.c	/^iic_dp_aux_probe(device_t idev)$/
+iic_dp_aux_put_byte	drm_dp_iic_helper.c	/^iic_dp_aux_put_byte(device_t idev, u8 byte)$/
+iic_dp_aux_reset	drm_dp_iic_helper.c	/^iic_dp_aux_reset(device_t idev, u_char speed, u_ch/
+iic_dp_aux_reset_bus	drm_dp_iic_helper.c	/^iic_dp_aux_reset_bus(device_t idev)$/
+iic_dp_aux_stop	drm_dp_iic_helper.c	/^iic_dp_aux_stop(device_t idev, bool reading)$/
+iic_dp_aux_transaction	drm_dp_iic_helper.c	/^iic_dp_aux_transaction(device_t idev, int mode, ui/
+iic_dp_aux_xfer	drm_dp_iic_helper.c	/^iic_dp_aux_xfer(device_t idev, struct iic_msg *msg/
+ilog2	drm_os_freebsd.h	/^ilog2(unsigned long x)$/
+init_completion	drm_os_freebsd.h	/^init_completion(struct completion *c)$/
+ioread16	drm_os_freebsd.h	/^#define ioread16(addr)		*(volatile uint16_t *)((ch/
+ioread32	drm_os_freebsd.h	/^#define ioread32(addr)		*(volatile uint32_t *)((ch/
+ioread8	drm_os_freebsd.h	/^#define ioread8(addr)		*(volatile uint8_t *)((char/
+iowrite16	drm_os_freebsd.h	/^#define iowrite16(data, addr)	*(volatile uint16_t /
+iowrite32	drm_os_freebsd.h	/^#define iowrite32(data, addr)	*(volatile uint32_t /
+iowrite8	drm_os_freebsd.h	/^#define iowrite8(data, addr)	*(volatile uint8_t *)/
+irqreturn_t	drm_os_freebsd.h	/^typedef void			irqreturn_t;$/
+is_rb	drm_edid.c	/^is_rb(struct detailed_timing *t, void *data)$/
+jiffies_to_msecs	drm_os_freebsd.h	/^#define	jiffies_to_msecs(x)	(((int64_t)(x)) * 1000/
+le16_to_cpu	drm_os_freebsd.h	/^#define	le16_to_cpu(x)	le16toh(x)$/
+le32_to_cpu	drm_os_freebsd.h	/^#define	le32_to_cpu(x)	le32toh(x)$/
+likely	drm_os_freebsd.h	/^#define	likely(x)              __builtin_expect(!!/
+list_add	drm_linux_list.h	/^list_add(struct list_head *new, struct list_head */
+list_add_tail	drm_linux_list.h	/^list_add_tail(struct list_head *entry, struct list/
+list_del	drm_linux_list.h	/^list_del(struct list_head *entry) {$/
+list_del_init	drm_linux_list.h	/^list_del_init(struct list_head *entry) {$/
+list_empty	drm_linux_list.h	/^list_empty(const struct list_head *head) {$/
+list_entry	drm_linux_list.h	/^#define list_entry(ptr, type, member) container_of/
+list_first_entry	drm_linux_list.h	/^#define list_first_entry(ptr, type, member) \\$/
+list_for_each	drm_linux_list.h	/^#define list_for_each(entry, head)				\\$/
+list_for_each_entry	drm_linux_list.h	/^#define list_for_each_entry(pos, head, member)				/
+list_for_each_entry_continue_reverse	drm_linux_list.h	/^#define list_for_each_entry_continue_reverse(pos, /
+list_for_each_entry_safe	drm_linux_list.h	/^#define list_for_each_entry_safe(pos, n, head, mem/
+list_for_each_entry_safe_from	drm_linux_list.h	/^#define list_for_each_entry_safe_from(pos, n, head/
+list_for_each_prev	drm_linux_list.h	/^#define list_for_each_prev(entry, head) \\$/
+list_for_each_safe	drm_linux_list.h	/^#define list_for_each_safe(entry, temp, head)			\\/
+list_head	drm_linux_list.h	/^struct list_head {$/
+list_move	drm_linux_list.h	/^static inline void list_move(struct list_head *lis/
+list_move_tail	drm_linux_list.h	/^static inline void list_move_tail(struct list_head/
+list_replace	drm_linux_list.h	/^static inline void list_replace(struct list_head */
+list_splice	drm_linux_list.h	/^list_splice(const struct list_head *list, struct l/
+lower_32_bits	drm_os_freebsd.h	/^#define	lower_32_bits(n)	((u32)(n))$/
+max_t	drm_os_freebsd.h	/^#define max_t(type, x, y) ({			\\$/
+mdelay	drm_os_freebsd.h	/^#define	mdelay(msecs)		do { int loops = (msecs);		/
+memcpy_fromio	drm_os_freebsd.h	/^#define	memcpy_fromio(a, b, c)	memcpy((a), (b), (c/
+memcpy_toio	drm_os_freebsd.h	/^#define	memcpy_toio(a, b, c)	memcpy((a), (b), (c))/
+memset_io	drm_os_freebsd.h	/^#define	memset_io(a, b, c)	memset((a), (b), (c))$/
+min_t	drm_os_freebsd.h	/^#define min_t(type, x, y) ({			\\$/
+minimode	drm_edid_modes.h	/^struct minimode {$/
+mode_in_hsync_range	drm_edid.c	/^mode_in_hsync_range(const struct drm_display_mode /
+mode_in_range	drm_edid.c	/^mode_in_range(const struct drm_display_mode *mode,/
+mode_in_vsync_range	drm_edid.c	/^mode_in_vsync_range(const struct drm_display_mode /
+mode_is_rb	drm_edid.c	/^mode_is_rb(const struct drm_display_mode *mode)$/
+mode_set_atomic	drm_crtc_helper.h	/^enum mode_set_atomic {$/
+module_param_named	drm_os_freebsd.h	/^#define	module_param_named(name, var, type, perm)$/
+monitor_name	drm_edid.c	/^monitor_name(struct detailed_timing *t, void *data/
+msecs_to_jiffies	drm_os_freebsd.h	/^#define	msecs_to_jiffies(x)	(((int64_t)(x)) * hz /
+ns_to_timeval	drm_os_freebsd.c	/^ns_to_timeval(const int64_t nsec)$/
+obj_to_blob	drm_crtc.h	/^#define obj_to_blob(x) container_of(x, struct drm_/
+obj_to_connector	drm_crtc.h	/^#define obj_to_connector(x) container_of(x, struct/
+obj_to_crtc	drm_crtc.h	/^#define obj_to_crtc(x) container_of(x, struct drm_/
+obj_to_encoder	drm_crtc.h	/^#define obj_to_encoder(x) container_of(x, struct d/
+obj_to_fb	drm_crtc.h	/^#define obj_to_fb(x) container_of(x, struct drm_fr/
+obj_to_mode	drm_crtc.h	/^#define obj_to_mode(x) container_of(x, struct drm_/
+obj_to_plane	drm_crtc.h	/^#define obj_to_plane(x) container_of(x, struct drm/
+obj_to_property	drm_crtc.h	/^#define obj_to_property(x) container_of(x, struct /
+offset_in_page	drm_os_freebsd.h	/^#define	offset_in_page(x) ((x) & PAGE_MASK)$/
+on_each_cpu	drm_os_freebsd.h	/^on_each_cpu(void callback(void *data), void *data,/
+output_poll_execute	drm_crtc_helper.c	/^static void output_poll_execute(void *ctx, int pen/
+page_to_phys	drm_os_freebsd.h	/^#define	page_to_phys(x) VM_PAGE_TO_PHYS(x)$/
+parse_hdmi_vsdb	drm_edid.c	/^parse_hdmi_vsdb(struct drm_connector *connector, c/
+pci_read_config_byte	drm_os_freebsd.h	/^pci_read_config_byte(device_t kdev, int where, u8 /
+pci_read_config_dword	drm_os_freebsd.h	/^pci_read_config_dword(device_t kdev, int where, ui/
+pci_read_config_word	drm_os_freebsd.h	/^pci_read_config_word(device_t kdev, int where, uin/
+pci_write_config_byte	drm_os_freebsd.h	/^pci_write_config_byte(device_t kdev, int where, u8/
+pci_write_config_dword	drm_os_freebsd.h	/^pci_write_config_dword(device_t kdev, int where, u/
+pci_write_config_word	drm_os_freebsd.h	/^pci_write_config_word(device_t kdev, int where, ui/
+pm_message_t	drm_os_freebsd.h	/^} pm_message_t;$/
+pr_fmt	drm_fb_helper.c	/^#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt$/
+put_user	drm_os_freebsd.h	/^#define	put_user(x, ptr) __put_user(sizeof(*ptr), /
+range_pixel_clock	drm_edid.c	/^range_pixel_clock(struct edid *edid, u8 *t)$/
+resource_size_t	drm_os_freebsd.h	/^typedef vm_paddr_t resource_size_t;$/
+ror32	drm_os_freebsd.h	/^ror32(uint32_t word, unsigned int shift)$/
+round_down	drm_os_freebsd.h	/^#define	round_down(x, y)	rounddown2((x), (y))$/
+round_jiffies	drm_os_freebsd.h	/^#define	round_jiffies(j)	((unsigned long)(((j) + d/
+round_jiffies_up	drm_os_freebsd.h	/^#define	round_jiffies_up(j)		round_jiffies(j) \/* /
+round_jiffies_up_relative	drm_os_freebsd.h	/^#define	round_jiffies_up_relative(j)	round_jiffies/
+round_up	drm_os_freebsd.h	/^#define	round_up(x, y)		roundup2((x), (y))$/
+roundup_pow_of_two	drm_os_freebsd.h	/^roundup_pow_of_two(unsigned long x)$/
+s16	drm_os_freebsd.h	/^typedef int16_t s16;$/
+s32	drm_os_freebsd.h	/^typedef int32_t s32;$/
+s64	drm_os_freebsd.h	/^typedef int64_t s64;$/
+s8	drm_os_freebsd.h	/^typedef int8_t  s8;$/
+send_vblank_event	drm_irq.c	/^static void send_vblank_event(struct drm_device *d/
+set_bit	drm_atomic.h	/^#define	set_bit(b, p) \\$/
+setcolreg	drm_fb_helper.c	/^static int setcolreg(struct drm_crtc *crtc, u16 re/
+sigaddset	drm_os_freebsd.h	/^#define	sigaddset(set, sig)	SIGADDSET(set, sig)$/
+sigemptyset	drm_os_freebsd.h	/^#define	sigemptyset(set)	SIGEMPTYSET(set)$/
+signal	drm_ioc32.c	/^};$/
+simple_strtol	drm_os_freebsd.h	/^#define	simple_strtol(a, b, c)			strtol((a), (b), /
+smp_mb__after_atomic_inc	drm_os_freebsd.h	/^#define	smp_mb__after_atomic_inc()	mb()$/
+smp_mb__before_atomic_inc	drm_os_freebsd.h	/^#define	smp_mb__before_atomic_inc()	mb()$/
+smp_rmb	drm_os_freebsd.h	/^#define	smp_rmb()			rmb()$/
+smp_wmb	drm_os_freebsd.h	/^#define	smp_wmb()			wmb()$/
+standard_timing_level	drm_edid.c	/^static int standard_timing_level(struct edid *edid/
+std_timing	drm_edid.h	/^struct std_timing {$/
+subpixel_order	drm_crtc.h	/^enum subpixel_order {$/
+test_and_set_bit	drm_atomic.h	/^#define	test_and_set_bit(b, p) \\$/
+test_bit	drm_atomic.h	/^#define	test_bit(b, p) \\$/
+time_after	drm_os_freebsd.h	/^#define	time_after(a,b)		((long)(b) - (long)(a) < /
+time_after_eq	drm_os_freebsd.h	/^#define	time_after_eq(a,b)	((long)(b) - (long)(a) /
+timespec_to_jiffies	drm_os_freebsd.h	/^#define	timespec_to_jiffies(x)	(((x)->tv_sec * 100/
+timeval_to_ns	drm_os_freebsd.c	/^timeval_to_ns(const struct timeval *tv)$/
+to_user_ptr	drm_os_freebsd.h	/^#define	to_user_ptr(x)		((void *)(uintptr_t)(x))$/
+u16	drm_os_freebsd.h	/^typedef uint16_t u16;$/
+u32	drm_os_freebsd.h	/^typedef uint32_t u32;$/
+u64	drm_os_freebsd.h	/^typedef uint64_t u64;$/
+u8	drm_os_freebsd.h	/^typedef uint8_t  u8;$/
+udelay	drm_os_freebsd.h	/^#define	udelay(usecs)		DELAY(usecs)$/
+uninitialized_var	drm_os_freebsd.h	/^#define	uninitialized_var(x) x$/
+unlikely	drm_os_freebsd.h	/^#define	unlikely(x)            __builtin_expect(!!/
+upper_32_bits	drmP.h	/^#define upper_32_bits(n) ((u32)(((n) >> 16) >> 16)/
+valid_inferred_mode	drm_edid.c	/^static bool valid_inferred_mode(const struct drm_c/
+vblank_disable_and_save	drm_irq.c	/^static void vblank_disable_and_save(struct drm_dev/
+vblank_disable_fn	drm_irq.c	/^static void vblank_disable_fn(void *arg)$/
+vblanktimestamp	drm_irq.c	/^#define vblanktimestamp(dev, crtc, count) ( \\$/
+version_greater	drm_edid.c	/^#define version_greater(edid, maj, min) \\$/
+vt_kms_postswitch	drm_fb_helper.c	/^vt_kms_postswitch(void *arg)$/
+vt_kms_softc	drm_fb_helper.c	/^struct vt_kms_softc {$/
+vt_restore_fbdev_mode	drm_fb_helper.c	/^vt_restore_fbdev_mode(void *arg, int pending)$/
+vtb_for_each_detailed_block	drm_edid.c	/^vtb_for_each_detailed_block(u8 *ext, detailed_cb */
+vunmap	drm_memory.c	/^#define	vunmap(handle)$/
+wait_for_completion_interruptible_timeout	drm_os_freebsd.h	/^wait_for_completion_interruptible_timeout(struct c/
+wake_up	drm_os_freebsd.h	/^#define	wake_up(queue)				wakeup_one((void *)queue/
+wake_up_all	drm_os_freebsd.h	/^#define	wake_up_all(queue)			wakeup((void *)queue)/
+wake_up_interruptible	drm_os_freebsd.h	/^#define	wake_up_interruptible(queue)		wakeup_one((/
+wake_up_interruptible_all	drm_os_freebsd.h	/^#define	wake_up_interruptible_all(queue)	wakeup((v/
