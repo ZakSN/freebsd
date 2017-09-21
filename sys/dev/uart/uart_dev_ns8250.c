@@ -894,7 +894,7 @@ ns8250_bus_probe(struct uart_softc *sc)
 	} else if (count >= 112 && count <= 128) {
 		sc->sc_rxfifosz = 128;
 		device_set_desc(sc->sc_dev, "16950 or compatible");
-	} else if (count >= 224 && count <=256) {
+	} else if (count >= 224 && count <= 256) {
 		sc->sc_rxfifosz = 256;
 		device_set_desc(sc->sc_dev, "16x50 with 256 FIFO");
 	} else {
