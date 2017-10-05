@@ -62,7 +62,6 @@ __DEFAULT_YES_OPTIONS = \
     BOOTPARAMD \
     BOOTPD \
     BSD_CPIO \
-    BSD_GREP_FASTMATCH \
     BSDINSTALL \
     BSNMP \
     BZIP2 \
@@ -175,11 +174,13 @@ __DEFAULT_YES_OPTIONS = \
 
 __DEFAULT_NO_OPTIONS = \
     BSD_GREP \
+    BSD_GREP_FASTMATCH \
     CLANG_EXTRAS \
     DTRACE_TESTS \
     GNU_GREP_COMPAT \
     HESIOD \
     LIBSOFT \
+    LUA \
     NAND \
     OFED \
     OPENLDAP \
@@ -190,8 +191,7 @@ __DEFAULT_NO_OPTIONS = \
     SORT_THREADS \
     SVN \
     ZONEINFO_LEAPSECONDS_SUPPORT \
-    ZONEINFO_OLD_TIMEZONES_SUPPORT \
-
+    ZONEINFO_OLD_TIMEZONES_SUPPORT
 
 #
 # Default behaviour of some options depends on the architecture.  Unfortunately

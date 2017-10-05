@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 SRCS+=	boot.c commands.c console.c devopen.c interp.c 
-SRCS+=	interp_backslash.c interp_parse.c ls.c misc.c 
+SRCS+=	interp_backslash.c interp_parse.c interp_simple.c ls.c misc.c 
 SRCS+=	module.c panic.c
 
 .if ${MACHINE} == "i386" || ${MACHINE_CPUARCH} == "amd64"
@@ -62,6 +62,11 @@ SRCS+=	pnp.c
 .if defined(BOOT_FORTH)
 SRCS+=	interp_forth.c
 .include "${SRCTOP}/sys/boot/Makefile.ficl"
+.endif
+
+# Lua interpreter
+.if defined(BOOT_LUA)
+SRCS+=	interp_lua.c
 .endif
 
 .if defined(BOOT_PROMPT_123)
