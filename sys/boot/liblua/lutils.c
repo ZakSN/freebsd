@@ -29,6 +29,7 @@
 __FBSDID("$FreeBSD$");
 
 #include <src/lua.h>
+#include <src/lauxlib.h>
 #include <lstd.h>
 #include <lutils.h>
 
@@ -111,6 +112,16 @@ lua_getenv(lua_State *L)
 	} else
 		lua_pushnil(L);
 	return 1;
+}
+
+int
+lua_printc (lua_State *L)
+{
+	int status = 1;
+	ssize_t l;
+	const char *s = luaL_checklstring(L, 1, &l);
+	status = status && (printf("%s", s) == l);
+	return status;
 }
 
 void *
@@ -334,6 +345,7 @@ static utils_func reg_funcs[] = {
 			{lua_time, "loader", "time"},
 			{lua_include, "loader", "include"},
 			{lua_getenv, "loader", "getenv"},
+			{lua_printc, "loader", "printc"},
 			{lua_getchar, "io", "getchar"},
 			{lua_ischar, "io", "ischar"},
 			{lua_gets, "io", "gets"},

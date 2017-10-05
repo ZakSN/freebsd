@@ -38,6 +38,7 @@ int	 lua_gets(lua_State *);
 int	 lua_time(lua_State *);
 int	 lua_delay(lua_State *);
 int	 lua_getenv(lua_State *);
+int	 lua_printc(lua_State *);
 void 	*lua_realloc(void *, void *, size_t, size_t);
 int	 ldo_string(lua_State *, const char *, size_t);
 int	 ldo_file(lua_State *, const char *);
