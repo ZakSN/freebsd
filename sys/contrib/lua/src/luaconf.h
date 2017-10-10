@@ -129,6 +129,12 @@
 #define LUA_INT_LONG
 #define LUA_REAL_DOUBLE
 
+#elif defined(BOOT_LUA) 	/*}{ */
+
+#define LUA_INT_LONG
+#define LUA_REAL_BOOT
+#define LUA_COMPAT_FLOATSTRING
+
 #else				/* }{ */
 /*
 ** default configuration for 64-bit Lua ('long long' and 'double')
@@ -444,7 +450,20 @@
 
 #define lua_str2number(s,p)	strtod((s), (p))
 
-#else					/* }{ */
+#elif defined(LUA_REAL_BOOT)			/* }{ boot lua number*/
+
+#define LUA_NUMBER	double
+
+#define LUAI_UACNUMBER	double
+
+#define LUA_NUMBER_FRMLEN	""
+#define LUA_NUMBER_FMT		"%g"
+
+#define l_mathop(op)		op
+
+#define lua_str2number(s,p)	strtod((s), (p))
+
+#else						/*}{*/
 
 #error "numeric real type not defined"
 

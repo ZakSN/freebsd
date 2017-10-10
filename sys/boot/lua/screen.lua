@@ -85,29 +85,29 @@ end
 
 function screen.clear()
     if core.bootserial() then return; end
-    print("\027[H\027[J");
+    loader.printc("\027[H\027[J");
 end
 
 function screen.setcursor(x, y)
     if core.bootserial() then return; end
-    print("\027["..y..";"..x.."H");
+    loader.printc("\027["..y..";"..x.."H");
 end
 
 function screen.setforeground(c)
     if color.disabled then return c; end
-    print("\027[3"..c.."m");
+    loader.printc("\027[3"..c.."m");
 end
 
 function screen.setbackground(c)
     if color.disabled then return c; end
-    print("\027[4"..c.."m");
+    loader.printc("\027[4"..c.."m");
 end
 
 function screen.defcolor()
-    print(color.default());
+    loader.printc(color.default());
 end
 
 function screen.defcursor()
     if core.bootserial() then return; end
-    print("\027[25;0H");
+    loader.printc("\027[25;0H");
 end

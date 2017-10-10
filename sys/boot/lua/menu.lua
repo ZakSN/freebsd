@@ -124,14 +124,19 @@ function menu.drawbox(x, y, w, h)
     screen.setcursor(x+w, y); print(tr);
     screen.setcursor(x+w, y+h); print(br);
     
-    screen.setcursor(x+1, y);
-    for i = 0, w-2 do print(hl); end
-    screen.setcursor(x+1, y+h);
-    for i = 0, w-2 do print(hl); end
-    
-    
-    for i = 1, h-1 do screen.setcursor(x, y+i); print(vl); end
-    for i = 1, h-1 do screen.setcursor(x+w, y+i); print(vl); end
+    for i = 1, w-1 do 
+    	screen.setcursor(x+i, y);
+	print(hl); 
+    	screen.setcursor(x+i, y+h); 
+	print(hl);
+    end
+       
+    for i = 1, h-1 do 
+	screen.setcursor(x, y+i); 
+	print(vl);
+	screen.setcursor(x+w, y+i); 
+	print(vl); 
+    end
 end
 
 function menu.autoboot()
@@ -149,11 +154,27 @@ function menu.autoboot()
     local x = loader.getenv("loader_menu_timeout_x") or 5;
     local y = loader.getenv("loader_menu_timeout_y") or 22;
     
+    ---[[
     local endtime = loader.time() + ab;
     local time;
+    --]]
+	--[[
+    local time = ab;
+    local lastlt = loader.time();
+	--]]
+
     repeat
-    
+    	
+	--[[
+	if loader.time() ~= lastlt then
+		time = time - 1;
+		lastlt = loader.time();
+	end
+	--]]
+	
+	---[[
         time = endtime - loader.time();
+	--]]
         screen.setcursor(x, y);
         print("Autoboot in "..time.." seconds, hit [Enter] to boot"
             .." or any other key to stop     ");

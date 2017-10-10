@@ -209,7 +209,7 @@ kvprintf(char const *fmt, kvprintf_fn_t *func, void *arg, int radix, va_list ap)
 	int ch, n;
 	uintmax_t num;
 	int base, lflag, qflag, tmp, width, ladjust, sharpflag, neg, sign, dot;
-	int cflag, hflag, jflag, tflag, zflag;
+	int cflag, gflag, hflag, jflag, tflag, zflag;
 	int dwidth, upper;
 	char padc;
 	int stop = 0, retval = 0;
@@ -323,6 +323,9 @@ reswitch:	switch (ch = (u_char)*fmt++) {
 						PCHAR(*q);
 			}
 			break;
+		case 'G':
+		case 'g':
+			gflag = 1;
 		case 'd':
 		case 'i':
 			base = 10;
@@ -455,6 +458,8 @@ handle_sign:
 				num = (short)va_arg(ap, int);
 			else if (cflag)
 				num = (char)va_arg(ap, int);
+			else if (gflag)
+				num = (long long int)va_arg(ap, double);
 			else
 				num = va_arg(ap, int);
 number:
