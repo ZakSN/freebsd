@@ -83,30 +83,28 @@ function menu.run(opts)
         drawer.drawlogo();
         screen.defcursor();
     end
+
+    local refresh = function(ret)
+        if (ret) then
+            print("Exiting menu!");
+            return false;
+        end
+	draw();
+	return true;
+    end
     
     draw();
     menu.autoboot();
-    while true do
+    cont = true
+    while cont do
         local ch = string.char(io.getchar());
         if (opts[ch] ~= nil) then
-            local ret = opts[ch].func();
-            if (ret) then
-                print("Exiting menu!");
-                return;
-            end
-        else
-        --try alias key
-            if opts.alias ~= nil then
-                if opts.alias[ch] ~= nil then
-                    local ret = opts.alias[ch].func();
-                    if (ret) then
-                        print("Exiting menu!");
-                        return;
-                    end
-                end
+            cont = refresh(opts[ch].func())
+        elseif opts.alias ~= nil then  --try alias key
+            if opts.alias[ch] ~= nil then
+               cont = refresh(opts.alias[ch].func())
             end
         end
-        draw();
     end
 end
 

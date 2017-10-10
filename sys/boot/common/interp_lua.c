@@ -62,11 +62,11 @@ void
 interp_lua_init(void *ctx)
 {
 	lua_State *luap;
-	struct bootblk_command **cmdp;
+	/*struct bootblk_command **cmdp ;*/
 	struct interp_lua_softc	*softc;
-	struct env_var *ev;
-	const char *name_str, *val_str;
-	char buf[16];
+	/*struct env_var *ev;*/
+	/*const char *name_str, *val_str;*/
+	/*char buf[16];*/
 
 	softc = ctx;
 	LDBG("creating context");
@@ -87,8 +87,8 @@ interp_lua_run(void *data, const char *line)
 {
 	lua_State *luap;
 	struct interp_lua_softc	*softc;
-	int argc, ret;
-	char **argv;
+	/*int argc, ret;*/
+	/*char **argv;*/
 	char loader_line[128];
 	int status;
 	int len;
