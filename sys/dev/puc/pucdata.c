@@ -1874,27 +1874,9 @@ static int
 puc_config_wch382(struct puc_softc *sc, enum puc_cfg_cmd cmd,
     int port, intptr_t *res)
 {
-	switch(cmd){
-	case PUC_CFG_SETUP:
-		/*
-		 * The WCH382 2S card doesn't seem to have working MSI
-		 * capability, however it acts like it does so the puc driver
-		 * does does not attempt to set up INTx interrupts. This setup
-		 * routine therefore has to disable MSI and enable INTx interrupts.
-		 * This routine is an alternative to disabling MSI for all puc
-		 * devices.
-		 */
-		pci_release_msi(sc->sc_dev);
-		sc->sc_msi = 0;
-		sc->sc_irid = 0;
-		if(bootverbose)
-			device_printf(sc->sc_dev, "WCH382 broken MSI, forcing INTx\n");
-		return (0);
-	case PUC_CFG_GET_OFS:
+	if(cmd == PUC_CFG_GET_OFS){
 		*res = (port * 8) + 0xC0;
 		return (0);
-	default:
-	       break;	
 	}
 	return (ENXIO);
 }

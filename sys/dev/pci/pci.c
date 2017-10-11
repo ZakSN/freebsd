@@ -302,6 +302,8 @@ static const struct pci_quirk pci_quirks[] = {
 	{ 0x167814e4, PCI_QUIRK_MSI_INTX_BUG,	0,	0 }, /* BCM5715 */
 	{ 0x167914e4, PCI_QUIRK_MSI_INTX_BUG,	0,	0 }, /* BCM5715S */
 
+	{ 0x32531c00, PCI_QUIRK_DISABLE_MSI,	0,	0 },/* WCH382 serial card */
+
 	{ 0 }
 };
 
@@ -1640,7 +1642,7 @@ pci_alloc_msix_method(device_t dev, device_t child, int *count)
 		return (ENXIO);
 
 	/* MSI-X capability present? */
-	if (cfg->msix.msix_location == 0 || !pci_do_msix)
+	if (cfg->msix.msix_location == 0 || !pci_do_msix || pci_msix_device_blacklisted(child) != 0)
 		return (ENODEV);
 
 	/* Make sure the appropriate BARs are mapped. */
@@ -2295,7 +2297,6 @@ pci_msi_device_blacklisted(device_t dev)
 
 	if (!pci_honor_msi_blacklist)
 		return (0);
-
 	return (pci_has_quirk(pci_get_devid(dev), PCI_QUIRK_DISABLE_MSI));
 }
 
@@ -2406,7 +2407,7 @@ pci_alloc_msi_method(device_t dev, device_t child, int *count)
 		return (ENXIO);
 
 	/* MSI capability present? */
-	if (cfg->msi.msi_location == 0 || !pci_do_msi)
+	if (cfg->msi.msi_location == 0 || !pci_do_msi || pci_msi_device_blacklisted(child) != 0)
 		return (ENODEV);
 
 	if (bootverbose)
