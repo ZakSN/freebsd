@@ -135,6 +135,9 @@ function menu.drawbox(x, y, w, h)
 	screen.setcursor(x+w, y+i); 
 	print(vl); 
     end
+
+    screen.setcursor(x+(w/2)-9, y);
+    print("Welcome to FreeBSD");
 end
 
 function menu.autoboot()
