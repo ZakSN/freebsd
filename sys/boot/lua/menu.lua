@@ -34,18 +34,19 @@ include("/boot/drawer.lua");
 menu = {};
 
 function menu.draw(x, y, opts)
-    screen.setcursor(x, y);
-    print("Boot Menu");
     for k, v in pairs(opts) do
         -- skip alias
-        if k ~= "alias" then
-            screen.setcursor(x, y + v.index);
+        if (k ~= "alias") then
             local name = v.name;
-            
             if (name == nil) then
                 name = v.getName();
             end
-            print(k .. " - " .. name);
+	    screen.setcursor(x, y + v.index);
+	    if (name ~= "separator") then
+	    	print(color.highlight(k) .. ". " .. name);
+	    else
+	    	print(k);
+	    end
         end
     end
 end
@@ -78,7 +79,7 @@ function menu.run(opts)
     local draw = function() 
         screen.clear();
         menu.draw(6, 11, opts);
-        menu.drawbox(4, 10, 40, 10);
+        menu.drawbox(4, 10, 40, 11);
         drawer.drawbrand();
         drawer.drawlogo();
         screen.defcursor();
@@ -155,27 +156,11 @@ function menu.autoboot()
     local x = loader.getenv("loader_menu_timeout_x") or 5;
     local y = loader.getenv("loader_menu_timeout_y") or 22;
     
-    ---[[
     local endtime = loader.time() + ab;
     local time;
-    --]]
-	--[[
-    local time = ab;
-    local lastlt = loader.time();
-	--]]
 
     repeat
-    	
-	--[[
-	if loader.time() ~= lastlt then
-		time = time - 1;
-		lastlt = loader.time();
-	end
-	--]]
-	
-	---[[
         time = endtime - loader.time();
-	--]]
         screen.setcursor(x, y);
         print("Autoboot in "..time.." seconds, hit [Enter] to boot"
             .." or any other key to stop     ");
@@ -206,7 +191,7 @@ menu.options = {
     -- Boot multi user
     ["1"] = {
         index = 1, 
-        name = "Boot Multi user "..color.highlight("[Enter]"), 
+        name = color.highlight("B").."oot Multi user "..color.highlight("[Enter]"), 
         func = function () core.setSingleUser(false); core.boot(); end
     },
     -- boot single user
@@ -227,20 +212,24 @@ menu.options = {
         name = color.highlight("R").."eboot", 
         func = function () loader.perform("reboot"); end
     },
-    -- boot options
-    ["5"] = {
-        index = 5, 
-        name = "Boot "..color.highlight("O").."ptions", 
-        func = function () menu.run(boot_options); return false; end
+    -- Options section:
+    [""] = {
+        index = 5,
+	name = "separator"
     },
-    ["6"] = {
-        index = 6,
+    ["Options:"] = {
+	index = 6,
+	name = "separator"
+    },
+    -- kernel options
+    ["5"] = {
+        index = 7,
         getName = function ()
             local k = core.kernelList();
             if #k == 0 then 
                 return "Kernels (not availabe)";
             end
-            return "Kernels";
+            return color.highlight("K").."ernels";
         end,
         func = function() 
             local kernels = {};
@@ -263,15 +252,23 @@ menu.options = {
             menu.run(kernels);
             return false;
         end
+    },
+    -- boot options
+    ["6"] = {
+        index = 8, 
+        name = "Boot "..color.highlight("O").."ptions", 
+        func = function () menu.run(boot_options); return false; end
     }
 };
 
 menu.options.alias = {
     ["\013"] = menu.options["1"],
+    ["b"] = menu.options["1"],
     ["s"] = menu.options["2"],
     ["\027"] = menu.options["3"],
     ["r"] = menu.options["4"],
-    ["o"] = menu.options["5"]
+    ["k"] = menu.options["5"],
+    ["o"] = menu.options["6"]
 };
 
 function OnOff(str, b)
@@ -283,39 +280,54 @@ function OnOff(str, b)
 end
 
 boot_options = {
+    -- retrun to main
     ["1"] = {
         index = 1,
-        name = "Back to menu"..color.highlight(" [Backspace]"),
+        name = "Back to main menu"..color.highlight(" [Backspace]"),
         func = function () return true; end
     },
+    -- load defaults
     ["2"] = {
         index = 2,
         name = "Load System "..color.highlight("D").."efaults",
         func = function () core.setDefaults(); return false; end
     },
+    -- Options section:
+    [""] = {
+    	index = 3,
+    	name = "separator"
+    },
+    ["Boot Options:"] = {
+	index = 4,
+	name = "separator"
+    },
+    -- acpi
     ["3"] = {
-        index = 3,
+        index = 5,
         getName = function () 
             return OnOff(color.highlight("A").."CPI       :", core.acpi);
         end,
         func = function () core.setACPI(); return false; end
     },
+    -- safe mode
     ["4"] = {
-        index = 4,
+        index = 6,
         getName = function () 
             return OnOff("Safe "..color.highlight("M").."ode  :", core.sm);
         end,
         func = function () core.setSafeMode(); return false; end
     },
+    -- single user
     ["5"] = {
-        index = 5,
+        index = 7,
         getName = function () 
             return OnOff(color.highlight("S").."ingle user:", core.su);
         end,
         func = function () core.setSingleUser(); return false; end
     },
+    -- verbose boot
     ["6"] = {
-        index = 6,
+        index = 8,
         getName = function () 
             return OnOff(color.highlight("V").."erbose    :", core.verbose);
         end,
