@@ -1871,10 +1871,10 @@ puc_config_titan(struct puc_softc *sc __unused, enum puc_cfg_cmd cmd,
 }
 
 static int
-puc_config_wch382(struct puc_softc *sc, enum puc_cfg_cmd cmd,
+puc_config_wch382(struct puc_softc *sc __unused, enum puc_cfg_cmd cmd,
     int port, intptr_t *res)
 {
-	if(cmd == PUC_CFG_GET_OFS){
+	if (cmd == PUC_CFG_GET_OFS) {
 		*res = (port * 8) + 0xC0;
 		return (0);
 	}
