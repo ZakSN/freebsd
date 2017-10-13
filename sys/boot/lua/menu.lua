@@ -33,24 +33,6 @@ include("/boot/drawer.lua");
 
 menu = {};
 
-function menu.draw(x, y, opts)
-    for k, v in pairs(opts) do
-        -- skip alias
-        if (k ~= "alias") then
-            local name = v.name;
-            if (name == nil) then
-                name = v.getName();
-            end
-	    screen.setcursor(x, y + v.index);
-	    if (name ~= "separator") then
-	    	print(color.highlight(k) .. ". " .. name);
-	    else
-	    	print(k);
-	    end
-        end
-    end
-end
-
 function menu.skip()
     if core.bootserial() then
         return true;
@@ -78,10 +60,7 @@ function menu.run(opts)
     
     local draw = function() 
         screen.clear();
-        menu.draw(6, 11, opts);
-        menu.drawbox(4, 10, 40, 11);
-        drawer.drawbrand();
-        drawer.drawlogo();
+        drawer.drawscreen(opts);
         screen.defcursor();
     end
 
@@ -107,38 +86,6 @@ function menu.run(opts)
             end
         end
     end
-end
-
-function menu.drawbox(x, y, w, h)
-    local hl = string.char(0xCD);
-    local vl = string.char(0xBA);
-    
-    local tl = string.char(0xC9);
-    local bl = string.char(0xC8);
-    local tr = string.char(0xBB);
-    local br = string.char(0xBC);
-    
-    screen.setcursor(x, y); print(tl);
-    screen.setcursor(x, y+h); print(bl);
-    screen.setcursor(x+w, y); print(tr);
-    screen.setcursor(x+w, y+h); print(br);
-    
-    for i = 1, w-1 do 
-    	screen.setcursor(x+i, y);
-	print(hl); 
-    	screen.setcursor(x+i, y+h); 
-	print(hl);
-    end
-       
-    for i = 1, h-1 do 
-	screen.setcursor(x, y+i); 
-	print(vl);
-	screen.setcursor(x+w, y+i); 
-	print(vl); 
-    end
-
-    screen.setcursor(x+(w/2)-9, y);
-    print("Welcome to FreeBSD");
 end
 
 function menu.autoboot()
@@ -227,7 +174,7 @@ menu.options = {
         getName = function ()
             local k = core.kernelList();
             if #k == 0 then 
-                return "Kernels (not availabe)";
+                return "Kernels (not available)";
             end
             return color.highlight("K").."ernels";
         end,

@@ -40,7 +40,7 @@ drawer.fbsd_logo = {
     " |_|   |_|  \\___|\\___||____/|_____/|_____/ "
 };
 
-drawer.logo_position = {x = 46, y = 4};
+drawer.logo_position = {x = 46, y = 1};
 drawer.beastie_color = {
     "               \027[31m,        ,",
     "              /(        )`",
@@ -85,7 +85,7 @@ drawer.beastie = {
     "         `--{__________)"
 };
 
-drawer.fbsd_logo_shift = {x = 5, y = 6};
+drawer.fbsd_logo_shift = {x = 5, y = 4};
 drawer.fbsd_logo_v = {
     "  ______",
     " |  ____| __ ___  ___ ",
@@ -102,7 +102,7 @@ drawer.fbsd_logo_v = {
     " |____/|_____/|_____/"
 };
 
-drawer.orb_shift = {x = 3, y = 0};
+drawer.orb_shift = {x = 2, y = 4};
 drawer.orb_color = {
     "  \027[31m```                        \027[31;1m`\027[31m",
     " s` `.....---...\027[31;1m....--.```   -/\027[31m",
@@ -139,6 +139,80 @@ drawer.orb = {
     "         .---.....----."
 };
 
+drawer.none = {""};
+
+drawer.none_shift = {x = 17, y = 0};
+
+drawer.menu_position = {x = 6, y = 11};
+
+drawer.box_pos_dim = {x = 3, y = 10, w = 41, h = 11};
+
+function drawer.drawscreen(opts)
+	-- drawlogo() must go first. 
+	-- it determines the positions of other elements
+	drawer.drawlogo(); 
+	drawer.drawmenu(opts);
+        drawer.drawbox();
+        drawer.drawbrand();
+end
+
+function drawer.drawmenu(opts)
+    x = drawer.menu_position.x;
+    y = drawer.menu_position.y;
+    for k, v in pairs(opts) do
+        -- skip alias
+        if (k ~= "alias") then
+            local name = v.name;
+            if (name == nil) then
+                name = v.getName();
+            end
+	    screen.setcursor(x, y + v.index);
+	    if (name ~= "separator") then
+	    	print(color.highlight(k) .. ". " .. name);
+	    else
+	    	print(k);
+	    end
+        end
+    end
+end
+
+
+function drawer.drawbox()
+    x = drawer.box_pos_dim.x;
+    y = drawer.box_pos_dim.y;
+    w = drawer.box_pos_dim.w;
+    h = drawer.box_pos_dim.h;
+
+    local hl = string.char(0xCD);
+    local vl = string.char(0xBA);
+    
+    local tl = string.char(0xC9);
+    local bl = string.char(0xC8);
+    local tr = string.char(0xBB);
+    local br = string.char(0xBC);
+    
+    screen.setcursor(x, y); print(tl);
+    screen.setcursor(x, y+h); print(bl);
+    screen.setcursor(x+w, y); print(tr);
+    screen.setcursor(x+w, y+h); print(br);
+    
+    for i = 1, w-1 do 
+    	screen.setcursor(x+i, y);
+	print(hl); 
+    	screen.setcursor(x+i, y+h); 
+	print(hl);
+    end
+       
+    for i = 1, h-1 do 
+	screen.setcursor(x, y+i); 
+	print(vl);
+	screen.setcursor(x+w, y+i); 
+	print(vl); 
+    end
+
+    screen.setcursor(x+(w/2)-9, y);
+    print("Welcome to FreeBSD");
+end
 
 function drawer.draw(x, y, logo)
     for i = 1, #logo do
@@ -187,6 +261,15 @@ function drawer.drawlogo()
         logo = drawer.fbsd_logo;
     elseif logo == "tributebw" then
         logo = drawer.fbsd_logo;
+    elseif logo == "none" then
+    	--centre brand and text if no logo 
+    	drawer.brand_position.x = drawer.brand_position.x + drawer.none_shift.x;
+    	drawer.brand_position.y = drawer.brand_position.y + drawer.none_shift.y;
+	drawer.menu_position.x = drawer.menu_position.x + drawer.none_shift.x;
+	drawer.menu_position.y = drawer.menu_position.y + drawer.none_shift.y;
+	drawer.box_pos_dim.x = drawer.box_pos_dim.x + drawer.none_shift.x;
+	drawer.box_pos_dim.y = drawer.box_pos_dim.y + drawer.none_shift.y;
+    	logo = drawer.none;
     end
     if not logo then
         if colored then logo = drawer.orb_color;
