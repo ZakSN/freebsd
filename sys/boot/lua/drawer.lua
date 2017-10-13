@@ -269,6 +269,9 @@ function drawer.drawlogo()
 	drawer.menu_position.y = drawer.menu_position.y + drawer.none_shift.y;
 	drawer.box_pos_dim.x = drawer.box_pos_dim.x + drawer.none_shift.x;
 	drawer.box_pos_dim.y = drawer.box_pos_dim.y + drawer.none_shift.y;
+	--prevent redraws from moving menu further
+	drawer.none_shift.x = 0;
+	drawer.none_shift.y = 0;
     	logo = drawer.none;
     end
     if not logo then
