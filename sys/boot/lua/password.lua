@@ -27,6 +27,7 @@
 --
 
 include("/boot/core.lua");
+include("/boot/screen.lua");
 password = {};
 
 function password.read()
@@ -40,11 +41,11 @@ function password.read()
         if ch == 8 then 
             if n > 0 then
                 n = n - 1;
-                print("\008");
+                -- loader.printc("\008 \008");
                 str = string.sub(str, 1, n);
             end
         else 
-            print("*");
+            -- loader.printc("*");
             str = str .. string.char(ch);
             n = n + 1;
         end
@@ -53,25 +54,23 @@ function password.read()
 end
 
 function password.check()
-    local boot_pwd = loader.getenv("bootlock_password");
-    if boot_pwd ~= nil then
+    screen.defcursor();
+    local function compare(prompt, pwd)
+        if (pwd == nil) then
+            return;
+        end
         while true do
-            print("Boot password: ");
-            if boot_pwd == password.read() then break; end
-            print("\nloader: incorrect password!\n");
+            loader.printc(prompt);
+            if (pwd == password.read()) then break; end
+            print("\n\nloader: incorrect password!\n");
             loader.delay(3*1000*1000);
         end
     end
+
+    local boot_pwd = loader.getenv("bootlock_password");
+    compare("Boot password: ", boot_pwd);
     
     local pwd = loader.getenv("password");
-    if (pwd == nil) then return; end
-    
-    core.autoboot();
-    
-    while true do
-        print("Password: ");
-        if pwd == password.read() then break; end
-        print("\nloader: incorrect password!\n");
-        loader.delay(3*1000*1000);
-    end
+    if (pwd ~=nil) then core.autoboot(); end
+    compare("Password: ", pwd);
 end

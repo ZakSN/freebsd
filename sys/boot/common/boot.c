@@ -228,8 +228,8 @@ autoboot(int timeout, char *prompt)
 	    }
 
 	    if (ntime != otime) {
-	        printf("\rBooting [%s] in %d second%s... ",
-	    		    kernelname, (int)(when - ntime),
+	        printf("\rBooting [%s] in %ld second%s... ",
+	    		    kernelname, (long int)(when - ntime),
 			    (when-ntime)==1?"":"s");
 	        otime = ntime;
 	    }
