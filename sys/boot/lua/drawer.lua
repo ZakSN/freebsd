@@ -147,33 +147,39 @@ drawer.menu_position = {x = 6, y = 11};
 
 drawer.box_pos_dim = {x = 3, y = 10, w = 41, h = 11};
 
-function drawer.drawscreen(opts)
+function drawer.drawscreen(menu_opts)
 	-- drawlogo() must go first. 
 	-- it determines the positions of other elements
 	drawer.drawlogo(); 
-	drawer.drawmenu(opts);
-        drawer.drawbox();
         drawer.drawbrand();
+        drawer.drawbox();
+	return drawer.drawmenu(menu_opts);
 end
 
-function drawer.drawmenu(opts)
+function drawer.drawmenu(m)
     x = drawer.menu_position.x;
     y = drawer.menu_position.y;
-    for k, v in pairs(opts) do
-        -- skip alias
-        if (k ~= "alias") then
-            local name = v.name;
-            if (name == nil) then
-                name = v.getName();
+
+    -- print the menu and build the alias table
+    local alias_table = {};
+    local entry_num = 0;
+    for line_num, e in ipairs(m) do
+        if (e.entry_type ~= "separator") then
+            entry_num = entry_num + 1;
+	    screen.setcursor(x, y + line_num);
+            print(entry_num .. ". "..e.name());
+
+            -- fill the alias table
+            alias_table[tostring(entry_num)] = e;
+            for n, a in ipairs(e.alias) do
+                alias_table[a] = e;
             end
-	    screen.setcursor(x, y + v.index);
-	    if (name ~= "separator") then
-	    	print(color.highlight(k) .. ". " .. name);
-	    else
-	    	print(k);
-	    end
+        else
+	    screen.setcursor(x, y + line_num);
+            print(e.name());
         end
     end
+    return alias_table;
 end
 
 

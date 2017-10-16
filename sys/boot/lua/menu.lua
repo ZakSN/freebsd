@@ -33,6 +33,281 @@ include("/boot/drawer.lua");
 
 menu = {};
 
+local OnOff;
+local skip;
+local run;
+local autoboot;
+
+--loader menu tree:
+--rooted at menu.welcome
+--submenu declarations:
+local kernel_options;
+local boot_options;
+local welcome;
+
+menu.kernel_options = {
+    -- this table is dynamically appended to when accessed
+    -- return to welcome menu
+    {
+        entry_type = "return",
+        name = function()
+            return "Back to main menu"..color.highlight(" [Backspace]");
+        end,
+        alias = {"\08"}
+    }
+};
+
+menu.boot_options = {
+    -- return to welcome menu
+    {
+        entry_type = "return",
+        name = function()
+            return "Back to main menu"..color.highlight(" [Backspace]");
+        end,
+        alias = {"\08"}
+    },
+
+    -- load defaults
+    {
+        entry_type = "entry",
+        name = function()
+            return "Load System "..color.highlight("D").."efaults";
+        end,
+        func = function()
+            core.setDefaults()
+        end,
+        alias = {"d", "D"}
+    },
+
+    {
+        entry_type = "separator",
+        name = function()
+            return "";
+        end
+    },
+    
+    {
+        entry_type = "separator",
+        name = function()
+            return "Boot Options:";
+        end
+    },
+
+    -- acpi
+    {
+        entry_type = "entry",
+        name = function()
+            return OnOff(color.highlight("A").."CPI       :", core.acpi);
+        end,
+        func = function()
+            core.setACPI();
+        end,
+        alias = {"a", "A"}
+    },
+    -- safe mode
+    {
+        entry_type = "entry",
+        name = function()
+            return OnOff("Safe "..color.highlight("M").."ode  :", core.sm);
+        end,
+        func = function()
+            core.setSafeMode();
+        end,
+        alias = {"m", "M"}
+    },
+    -- single user
+    {
+        entry_type = "entry",
+        name = function()
+            return OnOff(color.highlight("S").."ingle user:", core.su);
+        end,
+        func = function()
+            core.setSingleUser();
+        end,
+        alias = {"s", "S"}
+    },
+    -- verbose boot
+    {
+        entry_type = "entry",
+        name = function()
+            return OnOff(color.highlight("V").."erbose    :", core.verbose);
+        end,
+        func = function()
+            core.setVerbose();
+        end,
+        alias = {"v", "V"}
+    },
+};
+
+menu.welcome = {
+    -- boot multi user
+    {
+        entry_type = "entry",
+        name = function()
+            return color.highlight("B").."oot Multi user "..color.highlight("[Enter]");
+        end,
+        func = function()
+            core.setSingleUser(false);
+            core.boot();
+        end,
+        alias = {"b", "B", "\013"}
+    },
+
+    -- boot single user
+    {
+        entry_type = "entry",
+        name = function()
+            return "Boot "..color.highlight("S").."ingle user";
+        end,
+        func = function()
+            core.setSingleUser(true);
+            core.boot();
+        end,
+        alias = {"s", "S"}
+    },
+
+    -- escape to interpreter
+    {
+        entry_type = "return",
+        name = function()
+            return color.highlight("Esc").."ape to lua interpreter";
+        end,
+        alias = {"\027"}
+    },
+
+    -- reboot
+    {
+        entry_type = "entry",
+        name = function()
+            return color.highlight("R").."eboot";
+        end,
+        func = function()
+            loader.perform("reboot");
+        end,
+        alias = {"r", "R"}
+    },
+
+
+    {
+        entry_type = "separator",
+        name = function()
+            return "";
+        end
+    },
+
+    {
+        entry_type = "separator",
+        name = function()
+            return "Options:";
+        end
+    },
+
+    -- kernel options
+    {
+        entry_type = "submenu",
+        name = function()
+            local kernels = core.kernelList();
+            if #kernels == 0 then
+                return "Kernels (not available)";
+            end
+            return color.highlight("K").."ernels";
+        end,
+        submenu = function()
+
+	    -- dynamically build the kernel menu:
+	    local kernels = core.kernelList();
+	    for k, v in ipairs(kernels) do
+                menu.kernel_options[#menu.kernel_options + 1] = {
+                    entry_type = "entry",
+		    name = function()
+                        return v;
+		    end,
+		    func = function()
+                        config.reload(v);
+		    end,
+		    alias = {} -- automatically enumerated
+		}
+	    end
+
+	    return menu.kernel_options;
+	end,
+        alias = {"k", "K"}
+    },
+
+    -- boot options
+    {
+        entry_type = "submenu",
+        name = function()
+            return "Boot "..color.highlight("O").."ptions";
+        end,
+        submenu = function()
+	    return menu.boot_options;
+	end,
+        alias = {"o", "O"}
+    }
+
+};
+
+function menu.run(m)
+
+    if (menu.skip()) then
+        core.autoboot();
+	return false;
+    end
+
+    if (m == nil) then
+        m = menu.welcome;
+    end
+
+    -- redraw screen
+    screen.clear();
+    screen.defcursor();
+    local alias_table = drawer.drawscreen(m);
+
+    menu.autoboot();
+
+    cont = true;
+    while cont do
+        local key = string.char(io.getchar());
+
+        -- check to see if key is an alias
+        local sel_entry = nil;
+        for k, v in pairs(alias_table) do
+            if (key == k) then
+                sel_entry = v;
+            end
+        end
+
+        -- if we have an alias do the assigned action:
+        if(sel_entry ~= nil) then
+            if (sel_entry.entry_type == "entry") then
+                -- run function
+                sel_entry.func();
+            elseif (sel_entry.entry_type == "submenu") then
+                -- recurse
+                cont = menu.run(sel_entry.submenu());
+            elseif (sel_entry.entry_type == "return") then
+                -- break recurse
+                cont = false;
+            end
+	    -- if we got an alias key the screen is out of date:
+	    screen.clear();
+	    screen.defcursor();
+	    alias_table = drawer.drawscreen(m);
+        end
+    end
+
+    if (m == menu.welcome) then
+        screen.defcursor();
+        print("Exiting menu!");
+	return false;
+    end
+
+    return true;
+end
+
+
+
 function menu.skip()
     if core.bootserial() then
         return true;
@@ -45,47 +320,6 @@ function menu.skip()
     c = string.lower(loader.getenv("beastie_disable") or "");
     return c == "yes";
 
-end
-
-function menu.run(opts)
-
-    if menu.skip() then
-        core.autoboot();
-        return;
-    end
-
-    if (opts == nil) then
-        opts = menu.options;
-    end
-    
-    local draw = function() 
-        screen.clear();
-        drawer.drawscreen(opts);
-        screen.defcursor();
-    end
-
-    local refresh = function(ret)
-        if (ret) then
-            print("Exiting menu!");
-            return false;
-        end
-	draw();
-	return true;
-    end
-    
-    draw();
-    menu.autoboot();
-    cont = true
-    while cont do
-        local ch = string.char(io.getchar());
-        if (opts[ch] ~= nil) then
-            cont = refresh(opts[ch].func())
-        elseif opts.alias ~= nil then  --try alias key
-            if opts.alias[ch] ~= nil then
-               cont = refresh(opts.alias[ch].func())
-            end
-        end
-    end
 end
 
 function menu.autoboot()
@@ -134,90 +368,6 @@ function menu.autoboot()
     
 end
 
-menu.options = {
-    -- Boot multi user
-    ["1"] = {
-        index = 1, 
-        name = color.highlight("B").."oot Multi user "..color.highlight("[Enter]"), 
-        func = function () core.setSingleUser(false); core.boot(); end
-    },
-    -- boot single user
-    ["2"] = {
-        index = 2, 
-        name = "Boot "..color.highlight("S").."ingle user", 
-        func = function () core.setSingleUser(true); core.boot(); end
-    },
-    -- escape to interpreter
-    ["3"] = {
-        index = 3,
-        name = color.highlight("Esc").."ape to lua interpreter", 
-        func = function () return true; end
-    },
-    -- reboot
-    ["4"] = {
-        index = 4, 
-        name = color.highlight("R").."eboot", 
-        func = function () loader.perform("reboot"); end
-    },
-    -- Options section:
-    [""] = {
-        index = 5,
-	name = "separator"
-    },
-    ["Options:"] = {
-	index = 6,
-	name = "separator"
-    },
-    -- kernel options
-    ["5"] = {
-        index = 7,
-        getName = function ()
-            local k = core.kernelList();
-            if #k == 0 then 
-                return "Kernels (not available)";
-            end
-            return color.highlight("K").."ernels";
-        end,
-        func = function() 
-            local kernels = {};
-            local ker = core.kernelList();
-            if #ker == 0 then return false; end
-            
-            kernels["1"] = {
-                index = 1,
-                name = "Return to menu "..color.highlight("[Backspace]"),
-                func = function() return true; end
-            };
-            kernels.alias = {["\008"] = kernels["1"]};
-            for k, v in ipairs(ker) do
-                kernels[tostring(k+1)] = {
-                    index = k+1,
-                    name = v,
-                    func = function() config.reload(v); end
-                };
-            end
-            menu.run(kernels);
-            return false;
-        end
-    },
-    -- boot options
-    ["6"] = {
-        index = 8, 
-        name = "Boot "..color.highlight("O").."ptions", 
-        func = function () menu.run(boot_options); return false; end
-    }
-};
-
-menu.options.alias = {
-    ["\013"] = menu.options["1"],
-    ["b"] = menu.options["1"],
-    ["s"] = menu.options["2"],
-    ["\027"] = menu.options["3"],
-    ["r"] = menu.options["4"],
-    ["k"] = menu.options["5"],
-    ["o"] = menu.options["6"]
-};
-
 function OnOff(str, b)
     if (b) then
         return str .. color.escapef(color.GREEN).."On"..color.escapef(color.WHITE);
@@ -225,68 +375,3 @@ function OnOff(str, b)
         return str .. color.escapef(color.RED).."off"..color.escapef(color.WHITE);
     end
 end
-
-boot_options = {
-    -- retrun to main
-    ["1"] = {
-        index = 1,
-        name = "Back to main menu"..color.highlight(" [Backspace]"),
-        func = function () return true; end
-    },
-    -- load defaults
-    ["2"] = {
-        index = 2,
-        name = "Load System "..color.highlight("D").."efaults",
-        func = function () core.setDefaults(); return false; end
-    },
-    -- Options section:
-    [""] = {
-    	index = 3,
-    	name = "separator"
-    },
-    ["Boot Options:"] = {
-	index = 4,
-	name = "separator"
-    },
-    -- acpi
-    ["3"] = {
-        index = 5,
-        getName = function () 
-            return OnOff(color.highlight("A").."CPI       :", core.acpi);
-        end,
-        func = function () core.setACPI(); return false; end
-    },
-    -- safe mode
-    ["4"] = {
-        index = 6,
-        getName = function () 
-            return OnOff("Safe "..color.highlight("M").."ode  :", core.sm);
-        end,
-        func = function () core.setSafeMode(); return false; end
-    },
-    -- single user
-    ["5"] = {
-        index = 7,
-        getName = function () 
-            return OnOff(color.highlight("S").."ingle user:", core.su);
-        end,
-        func = function () core.setSingleUser(); return false; end
-    },
-    -- verbose boot
-    ["6"] = {
-        index = 8,
-        getName = function () 
-            return OnOff(color.highlight("V").."erbose    :", core.verbose);
-        end,
-        func = function () core.setVerbose(); return false; end
-    }
-}
-
-boot_options.alias = {
-    ["\08"] = boot_options["1"],
-    ["d"] = boot_options["2"],
-    ["a"] = boot_options["3"],
-    ["m"] = boot_options["4"],
-    ["s"] = boot_options["5"],
-    ["v"] = boot_options["6"] 
-};
