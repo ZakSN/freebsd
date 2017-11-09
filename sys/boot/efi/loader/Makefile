@@ -2,6 +2,12 @@
 
 MAN=
 
+LOADER_NET_SUPPORT?=	yes
+LOADER_MSDOS_SUPPORT?=	yes
+LOADER_UFS_SUPPORT?=	yes
+LOADER_CD9660_SUPPORT?=	no
+LOADER_EXT2FS_SUPPORT?=	no
+
 .include <bsd.init.mk>
 
 MK_SSP=		no
@@ -9,12 +15,6 @@ MK_SSP=		no
 PROG=		loader.sym
 INTERNALPROG=
 WARNS?=		3
-LOADER_NET_SUPPORT?=	yes
-
-LOADER_MSDOS_SUPPORT?=	yes
-LOADER_UFS_SUPPORT?=	yes
-LOADER_CD9660_SUPPORT?=	no
-LOADER_EXT2FS_SUPPORT?=	no
 
 # architecture-specific loader code
 SRCS=	autoload.c \
@@ -133,18 +133,3 @@ DPADD=		${LIBFICL} ${LIBEFI} ${LIBFDT} ${LIBEFI_FDT} ${LIBZFSBOOT} ${LIBSA} \
 LDADD=		${LIBFICL} ${LIBEFI} ${LIBFDT} ${LIBEFI_FDT} ${LIBZFSBOOT} ${LIBSA}
 
 .include <bsd.prog.mk>
-
-beforedepend ${OBJS}: machine
-
-CLEANFILES+=   machine
-
-machine: .NOMETA
-	ln -sf ${SYSDIR}/${MACHINE}/include machine
-
-.if ${MACHINE_CPUARCH} == "amd64" || ${MACHINE_CPUARCH} == "i386"
-beforedepend ${OBJS}: x86
-CLEANFILES+=   x86
-
-x86: .NOMETA
-	ln -sf ${SYSDIR}/x86/include x86
-.endif

@@ -1,5 +1,16 @@
 # $FreeBSD$
 
+LOADER_CD9660_SUPPORT?=	yes
+LOADER_EXT2FS_SUPPORT?=	no
+LOADER_MSDOS_SUPPORT?=	no
+LOADER_UFS_SUPPORT?=	yes
+LOADER_NET_SUPPORT?=	yes
+LOADER_NFS_SUPPORT?=	yes
+LOADER_TFTP_SUPPORT?=	no
+LOADER_GZIP_SUPPORT?=	yes
+LOADER_BZIP2_SUPPORT?=	no
+LOADER_FDT_SUPPORT?=	yes
+
 .include <bsd.init.mk>
 MK_SSP=		no
 MAN=
@@ -11,17 +22,6 @@ INSTALLFLAGS=	-b
 # Architecture-specific loader code
 SRCS=		conf.c metadata.c vers.c start.c
 SRCS+=		ucmpdi2.c
-
-LOADER_CD9660_SUPPORT?=	yes
-LOADER_EXT2FS_SUPPORT?=	no
-LOADER_MSDOS_SUPPORT?=	no
-LOADER_UFS_SUPPORT?=	yes
-LOADER_NET_SUPPORT?=	yes
-LOADER_NFS_SUPPORT?=	yes
-LOADER_TFTP_SUPPORT?=	no
-LOADER_GZIP_SUPPORT?=	yes
-LOADER_BZIP2_SUPPORT?=	no
-LOADER_FDT_SUPPORT?=	yes
 
 .if ${LOADER_FDT_SUPPORT} == "yes"
 SRCS+=		ofwfdt.c
@@ -55,8 +55,8 @@ LDFLAGS=	-nostdlib -static -T ${.CURDIR}/ldscript.powerpc
 LIBOFW=		${BOOTOBJ}/ofw/libofw/libofw.a
 CFLAGS+=	-I${BOOTSRC}/ofw/libofw
 
-DPADD=		${LIBFICL} ${LIBOFW} ${LIBFDT} ${LIBSA32}
-LDADD=		${LIBFICL} ${LIBOFW} ${LIBFDT} ${LIBSA32}
+DPADD=		${LIBFICL} ${LIBOFW} ${LIBFDT} ${LIBSA}
+LDADD=		${LIBFICL} ${LIBOFW} ${LIBFDT} ${LIBSA}
 
 loader.help: help.common help.ofw ${FDTSRC}/help.fdt
 	cat ${.ALLSRC} | \
