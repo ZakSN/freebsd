@@ -411,7 +411,7 @@ efi_main(EFI_HANDLE Ximage, EFI_SYSTEM_TABLE *Xsystab)
 	EFI_CONSOLE_CONTROL_PROTOCOL *ConsoleControl = NULL;
 	SIMPLE_TEXT_OUTPUT_INTERFACE *conout = NULL;
 	UINTN i, max_dim, best_mode, cols, rows, hsize, nhandles;
-	CHAR16 *text;
+	CHAR16 *text = NULL;
 
 	/* Basic initialization*/
 	ST = Xsystab;
@@ -460,6 +460,8 @@ efi_main(EFI_HANDLE Ximage, EFI_SYSTEM_TABLE *Xsystab)
 	imgpath = NULL;
 	if (status == EFI_SUCCESS) {
 		text = efi_devpath_name(img->FilePath);
+	}
+	if (text != NULL) {
 		printf("   Load Path: %S\n", text);
 		efi_setenv_freebsd_wcs("Boot1Path", text);
 		efi_free_devpath_name(text);
