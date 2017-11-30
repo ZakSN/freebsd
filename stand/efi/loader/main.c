@@ -193,6 +193,12 @@ find_currdev(EFI_LOADED_IMAGE *img)
 	int unit;
 	uint64_t extra;
 
+#ifdef MD_IMAGE_SIZE
+	env_setenv("currdev", EV_VOLATILE, "md0", efi_setcurrdev, env_nounset);
+	env_setenv("loaddev", EV_VOLATILE, "md0", env_noset, env_nounset);
+	return (0);
+#endif
+
 #ifdef EFI_ZFS_BOOT
 	/* Did efi_zfs_probe() detect the boot pool? */
 	if (pool_guid != 0) {

@@ -35,6 +35,10 @@ __FBSDID("$FreeBSD$");
 #include <libzfs.h>
 #endif
 
+#ifdef MD_IMAGE_SIZE
+struct devsw md_dev;
+#endif
+
 struct devsw *devsw[] = {
 	&efipart_fddev,
 	&efipart_cddev,
@@ -42,6 +46,9 @@ struct devsw *devsw[] = {
 	&efinet_dev,
 #ifdef EFI_ZFS_BOOT
 	&zfs_dev,
+#endif
+#ifdef MD_IMAGE_SIZE
+	&md_dev,
 #endif
 	NULL
 };
