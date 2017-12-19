@@ -27,8 +27,8 @@
 #
 # $FreeBSD$ 
 #
-# Embed an MFS image into the kernel body or the loader body (expects space reserved via 
-# MD_ROOT_SIZE (kernel) or MD_IMAGE_SIZE (loader))
+# Embed an MFS image into the kernel body or the loader body (expects space
+# reserved via MD_ROOT_SIZE (kernel) or MD_IMAGE_SIZE (loader))
 #
 # $1: kernel or loader filename
 # $2: MFS image filename
@@ -49,29 +49,31 @@ mfs_size=`stat -f '%z' $2 2> /dev/null`
 
 err_no_mfs="Can't locate mfs section within "
 
-if [ "`file -b $1`" = "PE32+ executable (EFI application) x86-64, for MS Windows" ]; then
-
-	#try to find start byte of MFS start flag otherwise - bail.
-	sec_start=`strings -at d $1 | grep "MFS Filesystem goes here"` || \
-		{ echo "${err_no_mfs} $1"; exit 1; }
-	sec_start=`echo ${sec_start} | awk '{print $1}'`
-
-	#try to find start byte of MFS end flag otherwise - bail.
-	sec_end=`strings -at d $1 | grep "MFS Filesystem had better STOP here"` || \
-		{ echo "${err_no_mfs} $1"; exit 1; }
-	sec_end=`echo ${sec_end} | awk '{print $1}'`
-
-	#calculate MFS section size
-	sec_size=`expr ${sec_end} - ${sec_start}`
-
-else
+if [ `file -b $1 | grep -q '^ELF ..-bit .SB executable'` ]; then
 
 	sec_info=`elfdump -c $1 2> /dev/null | grep -A 5 -E "sh_name: oldmfs$"`
 	# If we can't find the mfs section within the given kernel - bail.
 	[ -z "${sec_info}" ] && echo "${err_no_mfs} $1" && exit 1
 
 	sec_size=`echo "${sec_info}" | awk '/sh_size/ {print $2}' 2> /dev/null`
-	sec_start=`echo "${sec_info}" | awk '/sh_offset/ {print $2}' 2> /dev/null`
+	sec_start=`echo "${sec_info}" | awk '/sh_offset/ {print $2}' 2> \
+	    /dev/null`
+
+else
+
+	#try to find start byte of MFS start flag otherwise - bail.
+	sec_start=`strings -at d $1 | grep "MFS Filesystem goes here"` || \
+	    { echo "${err_no_mfs} $1"; exit 1; }
+	sec_start=`echo ${sec_start} | awk '{print $1}'`
+
+	#try to find start byte of MFS end flag otherwise - bail.
+	sec_end=`strings -at d $1 | \
+	    grep "MFS Filesystem had better STOP here"` || \
+	    { echo "${err_no_mfs} $1"; exit 1; }
+	sec_end=`echo ${sec_end} | awk '{print $1}'`
+
+	#calculate MFS section size
+	sec_size=`expr ${sec_end} - ${sec_start}`
 
 fi
 
@@ -80,5 +82,4 @@ fi
 
 # Dump the mfs image into the mfs section
 dd if=$2 ibs=8192 of=$1 obs=${sec_start} oseek=1 conv=notrunc 2> /dev/null && \
-
-echo "MFS image embedded into $1" && exit 0
+    echo "MFS image embedded into $1" && exit 0
